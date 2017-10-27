@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1087575194371",
+    "firebase_url": "https://nova-cac19.firebaseio.com",
+    "project_id": "nova-cac19",
+    "storage_bucket": "nova-cac19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087575194371:android:5dcf74a4a4ce7fce",
+        "android_client_info": {
+          "package_name": "uqac.eslie.nova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087575194371-30540nk7n9ph4vt6pc4motun9th44sck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbgdkz_IN9Cn73Wb_XvWh1a9Go-D3usp4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

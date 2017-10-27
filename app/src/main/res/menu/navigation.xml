@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+    <item
+        android:id="@+id/navigation_weather"
+        android:icon="@drawable/ic_cloud_black_24px"
+        android:title="@string/title_weather"/>
+
+
+    <item
+        android:id="@+id/navigation_find_a_car"
+        android:icon="@drawable/ic_directions_car_black_24px"
+        android:title="@string/title_car" />
+
+    <item
+        android:id="@+id/navigation_place"
+        android:icon="@drawable/ic_place_black_24px"
+        android:title="Place" />
+
+    <item
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/ic_account_circle_black_24px"
+        android:title="@string/title_Account" />
+</menu>
