@@ -7,7 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.List;
+
+import uqac.eslie.nova.Adapter.carPoolingAdapter;
+import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
 
 public class CarFragment extends Fragment {
@@ -15,6 +26,9 @@ public class CarFragment extends Fragment {
 
 
     private OnFragmentInteractionListener mListener;
+    private List<CarPooling> itemList;
+    private carPoolingAdapter adapter;
+
 
     public CarFragment() {
         // Required empty public constructor
@@ -25,13 +39,40 @@ public class CarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_car, container, false);
+        View root = inflater.inflate(R.layout.fragment_car, container, false);
+
+        ListView listView = root.findViewById(R.id.list_carPooling);
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
+
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class,R.layout.car_pooling_item, ref) {
+            @Override
+            protected void populateView(final View v, final CarPooling model, final int position) {
+                // Get references to the views of message.xml
+                TextView depart = v.findViewById(R.id.itemCarPooling_depart);
+                TextView arrivee = v.findViewById(R.id.itemCarPooling_arrivee);
+                TextView prix = v.findViewById(R.id.itemCarPooling_prix);
+                TextView place = v.findViewById(R.id.itemCarPooling_places);
+                TextView date = v.findViewById(R.id.itemCarPooling_date);
+                depart.setText(model.getDepart());
+                arrivee.setText(model.getDestination());
+                prix.setText(Double.toString(model.getPrice()));
+                place.setText(Integer.toString(model.getPlaceLeft()));
+                date.setText(model.getDate().toString());
+
+            }
+
+        };
+        listView.setAdapter(mAdapter);
+        return root;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

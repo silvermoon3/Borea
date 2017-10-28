@@ -1,5 +1,6 @@
 package uqac.eslie.nova.BDD;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -14,8 +15,55 @@ public class CarPooling {
     private String Depart;
     private String Destination;
     private String hour;
+    private String returnHour;
     private int placeTotal;
     private int placeLeft;
+    private String date;
+    public CarPooling(){
+        itemID = UUID.randomUUID();
+    }
+
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
+
+    public void setItemID(UUID itemID) {
+        this.itemID = itemID;
+    }
+
+    public String getReturnHour() {
+        return returnHour;
+    }
+
+    public void setReturnHour(String returnHour) {
+        this.returnHour = returnHour;
+    }
+
+    public int getPlaceTotal() {
+        return placeTotal;
+    }
+
+    public void setPlaceTotal(int placeTotal) {
+        this.placeTotal = placeTotal;
+    }
+
+    public int getPlaceLeft() {
+        return placeLeft;
+    }
+
+    public void setPlaceLeft(int placeLeft) {
+        this.placeLeft = placeLeft;
+    }
+
+
 
     public User getUser() {
         return user;
@@ -24,8 +72,6 @@ public class CarPooling {
     public void setUser(User user) {
         this.user = user;
     }
-
-
 
     public String getDepart() {
         return Depart;
@@ -50,12 +96,6 @@ public class CarPooling {
     public void setHour(String hour) {
         this.hour = hour;
     }
-
-    public  CarPooling() {
-
-        itemID = UUID.randomUUID();
-    }
-
 
 
 

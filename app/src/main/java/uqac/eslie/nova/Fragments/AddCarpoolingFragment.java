@@ -1,18 +1,23 @@
 package uqac.eslie.nova.Fragments;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.Helper.TimePickerFragment;
 import uqac.eslie.nova.R;
 
 
@@ -21,6 +26,7 @@ public class AddCarpoolingFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private TextView timeButton ;
 
     public AddCarpoolingFragment() {
         // Required empty public constructor
@@ -39,6 +45,7 @@ public class AddCarpoolingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_add_carpooling, container, false);
+        timeButton = root.findViewById(R.id.hour_carPooling);
 
         return root;
     }
@@ -46,7 +53,11 @@ public class AddCarpoolingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
 
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "timePicker");
 
     }
 

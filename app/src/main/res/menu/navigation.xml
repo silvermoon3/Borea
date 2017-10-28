@@ -8,7 +8,7 @@
         android:title="@string/title_home" />
     <item
         android:id="@+id/navigation_weather"
-        android:icon="@drawable/ic_cloud_black_24px"
+        android:icon="@drawable/ic_cloud_white_24dp"
         android:title="@string/title_weather"/>
 
 
@@ -16,7 +16,6 @@
         android:id="@+id/navigation_find_a_car"
         android:icon="@drawable/ic_directions_car_black_24px"
         android:title="@string/title_car" />
-
     <item
         android:id="@+id/navigation_place"
         android:icon="@drawable/ic_place_black_24px"
