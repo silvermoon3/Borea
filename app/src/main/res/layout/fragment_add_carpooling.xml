@@ -7,43 +7,68 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/hour_carPooling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.19"
-            android:ems="10"
-            android:hint="Hour"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/date_carPooling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.19"
-            android:ems="10"
-            android:hint="Date"
-            android:inputType="date" />
-
-        <EditText
-            android:id="@+id/adress_carPooling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.19"
-            android:ems="10"
-            android:hint="Adresse"
-            android:inputType="textPostalAddress" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.19"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/addressD_carPooling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Départ"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/addressA_carPooling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Destination"
+                android:inputType="textPostalAddress" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/hour_carPooling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:hint="Heure de départ"
+                    android:inputType="time"
+                    android:onClick="showTimePickerDialog" />
+
+                <EditText
+                    android:id="@+id/returnHour_carPooling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ems="10"
+                    android:hint="Heure de retour"
+                    android:inputType="time"
+                    android:onClick="showTimePickerDialog" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/date_carPooling"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="date"
+                android:onClick="showDatePickerDialog" />
 
             <EditText
                 android:id="@+id/price_carPooling"
@@ -54,29 +79,9 @@
                 android:hint="Price"
                 android:inputType="numberDecimal" />
 
-            <EditText
-                android:id="@+id/place_carPooling"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Place"
-                android:inputType="numberSigned" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ExpandableListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
 
         </LinearLayout>
 
-
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
