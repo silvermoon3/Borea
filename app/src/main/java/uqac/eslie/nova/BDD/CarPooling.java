@@ -19,10 +19,11 @@ public class CarPooling {
     private int placeTotal;
     private int placeLeft;
     private String date;
+    private String marque;
+
     public CarPooling(){
         itemID = UUID.randomUUID();
     }
-
 
 
     public String getDate() {
@@ -32,8 +33,6 @@ public class CarPooling {
     public void setDate(String date) {
         this.date = date;
     }
-
-
 
     public void setItemID(UUID itemID) {
         this.itemID = itemID;
@@ -112,5 +111,11 @@ public class CarPooling {
         return itemID;
     }
 
+    public String getMarque() {
+        return marque;
+    }
 
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
 }

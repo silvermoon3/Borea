@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -28,6 +29,7 @@ public class CarFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private List<CarPooling> itemList;
     private carPoolingAdapter adapter;
+
 
 
     public CarFragment() {
@@ -51,6 +53,7 @@ public class CarFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_car, container, false);
 
         ListView listView = root.findViewById(R.id.list_carPooling);
+
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
 
         final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class,R.layout.car_pooling_item, ref) {
@@ -65,8 +68,10 @@ public class CarFragment extends Fragment {
                 depart.setText(model.getDepart());
                 arrivee.setText(model.getDestination());
                 prix.setText(Double.toString(model.getPrice()));
-                place.setText(Integer.toString(model.getPlaceLeft()));
+                place.setText(Integer.toString(model.getPlaceTotal()));
                 date.setText(model.getDate().toString());
+
+
 
             }
 
