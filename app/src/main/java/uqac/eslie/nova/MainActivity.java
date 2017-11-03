@@ -21,16 +21,19 @@ import android.view.MenuItem;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.Fragments.AccountFragment;
 import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
 import uqac.eslie.nova.Fragments.CarFragment;
+import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
 import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 
 public class MainActivity extends AppCompatActivity
-    implements    HomeFragment.clickAddCarpooling
+    implements    HomeFragment.clickAddCarpooling, CarFragment.CarFragmentListener
 {
 
     Fragment fragment = null;
@@ -83,11 +86,8 @@ public class MainActivity extends AppCompatActivity
         f.setArguments(args);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack so the user can navigate back
         transaction.replace(R.id.content, f).commit();
-        transaction.addToBackStack("test");
+        transaction.addToBackStack("fragment");
 
 
     }
@@ -124,8 +124,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCarPoolingClick() {
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
-      //  AddCarpoolingFragment fragment = new AddCarpoolingFragment();
-       // switchFragment(fragment);
+
 
     }
 
@@ -148,6 +147,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+    @Override
+    public void onItemClick(CarPooling carPooling) {
+        DataBaseHelper.setCurrentCarPooling(carPooling);
+        switchFragment(new CarPoolingDetailFragment());
+
+    }
 
 
 

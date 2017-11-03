@@ -40,6 +40,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 
 import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.User;
 import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
 import uqac.eslie.nova.Helper.DatePickerFragment;
 
@@ -187,12 +189,18 @@ public class addCarPooling extends AppCompatActivity {
                     //On ajoute le covoiturage
                     CarPooling carPooling = new CarPooling();
                     carPooling.setDate(date.getText().toString());
+                    carPooling.setHour(hourD.getText().toString());
+                    carPooling.setReturnHour(hourR.getText().toString());
                     carPooling.setDepart(addressD);
                     carPooling.setDestination(addressA);
+                    carPooling.setUser(new User(DataBaseHelper.getCurrentUser()));
                     if(price.getText().toString() != "")
                         carPooling.setPrice(Double.parseDouble(price.getText().toString()));
-                    if(place.getText().toString() != " ")
+                    if(place.getText().toString() != " ") {
                         carPooling.setPlaceTotal(Integer.parseInt(place.getText().toString()));
+                        carPooling.setPlaceLeft(Integer.parseInt(place.getText().toString()));
+                    }
+
                     carPooling.setMarque(marque.getText().toString());
 
                     // insert the new item into the database
@@ -214,7 +222,6 @@ public class addCarPooling extends AppCompatActivity {
         TimePickerDialog newFragment = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute ) {
-
                 hourD.setText(hour +":" +minute);
             }
         }, hour, minute, true);
@@ -230,7 +237,6 @@ public class addCarPooling extends AppCompatActivity {
         TimePickerDialog newFragment = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute ) {
-
                 hourR.setText(hour +":" +minute);
             }
         }, hour, minute, true);

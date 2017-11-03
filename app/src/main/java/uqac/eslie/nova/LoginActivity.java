@@ -51,6 +51,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import uqac.eslie.nova.BDD.DataBaseHelper;
+
 public class LoginActivity extends FragmentActivity {
     private static final String TAG = "GoogleSignInActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -105,6 +107,7 @@ public class LoginActivity extends FragmentActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                if(firebaseAuth.getCurrentUser() != null){
+                   DataBaseHelper.setCurrentUser(firebaseAuth.getCurrentUser());
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                }
             }

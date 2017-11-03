@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,117 +9,199 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="TextView"
-            android:textColor="@color/colorPrimaryLight"
-            android:textSize="24sp" />
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="7"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/itemCarPooling_depart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Départ"
-                android:textColor="@color/primaryTexte"
-                android:textSize="20sp" />
+                android:id="@+id/date_carPooling_detail"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:text="TextView"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_arrow_forward_black_24dp"
-                android:textColor="@color/primaryTexte"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/itemCarPooling_arrivee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Arrivée"
-                android:textColor="@color/primaryTexte"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/itemCarPooling_depart"
-                android:layout_width="76dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Heure départ"
-                android:textColor="@color/primaryTexte"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_arrow_forward_black_24dp"
-                android:textColor="@color/primaryTexte"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/itemCarPooling_arrivee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:lineSpacingExtra="8sp"
-                android:text="Heure arrivée"
-                android:textColor="@color/primaryTexte"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/icon_money"
-                android:layout_width="46dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_attach_money_white_24dp"
-                android:textColor="@color/primaryTexte"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/itemCarPooling_prix"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/chauffeur_titre_carPooling_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Chauffeur:"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/chauffeur_carPooling_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Chauffeur"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/depart_carPooling_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Départ"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/arrow_carPooling_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawableLeft="@drawable/ic_arrow_forward_black_24dp"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/arrivee_carPooling_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Arrivée"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/heureDepart_carPooling_detail"
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Heure départ"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/heureRetour_carPooling_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Heure arrivée"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/icon_money"
+                    android:layout_width="46dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_attach_money_white_24dp"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/prix_carPooling_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/icon_car"
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:drawableLeft="@drawable/ic_directions_car_black_24px"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/places_carPooling_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/marque_title_carPooling_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Marque de la voiture : "
                 android:textColor="@color/primaryTexte"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/marque_carPooling_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView"
+                android:textColor="@color/primaryTexte" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
+        <Button
+            android:id="@+id/choisir_carPooling_Detail"
+            style="@style/FirebaseUI.VerifyPhoneButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Marque de la voiture"
-            android:textColor="@color/primaryTexte"
-            android:textSize="20sp" />
+            android:background="@color/colorPrimary"
+            android:text="Choisir ce covoiturage" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

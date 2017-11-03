@@ -1,5 +1,7 @@
 package uqac.eslie.nova.BDD;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -34,8 +36,12 @@ public class CarPooling {
         this.date = date;
     }
 
-    public void setItemID(UUID itemID) {
-        this.itemID = itemID;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getReturnHour() {
@@ -59,18 +65,12 @@ public class CarPooling {
     }
 
     public void setPlaceLeft(int placeLeft) {
-        this.placeLeft = placeLeft;
+        this.placeLeft = this.placeLeft -  placeLeft;
     }
 
 
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getDepart() {
         return Depart;
