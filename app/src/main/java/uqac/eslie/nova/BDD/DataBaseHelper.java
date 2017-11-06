@@ -1,5 +1,6 @@
 package uqac.eslie.nova.BDD;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
 /**
@@ -9,7 +10,17 @@ import com.google.firebase.auth.FirebaseUser;
 public class DataBaseHelper {
 
     private static CarPooling currentCarPooling;
-    private static FirebaseUser currentUser;
+    private static User currentUser;
+
+    public static GoogleSignInAccount getGoogleAccount() {
+        return googleAccount;
+    }
+
+    public static void setGoogleAccount(GoogleSignInAccount googleAccount) {
+        DataBaseHelper.googleAccount = googleAccount;
+    }
+
+    private static GoogleSignInAccount googleAccount;
 
 
     public static CarPooling getCurrentCarPooling() {
@@ -21,11 +32,11 @@ public class DataBaseHelper {
     }
 
 
-    public static FirebaseUser getCurrentUser() {
+    public static User getCurrentUser() {
         return currentUser;
     }
 
-    public static void setCurrentUser(FirebaseUser _currentUser) {
+    public static void setCurrentUser(User _currentUser) {
         currentUser = _currentUser;
     }
 }

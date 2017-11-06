@@ -24,7 +24,6 @@ import java.security.NoSuchAlgorithmException;
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.Fragments.AccountFragment;
-import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
 import uqac.eslie.nova.Fragments.CarFragment;
 import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
@@ -33,7 +32,10 @@ import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 
 public class MainActivity extends AppCompatActivity
-    implements    HomeFragment.clickAddCarpooling, CarFragment.CarFragmentListener
+    implements    HomeFragment.clickAddCarpooling,
+        CarFragment.CarFragmentListener,
+        HomeFragment.clickFindCarpooling
+
 {
 
     Fragment fragment = null;
@@ -80,23 +82,18 @@ public class MainActivity extends AppCompatActivity
     };
 
     public void switchFragment(Fragment f){
-
-        Bundle args = new Bundle();
-        //args.putInt(ArticleFragment.ARG_POSITION, position);
-        f.setArguments(args);
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.content, f).commit();
-        transaction.addToBackStack("fragment");
-
+        transaction.addToBackStack("");
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // startActivity(new Intent(this, LoginActivity.class));
         setContentView(R.layout.activity_main);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -124,10 +121,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCarPoolingClick() {
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
-
-
     }
 
+    @Override
+    public void onFindCarPoolingClick() {
+        switchFragment(car);
+    }
 
     private void calculateHashKey(String yourPackageName) {
         try {
@@ -154,6 +153,8 @@ public class MainActivity extends AppCompatActivity
         switchFragment(new CarPoolingDetailFragment());
 
     }
+
+
 
 
 

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Bienvenue"
+            android:text="Bienvenue,"
             android:textAlignment="center"
             android:textColor="@color/primaryTexte"
             android:textSize="30sp" />
@@ -40,7 +40,7 @@
             android:background="@color/backColor">
 
             <Button
-                android:id="@+id/add_covoiturage"
+                android:id="@+id/button_findCarPooling"
                 android:layout_width="173dp"
                 android:layout_height="165dp"
                 android:layout_gravity="bottom|left"

@@ -18,10 +18,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:paddingBottom="10dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="false">
 
 
         <LinearLayout
@@ -46,12 +48,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
                 android:backgroundTint="@color/colorPrimaryLight"
+                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
                 android:singleLine="true"
-                android:textColor="@color/primaryTexte"
-                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"/>
+                android:textColor="@color/primaryTexte" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +74,7 @@
                     android:textSize="20sp" />
 
                 <fragment
-                    android:id="@+id/place_autocomplete_fragment_arrivee"
+                    android:id="@+id/place_autocomplete_fragment_depart"
                     android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
@@ -97,7 +99,7 @@
                     android:textSize="20sp" />
 
                 <fragment
-                    android:id="@+id/place_autocomplete_fragment_depart"
+                    android:id="@+id/place_autocomplete_fragment_arrivee"
                     android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
@@ -121,11 +123,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
                 android:backgroundTint="@color/colorPrimaryLight"
+                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
-                android:textColor="@color/primaryTexte"
-                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"/>
+                android:textColor="@color/primaryTexte" />
 
             <TextView
                 android:id="@+id/returnHour_carPooling"
@@ -143,11 +145,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.8"
                 android:backgroundTint="@color/colorPrimaryLight"
+                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
-                android:textColor="@color/primaryTexte"
-                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"/>
+                android:textColor="@color/primaryTexte" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -172,39 +174,38 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimaryLight"
+                    android:drawableRight="@drawable/ic_attach_money_white_24dp"
                     android:ems="10"
                     android:inputType="number"
-                    android:textColor="@color/primaryTexte"
-                    android:drawableRight="@drawable/ic_attach_money_white_24dp"/>
+                    android:textColor="@color/primaryTexte" />
 
             </LinearLayout>
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.8"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/place"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1.8"
-                android:text="Places"
-                android:textColor="@color/primaryTexte"
-                android:textSize="20sp" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/place_carPooling"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimaryLight"
-                android:ems="10"
-                android:inputType="number"
-                android:textColor="@color/primaryTexte"
-                />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.8"
+                    android:text="Places"
+                    android:textColor="@color/primaryTexte"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/place_carPooling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:textColor="@color/primaryTexte" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,9 +218,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:paddingBottom="5dp"
                     android:text="Marque de la voiture"
                     android:textColor="@color/primaryTexte"
                     android:textSize="20sp" />
+
                 <EditText
                     android:id="@+id/marque_carPooling"
                     android:layout_width="match_parent"
@@ -232,7 +235,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
 
     </ScrollView>

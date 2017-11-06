@@ -2,18 +2,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uqac.eslie.nova.Fragments.AccountFragment">
+    android:background="@color/backColor"
+    tools:context="uqac.eslie.nova.Fragments.AccountFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TabItem
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Account" />
+        android:background="@color/backColor"
+        app:menu="@menu/accountmenu" />
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mon Compte"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTexte"
+                android:textSize="24sp" />
+
+            <uqac.eslie.nova.Helper.RoundedImageView
+                android:id="@+id/account_photo"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/com_facebook_profile_picture_blank_square" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User name"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTexte"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTexte"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="uqac.eslie.nova.Fragments.TabFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </FrameLayout>

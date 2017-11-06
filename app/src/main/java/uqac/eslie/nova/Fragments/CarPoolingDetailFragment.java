@@ -1,10 +1,13 @@
 package uqac.eslie.nova.Fragments;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,10 +75,6 @@ public class CarPoolingDetailFragment extends Fragment {
         chauffeur =  root.findViewById(R.id.chauffeur_carPooling_detail);
         marque =  root.findViewById(R.id.marque_carPooling_detail);
         choisir = root.findViewById(R.id.choisir_carPooling_Detail);
-
-
-
-
         return root;
     }
 
@@ -106,8 +105,9 @@ public class CarPoolingDetailFragment extends Fragment {
 
                             }
                         })
-                        .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Non", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getActivity(),"Covoiturage réservé ! ", Toast.LENGTH_LONG );
                                 dialog.cancel();
                             }
                         });
@@ -119,9 +119,32 @@ public class CarPoolingDetailFragment extends Fragment {
 
 
     private void reservation(){
-            //Notification à envoyer au chauffeur
+
+
+
             //Enlever une place
+            DataBaseHelper.getCurrentCarPooling().addPassager(DataBaseHelper.getCurrentUser());
+
+            //Notification à envoyer au chauffeur
+             NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(getActivity())
+                            .setSmallIcon(R.drawable.ic_account_circle_black_24px)
+                            .setContentTitle("Nouveau passager")
+                            .setContentText(DataBaseHelper.getCurrentUser().getDisplayName() + " fait parti de ton covoiturage");
+            // Sets an ID for the notification
+            int mNotificationId = 001;
+            // Gets an instance of the NotificationManager service
+            NotificationManager mNotifyMgr =
+                    (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+            // Builds the notification and issues it.
+            mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
+
+            //Ajouter aux covoiturages de l'utilisateur
+            DataBaseHelper.getCurrentUser().addCarPooling(DataBaseHelper.getCurrentCarPooling());
+
             DataBaseHelper.getCurrentCarPooling().setPlaceLeft(1);
+
     }
 
 }

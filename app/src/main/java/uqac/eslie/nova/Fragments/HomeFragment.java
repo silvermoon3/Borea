@@ -20,12 +20,17 @@ public class HomeFragment extends Fragment {
     public interface clickAddCarpooling {
         void onCarPoolingClick();
     }
+    public interface clickFindCarpooling {
+        void onFindCarPoolingClick();
+    }
 
     private clickAddCarpooling listener;
+    private clickFindCarpooling listenerFindCarPooling;
     private TextView welcome;
 
-    private OnFragmentInteractionListener mListener;
+
     private Button addCarPooling;
+    private Button fingCarPooling;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,6 +51,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         addCarPooling =  root.findViewById(R.id.button_addCarPooling);
+        fingCarPooling = root.findViewById(R.id.button_findCarPooling);
         welcome = root.findViewById(R.id.welcome_name_home);
         return root;
     }
@@ -59,37 +65,43 @@ public class HomeFragment extends Fragment {
                 listener.onCarPoolingClick();
             }
         });
+        fingCarPooling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listenerFindCarPooling.onFindCarPoolingClick();
+            }
+        });
         welcome.setText(DataBaseHelper.getCurrentUser().getDisplayName());
 
     }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        try{
+        try
+        {
+
             listener = (clickAddCarpooling) context;
+
         }catch (ClassCastException e){
             throw new ClassCastException(context.toString() + "must implement ArticleFragmentListener");
+        }
+        try
+        {
+            listenerFindCarPooling = (clickFindCarpooling) context;
+
+        }catch (ClassCastException e){
+            throw new ClassCastException(context.toString() + "must implement listenerFindCarPooling");
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
+        listenerFindCarPooling = null;
     }
 
-
-    public interface OnFragmentInteractionListener {
-
-        void onFragmentInteraction(Uri uri);
-    }
 }

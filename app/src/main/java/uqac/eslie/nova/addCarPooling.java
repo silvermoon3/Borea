@@ -193,7 +193,7 @@ public class addCarPooling extends AppCompatActivity {
                     carPooling.setReturnHour(hourR.getText().toString());
                     carPooling.setDepart(addressD);
                     carPooling.setDestination(addressA);
-                    carPooling.setUser(new User(DataBaseHelper.getCurrentUser()));
+                    carPooling.setUser(DataBaseHelper.getCurrentUser());
                     if(price.getText().toString() != "")
                         carPooling.setPrice(Double.parseDouble(price.getText().toString()));
                     if(place.getText().toString() != " ") {

@@ -1,8 +1,15 @@
 package uqac.eslie.nova.BDD;
 
+import android.support.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.UUID;
 
 /**
@@ -22,12 +29,17 @@ public class CarPooling {
     private int placeLeft;
     private String date;
     private String marque;
+    private List<User> passagers;
 
     public CarPooling(){
         itemID = UUID.randomUUID();
+        passagers = new ArrayList<>();
     }
 
 
+    public void addPassager(User passager){
+        passagers.add(passager);
+    }
     public String getDate() {
         return date;
     }
@@ -64,13 +76,18 @@ public class CarPooling {
         return placeLeft;
     }
 
-    public void setPlaceLeft(int placeLeft) {
-        this.placeLeft = this.placeLeft -  placeLeft;
+    public List<User> getPassagers() {
+        return passagers;
     }
 
+    public void setPassagers(List<User> passagers) {
+        this.passagers = passagers;
+    }
 
+    public void setPlaceLeft(int _placeLeft) {
 
-
+        this.placeLeft = this.placeLeft - _placeLeft;
+    }
 
     public String getDepart() {
         return Depart;
