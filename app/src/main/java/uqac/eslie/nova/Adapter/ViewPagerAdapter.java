@@ -38,7 +38,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-            return  new CarFragment();
+            return new MyCarPooling();
         if (position == 1)
             return new CarFragment();
         if (position == 2)

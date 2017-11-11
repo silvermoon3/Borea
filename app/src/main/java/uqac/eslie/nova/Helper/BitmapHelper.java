@@ -26,10 +26,8 @@ public  class BitmapHelper extends AsyncTask<String, Integer, Bitmap> {
 
     }
 
-
-
-
     public Bitmap doInBackground(String... src) {
+        Bitmap myBitmap = null;
         try {
             URL url = new URL(src[0]);
             HttpURLConnection connection = (HttpURLConnection) url
@@ -37,13 +35,13 @@ public  class BitmapHelper extends AsyncTask<String, Integer, Bitmap> {
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            myBitmap = BitmapFactory.decodeStream(input);
             return myBitmap;
 
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            return null;
+            return myBitmap;
         }
     }
 

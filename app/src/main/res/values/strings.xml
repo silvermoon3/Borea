@@ -14,7 +14,7 @@
 
     <string name="facebook_app_id">535258210140448</string>
     <string name="fb_login_protocol_scheme">fb535258210140448</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Borea</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

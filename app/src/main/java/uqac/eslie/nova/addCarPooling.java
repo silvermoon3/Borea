@@ -37,6 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Calendar;
 
 import uqac.eslie.nova.BDD.CarPooling;
@@ -194,20 +195,23 @@ public class addCarPooling extends AppCompatActivity {
                     carPooling.setDepart(addressD);
                     carPooling.setDestination(addressA);
                     carPooling.setUser(DataBaseHelper.getCurrentUser());
-                    if(price.getText().toString() != "")
+                    if(!price.getText().toString().equals(""))
                         carPooling.setPrice(Double.parseDouble(price.getText().toString()));
-                    if(place.getText().toString() != " ") {
+                    if(!place.getText().toString().equals("")) {
                         carPooling.setPlaceTotal(Integer.parseInt(place.getText().toString()));
                         carPooling.setPlaceLeft(Integer.parseInt(place.getText().toString()));
                     }
 
                     carPooling.setMarque(marque.getText().toString());
-
                     // insert the new item into the database
+
+
                     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
                     DatabaseReference mReference = mDatabase.getReference("CarPooling");
                     String ID = mReference.push().getKey();
                     mReference.child(ID).setValue(carPooling);
+                    DataBaseHelper.getCurrentUser().addCarPooling(carPooling);
+
                     // add item
                 finish();
                     break;

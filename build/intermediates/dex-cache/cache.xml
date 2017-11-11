@@ -3,23 +3,6 @@
 
     <item
         is-multidex="true"
-<<<<<<< HEAD
-        jar="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_1b7c17f1f3f8e07d5a8cddcd90684413d5190e43\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="73a77a5518139a74068e269005d6965b51e98caf">
-        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d950c7e99851e9ed4810fe640d068c54ba0241c7\classes.dex" />
-=======
         jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Nova\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -33,9 +16,8 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="0cddc100212a96734a35f2199615e06c524ffa3c">
+        sha1="01f35aafbdc071f34880ca58e00dbc6b5ad41b74">
         <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Nova\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e67af66121a188cd4aaf02506a3f6445f3a5b174\classes.dex" />
->>>>>>> 0ed89dd95b4857a002e619284857971e174336aa
     </item>
 
 </items>
