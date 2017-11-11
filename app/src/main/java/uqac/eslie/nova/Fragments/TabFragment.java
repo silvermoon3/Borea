@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import java.net.MalformedURLException;
+
 import uqac.eslie.nova.Adapter.ViewPagerAdapter;
 import uqac.eslie.nova.R;
 
@@ -45,14 +47,18 @@ public class TabFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_tab, container, false);
         viewPager = (ViewPager) root.findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
+        try {
+            setupViewPager(viewPager);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         tabLayout = (TabLayout) root.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         return root;
     }
 
-    private  void setupViewPager(ViewPager viewPager) {
+    private  void setupViewPager(ViewPager viewPager) throws MalformedURLException {
 
         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(Fragment.instantiate(getContext(), CarFragment.class.getName()), "Mes covoiturages");

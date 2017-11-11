@@ -34,14 +34,9 @@ import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 
 public class MainActivity extends AppCompatActivity
-<<<<<<< HEAD
-    implements  HomeFragment.clickAddCarpooling
-=======
     implements    HomeFragment.clickAddCarpooling,
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling
-
->>>>>>> 0ed89dd95b4857a002e619284857971e174336aa
 {
     Fragment fragment = null;
     Fragment home;
@@ -130,10 +125,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCarPoolingClick() {
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ed89dd95b4857a002e619284857971e174336aa
     }
 
     @Override
@@ -166,8 +157,5 @@ public class MainActivity extends AppCompatActivity
         switchFragment(new CarPoolingDetailFragment());
 
     }
-
-
-
 
 }

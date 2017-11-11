@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonKP;
+import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonWeather;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskTxt;
 import uqac.eslie.nova.R;
 
@@ -26,6 +28,7 @@ public class WeatherFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     MyAsyncTaskTxt myTxtTask;
     MyAsyncTaskJsonKP myJsonTask;
+    MyAsyncTaskJsonWeather myJsonTask2;
     ArrayList<String[]> kp27Array = new ArrayList<String[]>();
     ArrayList<String[]> kp3Array = new ArrayList<String[]>();
     URL kp27Url;
@@ -56,15 +59,13 @@ public class WeatherFragment extends Fragment {
     }
 
     public void processFinish(String result, String diff) {
-        try {
-            JSONObject jsonObj = new JSONObject(result);
-
+    try {
             if (diff == "kp") {
-
+                JSONArray jsonArray= new JSONArray(result);
             }
 
-            if (diff == "weather") {
-                
+            else if (diff == "weather") {
+                JSONObject jsonObject= new JSONObject(result);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -85,6 +86,10 @@ public class WeatherFragment extends Fragment {
         myJsonTask = new MyAsyncTaskJsonKP(this);
         myJsonTask.delegate = this;
         myJsonTask.execute(kp1Url);
+
+        myJsonTask2 = new MyAsyncTaskJsonWeather(this);
+        myJsonTask2.delegate = this;
+        myJsonTask2.execute(weather);
     }
 
     @Override
