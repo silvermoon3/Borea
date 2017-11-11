@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -23,23 +25,23 @@ import uqac.eslie.nova.R;
 
 public class CarFragment extends Fragment {
 
+    public interface CarFragmentListener {
+        void onItemClick(CarPooling carPooling);
+    }
 
-
-    private OnFragmentInteractionListener mListener;
+    private CarFragmentListener listener;
     private List<CarPooling> itemList;
     private carPoolingAdapter adapter;
-
+    private ListView listCarPooling;
 
     public CarFragment() {
         // Required empty public constructor
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
     }
@@ -50,10 +52,10 @@ public class CarFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_car, container, false);
 
-        ListView listView = root.findViewById(R.id.list_carPooling);
+        listCarPooling = root.findViewById(R.id.list_carPooling);
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
 
-        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class,R.layout.car_pooling_item, ref) {
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref) {
             @Override
             protected void populateView(final View v, final CarPooling model, final int position) {
                 // Get references to the views of message.xml
@@ -65,28 +67,40 @@ public class CarFragment extends Fragment {
                 depart.setText(model.getDepart());
                 arrivee.setText(model.getDestination());
                 prix.setText(Double.toString(model.getPrice()));
-                place.setText(Integer.toString(model.getPlaceLeft()));
+                place.setText(Integer.toString(model.getPlaceTotal()));
                 date.setText(model.getDate().toString());
+
 
             }
 
         };
-        listView.setAdapter(mAdapter);
+        listCarPooling.setAdapter(mAdapter);
         return root;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //list item click
+        listCarPooling.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                CarPooling item = (CarPooling) parent.getItemAtPosition(position);
+                listener.onItemClick(item);
+            }
+        });
+
     }
+
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof CarFragmentListener) {
+            listener = (CarFragmentListener) context;
         } else {
            /* throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");*/
@@ -96,13 +110,8 @@ public class CarFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
 
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

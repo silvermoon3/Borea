@@ -5,24 +5,31 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:iconTint="@android:color/white"
+        android:title="@string/title_home"
+        android:visible="true" />
     <item
         android:id="@+id/navigation_weather"
         android:icon="@drawable/ic_cloud_white_24dp"
-        android:title="@string/title_weather"/>
+        android:iconTint="@color/primaryTexte"
+        android:title="@string/title_weather"
+        android:visible="true" />
 
 
     <item
         android:id="@+id/navigation_find_a_car"
         android:icon="@drawable/ic_directions_car_black_24px"
-        android:title="@string/title_car" />
+        android:title="@string/title_car"
+        android:visible="true" />
     <item
         android:id="@+id/navigation_place"
         android:icon="@drawable/ic_place_black_24px"
-        android:title="Place" />
+        android:title="Place"
+        android:visible="true" />
 
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account_circle_black_24px"
-        android:title="@string/title_Account" />
+        android:title="@string/title_Account"
+        android:visible="true" />
 </menu>

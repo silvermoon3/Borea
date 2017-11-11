@@ -23,16 +23,25 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.Fragments.AccountFragment;
-import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
 import uqac.eslie.nova.Fragments.CarFragment;
+import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
 import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 
 public class MainActivity extends AppCompatActivity
+<<<<<<< HEAD
     implements  HomeFragment.clickAddCarpooling
+=======
+    implements    HomeFragment.clickAddCarpooling,
+        CarFragment.CarFragmentListener,
+        HomeFragment.clickFindCarpooling
+
+>>>>>>> 0ed89dd95b4857a002e619284857971e174336aa
 {
     Fragment fragment = null;
     Fragment home;
@@ -78,26 +87,18 @@ public class MainActivity extends AppCompatActivity
     };
 
     public void switchFragment(Fragment f){
-
-        Bundle args = new Bundle();
-        //args.putInt(ArticleFragment.ARG_POSITION, position);
-        f.setArguments(args);
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack so the user can navigate back
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.content, f).commit();
-        transaction.addToBackStack("test");
-
+        transaction.addToBackStack("");
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // startActivity(new Intent(this, LoginActivity.class));
         setContentView(R.layout.activity_main);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -129,9 +130,16 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCarPoolingClick() {
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ed89dd95b4857a002e619284857971e174336aa
     }
 
+    @Override
+    public void onFindCarPoolingClick() {
+        switchFragment(car);
+    }
 
     private void calculateHashKey(String yourPackageName) {
         try {
@@ -150,6 +158,15 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public void onItemClick(CarPooling carPooling) {
+        DataBaseHelper.setCurrentCarPooling(carPooling);
+        switchFragment(new CarPoolingDetailFragment());
+
+    }
+
 
 
 

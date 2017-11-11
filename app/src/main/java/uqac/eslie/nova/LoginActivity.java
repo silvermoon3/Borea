@@ -7,6 +7,7 @@ import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -44,12 +45,17 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+
+import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.User;
 
 public class LoginActivity extends FragmentActivity {
     private static final String TAG = "GoogleSignInActivity";
@@ -60,6 +66,7 @@ public class LoginActivity extends FragmentActivity {
     private SignInButton googleButton;
     private FirebaseAuth mAuth;
     private CallbackManager callbackManager;
+    private GoogleSignInAccount account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +113,14 @@ public class LoginActivity extends FragmentActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                if(firebaseAuth.getCurrentUser() != null){
+<<<<<<< HEAD
                    Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
+=======
+                   DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
+
+                   FirebaseMessaging.getInstance().subscribeToTopic(firebaseAuth.getCurrentUser().getUid());
+                   Uri url = firebaseAuth.getCurrentUser().getPhotoUrl();
+>>>>>>> 0ed89dd95b4857a002e619284857971e174336aa
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                }
             }
@@ -160,8 +174,9 @@ public class LoginActivity extends FragmentActivity {
 
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = result.getSignInAccount();
-                firebaseAuthWithGoogle(account);
+                GoogleSignInAccount _account = result.getSignInAccount();
+                this.account = _account;
+                firebaseAuthWithGoogle(_account);
 
             } else {
                 Toast.makeText(LoginActivity.this,"ops", Toast.LENGTH_LONG );
@@ -190,7 +205,7 @@ public class LoginActivity extends FragmentActivity {
                         {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+
                         }
                             else{
 

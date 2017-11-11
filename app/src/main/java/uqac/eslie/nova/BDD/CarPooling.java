@@ -1,6 +1,15 @@
 package uqac.eslie.nova.BDD;
 
+import android.support.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.UUID;
 
 /**
@@ -19,12 +28,18 @@ public class CarPooling {
     private int placeTotal;
     private int placeLeft;
     private String date;
+    private String marque;
+    private List<User> passagers;
+
     public CarPooling(){
         itemID = UUID.randomUUID();
+        passagers = new ArrayList<>();
     }
 
 
-
+    public void addPassager(User passager){
+        passagers.add(passager);
+    }
     public String getDate() {
         return date;
     }
@@ -33,10 +48,12 @@ public class CarPooling {
         this.date = date;
     }
 
+    public User getUser() {
+        return user;
+    }
 
-
-    public void setItemID(UUID itemID) {
-        this.itemID = itemID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getReturnHour() {
@@ -59,18 +76,17 @@ public class CarPooling {
         return placeLeft;
     }
 
-    public void setPlaceLeft(int placeLeft) {
-        this.placeLeft = placeLeft;
+    public List<User> getPassagers() {
+        return passagers;
     }
 
-
-
-    public User getUser() {
-        return user;
+    public void setPassagers(List<User> passagers) {
+        this.passagers = passagers;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPlaceLeft(int _placeLeft) {
+
+        this.placeLeft = this.placeLeft - _placeLeft;
     }
 
     public String getDepart() {
@@ -112,5 +128,11 @@ public class CarPooling {
         return itemID;
     }
 
+    public String getMarque() {
+        return marque;
+    }
 
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
 }

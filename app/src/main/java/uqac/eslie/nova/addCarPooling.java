@@ -6,21 +6,33 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,20 +40,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 
 import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.User;
 import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
 import uqac.eslie.nova.Helper.DatePickerFragment;
 
 
 public class addCarPooling extends AppCompatActivity {
 
-    private TextView addressD;
-    private TextView addressA;
-    private TextView time;
+    private String addressD ="";
+    private String addressA ="";
     private TextView date;
     private TextView hourD;
     private TextView hourR;
     private TextView price;
     private TextView place;
+    private TextView marque;
+    private Menu menu;
+    PlaceAutocompleteFragment autocompleteFragmentDepart;
+    PlaceAutocompleteFragment autocompleteFragmentArrivee;
+
 
 
 
@@ -53,6 +71,9 @@ public class addCarPooling extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.content, new AddCarpoolingFragment()).commit();
 
+
+
+
     }
 
     @Override
@@ -60,8 +81,100 @@ public class addCarPooling extends AppCompatActivity {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.carpoollingmenu, menu);
-        return true;
+        this.menu = menu;
+        autocompleteFragmentDepart = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_depart);
+        autocompleteFragmentArrivee = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_arrivee);
+        autocompleteFragmentDepart.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                addressD = place.getName().toString();
+                setDoneButton();
 
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("error", "An error occurred: " + status);
+            }
+        });
+
+        autocompleteFragmentArrivee.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                addressA = place.getName().toString();
+                setDoneButton();
+
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("error", "An error occurred: " + status);
+            }
+        });
+
+        date = findViewById(R.id.date);
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog(view);
+                setDoneButton();
+
+            }
+        });
+
+        hourD =  findViewById(R.id.hour_depart);
+        hourR =  findViewById(R.id.hour_return);
+
+        TextView hourD = findViewById(R.id.hour_depart);
+        hourD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showTimePickerDialogHourD(view);
+                setDoneButton();
+            }
+        });
+
+
+        TextView hourR = findViewById(R.id.hour_return);
+        hourR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showTimePickerDialogHourR(view);
+                setDoneButton();
+            }
+        });
+
+        price = findViewById(R.id.price_carPooling);
+        price.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                setDoneButton();
+                return true;
+            }
+        });
+        place = findViewById(R.id.place_carPooling);
+        place.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                setDoneButton();
+                return true;
+            }
+        });
+        marque = findViewById(R.id.marque_carPooling);
+        marque.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                setDoneButton();
+                return true;
+            }
+        });
+
+        return true;
     }
 
     @Override
@@ -72,52 +185,64 @@ public class addCarPooling extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.menu_item_valid:
-                addressD = findViewById(R.id.addressD_carPooling);
-                addressA = findViewById(R.id.addressA_carPooling);
-                price = findViewById(R.id.price_carPooling);
-                date = findViewById(R.id.date_carPooling);
-
-                if (date.getText() != null && price.getText() != null)
-                {
+                Toast.makeText(this, "yes", Toast.LENGTH_LONG);
                     //On ajoute le covoiturage
-
                     CarPooling carPooling = new CarPooling();
-                    carPooling.setDepart(addressD.getText().toString());
-                    carPooling.setDestination(addressA.getText().toString());
-                    carPooling.setPrice(Double.parseDouble(price.getText().toString()));
                     carPooling.setDate(date.getText().toString());
+                    carPooling.setHour(hourD.getText().toString());
+                    carPooling.setReturnHour(hourR.getText().toString());
+                    carPooling.setDepart(addressD);
+                    carPooling.setDestination(addressA);
+                    carPooling.setUser(DataBaseHelper.getCurrentUser());
+                    if(price.getText().toString() != "")
+                        carPooling.setPrice(Double.parseDouble(price.getText().toString()));
+                    if(place.getText().toString() != " ") {
+                        carPooling.setPlaceTotal(Integer.parseInt(place.getText().toString()));
+                        carPooling.setPlaceLeft(Integer.parseInt(place.getText().toString()));
+                    }
+
+                    carPooling.setMarque(marque.getText().toString());
 
                     // insert the new item into the database
                     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
                     DatabaseReference mReference = mDatabase.getReference("CarPooling");
                     String ID = mReference.push().getKey();
                     mReference.child(ID).setValue(carPooling);
-
                     // add item
+                finish();
                     break;
-                }
-
-
-
-
-
         }
         return true;
     }
 
-    public void showTimePickerDialog(View v) {
+    public void showTimePickerDialogHourD(View v) {
         Calendar currentTime = Calendar.getInstance();
         int hour = currentTime.get(Calendar.HOUR_OF_DAY);
         int minute = currentTime.get(Calendar.MINUTE);
         TimePickerDialog newFragment = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute ) {
-                time =  findViewById(R.id.hour_carPooling);
-                time.setText(hour +":" +minute);
+                hourD.setText(hour +":" +minute);
             }
         }, hour, minute, true);
 
         newFragment.show();
+
+    }
+
+    public void showTimePickerDialogHourR(View v) {
+        Calendar currentTime = Calendar.getInstance();
+        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = currentTime.get(Calendar.MINUTE);
+        TimePickerDialog newFragment = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute ) {
+                hourR.setText(hour +":" +minute);
+            }
+        }, hour, minute, true);
+
+        newFragment.show();
+
     }
 
     public void showDatePickerDialog(View v) {
@@ -128,12 +253,45 @@ public class addCarPooling extends AppCompatActivity {
         DatePickerDialog newFragment = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                date =  findViewById(R.id.date_carPooling);
                 date.setText(day +"/" +month+"/"+year);
             }
         }, year, month, day);
         newFragment.show();
+
     }
 
+
+    private boolean checkAllComplete()
+    {
+        if(date.getText() == "" || date.getText().length() == 0)
+            return false;
+        if(marque.getText() == "" || marque.getText().length() == 0)
+            return false;
+        if(price.getText() == "" || price.getText().length() == 0)
+            return false;
+        if(addressA == "")
+            return false;
+        if(addressD == "")
+            return false;
+        if(hourD.getText() == "" || hourD.getText().length() == 0)
+            return false;
+        if(hourR.getText() == "" || hourR.getText().length() == 0)
+            return false;
+        if(place.getText() =="" || place.getText().length() == 0)
+            return false;
+        return true;
+    }
+
+
+    public void setDoneButton()
+    {
+        if(checkAllComplete())
+        {
+            MenuItem  done =  menu.findItem(R.id.menu_item_valid);
+            done.setEnabled(true);
+
+
+        }
+    }
 
 }
