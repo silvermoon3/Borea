@@ -45,10 +45,16 @@ public class TabFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_tab, container, false);
         viewPager =  root.findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        tabLayout =  root.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
+        try{
+            setupViewPager(viewPager);
+            tabLayout =  root.findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(viewPager);
+            tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
+        }
+        catch (Exception e){
+
+        }
+
         return root;
     }
 
@@ -57,7 +63,7 @@ public class TabFragment extends Fragment {
         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new MyCarPooling(), "Mes covoiturages");
         adapter.addFragment(new HomeFragment(), "Mes photos");
-        adapter.addFragment(new WeatherFragment(), "Autre");
+        adapter.addFragment(new ChartFragment(), "Autre");
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
     }

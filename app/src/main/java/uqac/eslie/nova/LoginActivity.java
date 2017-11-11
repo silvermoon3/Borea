@@ -115,15 +115,12 @@ public class LoginActivity extends FragmentActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                if(firebaseAuth.getCurrentUser() != null){
-<<<<<<< HEAD
+
                    //Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
                    DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
-                   FirebaseMessaging.getInstance().subscribeToTopic(firebaseAuth.getCurrentUser().getUid());
-=======
+
                    DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
 
-                 //  FirebaseMessaging.getInstance().subscribeToTopic(firebaseAuth.getCurrentUser().getUid());
->>>>>>> 9a6b0cd01b24bda1d6111d560d2165568cfe7e3f
                    Uri url = firebaseAuth.getCurrentUser().getPhotoUrl();
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                }
