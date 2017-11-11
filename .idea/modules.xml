@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Borea.iml" filepath="$PROJECT_DIR$/Borea.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mpchartlib/mpchartlib.iml" filepath="$PROJECT_DIR$/mpchartlib/mpchartlib.iml" />
     </modules>
   </component>
 </project>

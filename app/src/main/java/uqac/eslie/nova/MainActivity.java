@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
+import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -102,7 +103,11 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         home = new HomeFragment();
-        weather= new WeatherFragment();
+        try {
+            weather= new WeatherFragment();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         car= new CarFragment();
         map = new MapFragment();
         account = new AccountFragment();
