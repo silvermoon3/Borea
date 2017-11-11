@@ -30,8 +30,6 @@ public class CarFragment extends Fragment {
     }
 
     private CarFragmentListener listener;
-    private List<CarPooling> itemList;
-    private carPoolingAdapter adapter;
     private ListView listCarPooling;
 
     public CarFragment() {
@@ -42,8 +40,6 @@ public class CarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override

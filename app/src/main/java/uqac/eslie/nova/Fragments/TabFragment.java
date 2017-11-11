@@ -1,5 +1,6 @@
 package uqac.eslie.nova.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -25,7 +26,6 @@ public class TabFragment extends Fragment {
 
     public  static TabFragment newInstance() {
         TabFragment fragment = new TabFragment();
-
         return fragment;
     }
 
@@ -37,8 +37,6 @@ public class TabFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
     }
 
     @Override
@@ -46,24 +44,20 @@ public class TabFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_tab, container, false);
-        viewPager = (ViewPager) root.findViewById(R.id.viewpager);
-        try {
-            setupViewPager(viewPager);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        tabLayout = (TabLayout) root.findViewById(R.id.tabs);
+        viewPager =  root.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout =  root.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
+        tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
         return root;
     }
 
     private  void setupViewPager(ViewPager viewPager) throws MalformedURLException {
 
         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(Fragment.instantiate(getContext(), CarFragment.class.getName()), "Mes covoiturages");
+        adapter.addFragment(new MyCarPooling(), "Mes covoiturages");
         adapter.addFragment(new HomeFragment(), "Mes photos");
-        adapter.addFragment(new WeatherFragment(), "Fresh");
+        adapter.addFragment(new WeatherFragment(), "Autre");
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
     }

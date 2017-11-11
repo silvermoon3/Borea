@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+<<<<<<< HEAD
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,11 +20,13 @@ import java.util.ArrayList;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonKP;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonWeather;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskTxt;
+=======
+>>>>>>> 9a6b0cd01b24bda1d6111d560d2165568cfe7e3f
 import uqac.eslie.nova.R;
 
 
-
 public class WeatherFragment extends Fragment {
+<<<<<<< HEAD
     private OnFragmentInteractionListener mListener;
     MyAsyncTaskTxt myTxtTask;
     MyAsyncTaskJsonKP myJsonTask;
@@ -44,20 +46,11 @@ public class WeatherFragment extends Fragment {
         weather = new URL("https://api.apixu.com/v1/forecast.json?key=848095d955c54bfab29213656172810&q=48.421291,-71.068205&days=10");
         // TO DO : inject real GPS coordinates in the link
     }
+=======
+>>>>>>> 9a6b0cd01b24bda1d6111d560d2165568cfe7e3f
 
-    public void processFinish(ArrayList<String[]> result) {
-        if(result.get(0)[0] == "27") {
-            kp27Array = result;
-            TextView vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
-            vt.setText(kp27Array.get(1)[3]);
-        }
-        else if(result.get(0)[0] == "3"){
-            kp3Array = result;
-            TextView vt = this.getView().findViewById(R.id.thisWeek_kp_valeur);
-            vt.setText(kp3Array.get(1)[1]);
-        }
-    }
 
+<<<<<<< HEAD
     public void processFinish(String result, String diff) {
     try {
             if (diff == "kp") {
@@ -70,19 +63,21 @@ public class WeatherFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+=======
+
+    private OnFragmentInteractionListener mListener;
+
+    public WeatherFragment() {
+
+>>>>>>> 9a6b0cd01b24bda1d6111d560d2165568cfe7e3f
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myTxtTask = new MyAsyncTaskTxt(this);
-        myTxtTask.delegate = this;
-        myTxtTask.execute(kp27Url);
 
-        myTxtTask = new MyAsyncTaskTxt(this);
-        myTxtTask.delegate = this;
-        myTxtTask.execute(kp3Url);
-
+<<<<<<< HEAD
         myJsonTask = new MyAsyncTaskJsonKP(this);
         myJsonTask.delegate = this;
         myJsonTask.execute(kp1Url);
@@ -90,6 +85,8 @@ public class WeatherFragment extends Fragment {
         myJsonTask2 = new MyAsyncTaskJsonWeather(this);
         myJsonTask2.delegate = this;
         myJsonTask2.execute(weather);
+=======
+>>>>>>> 9a6b0cd01b24bda1d6111d560d2165568cfe7e3f
     }
 
     @Override
@@ -117,6 +114,7 @@ public class WeatherFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

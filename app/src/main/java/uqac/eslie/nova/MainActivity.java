@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentContainer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -18,16 +20,15 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
-import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.Fragments.AccountFragment;
 import uqac.eslie.nova.Fragments.CarFragment;
 import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
+import uqac.eslie.nova.Fragments.ChartFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
 import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
@@ -37,13 +38,16 @@ public class MainActivity extends AppCompatActivity
     implements    HomeFragment.clickAddCarpooling,
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling
+
 {
+
     Fragment fragment = null;
     Fragment home;
     Fragment weather;
     Fragment car;
     Fragment map;
     Fragment account;
+    Fragment chart;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity
 
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    transaction.replace(R.id.content, new HomeFragment()).commit();
+                    transaction.replace(R.id.content, home).commit();
                     transaction.addToBackStack("home");
                     return true;
                 case R.id.navigation_weather:
@@ -98,14 +102,11 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         home = new HomeFragment();
-        try {
-            weather = new WeatherFragment();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        weather= new WeatherFragment();
         car= new CarFragment();
         map = new MapFragment();
         account = new AccountFragment();
+        chart = new ChartFragment();
         transaction.replace(R.id.content, new HomeFragment()).commit();
         transaction.disallowAddToBackStack();
         Helper_NavigationBottomBar helper = new Helper_NavigationBottomBar();
@@ -157,5 +158,4 @@ public class MainActivity extends AppCompatActivity
         switchFragment(new CarPoolingDetailFragment());
 
     }
-
 }

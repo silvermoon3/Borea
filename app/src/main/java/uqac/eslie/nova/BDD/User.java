@@ -6,17 +6,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by ESTEL on 26/10/2017.
  */
 
-public class User {
+public  class User {
     private String displayName;
     private String email;
     private String UID;
-    private Uri image;
+    private String image;
     private List<CarPooling> carPoolings;
     private String givenName;
 
@@ -47,20 +48,22 @@ public class User {
     }
 
     public void addCarPooling(CarPooling _carPooling){
+        if(this.carPoolings == null)
+            this.carPoolings = new ArrayList<>();
         this.carPoolings.add(_carPooling);
     }
 
 
 
     public User(){
-
+        this.carPoolings = new ArrayList<>();
     }
 
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -68,9 +71,10 @@ public class User {
         this.displayName = user.getDisplayName();
         this.email = user.getEmail();
         this.UID = user.getUid();
+        this.carPoolings = new ArrayList<>();
 
 
-        this.image = user.getPhotoUrl();
+        this.image = user.getPhotoUrl().toString();
     }
 
     public String getDisplayName() {

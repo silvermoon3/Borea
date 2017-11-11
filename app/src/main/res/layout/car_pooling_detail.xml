@@ -196,7 +196,6 @@
 
         <Button
             android:id="@+id/choisir_carPooling_Detail"
-            style="@style/FirebaseUI.VerifyPhoneButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -37,6 +37,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -45,7 +47,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.messaging.FirebaseMessaging;
+
 
 import java.io.InputStream;
 import java.net.URI;
@@ -56,6 +58,7 @@ import java.util.Arrays;
 
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.BDD.User;
+import uqac.eslie.nova.Helper.FirebaseHelper;
 
 public class LoginActivity extends FragmentActivity {
     private static final String TAG = "GoogleSignInActivity";
@@ -88,9 +91,8 @@ public class LoginActivity extends FragmentActivity {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
                     // App code
-                    Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
+                    Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
                 }
 
                 @Override
@@ -113,9 +115,15 @@ public class LoginActivity extends FragmentActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                if(firebaseAuth.getCurrentUser() != null){
+<<<<<<< HEAD
                    //Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
                    DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
                    FirebaseMessaging.getInstance().subscribeToTopic(firebaseAuth.getCurrentUser().getUid());
+=======
+                   DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
+
+                 //  FirebaseMessaging.getInstance().subscribeToTopic(firebaseAuth.getCurrentUser().getUid());
+>>>>>>> 9a6b0cd01b24bda1d6111d560d2165568cfe7e3f
                    Uri url = firebaseAuth.getCurrentUser().getPhotoUrl();
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                }
@@ -151,11 +159,9 @@ public class LoginActivity extends FragmentActivity {
                 signIn();
             }
         });
-
         mAuth = FirebaseAuth.getInstance();
 
     }
-
 
 
 
@@ -171,11 +177,14 @@ public class LoginActivity extends FragmentActivity {
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount _account = result.getSignInAccount();
+                FirebaseHelper.setAuth(mAuth);
+                FirebaseHelper.setmGoogleApiClient(mGoogleApiClient);
                 this.account = _account;
                 firebaseAuthWithGoogle(_account);
 
             } else {
-                Toast.makeText(LoginActivity.this,"ops", Toast.LENGTH_LONG );
+                // Google Sign In failed, update UI appropriately
+                // ...
             }
         }
 
@@ -188,7 +197,23 @@ public class LoginActivity extends FragmentActivity {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
+
+    public  void signOut() {
+        // Firebase sign out
+        mAuth.signOut();
+
+        // Google sign out
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+
+                    }
+                });
+    }
+
+
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
 
         Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
 
@@ -200,6 +225,7 @@ public class LoginActivity extends FragmentActivity {
                         if (task.isSuccessful())
                         {
                             // Sign in success, update UI with the signed-in user's information
+
                             Log.d(TAG, "signInWithCredential:success");
 
                         }
@@ -220,6 +246,7 @@ public class LoginActivity extends FragmentActivity {
 
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 

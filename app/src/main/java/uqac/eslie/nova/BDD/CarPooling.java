@@ -29,17 +29,30 @@ public class CarPooling {
     private int placeLeft;
     private String date;
     private String marque;
+
+    public List<User> getPassagers() {
+        return passagers;
+    }
+
+    public void setPassagers(List<User> passagers) {
+        this.passagers = passagers;
+    }
+
+    public void addPassager(User user){
+        this.passagers.add(user);
+    }
+
     private List<User> passagers;
 
     public CarPooling(){
-        itemID = UUID.randomUUID();
-        passagers = new ArrayList<>();
+       // itemID = UUID.randomUUID();
+       // passagers = new ArrayList<>();
     }
 
 
-    public void addPassager(User passager){
+ /*   public void addPassager(User passager){
         passagers.add(passager);
-    }
+    }*/
     public String getDate() {
         return date;
     }
@@ -76,12 +89,16 @@ public class CarPooling {
         return placeLeft;
     }
 
-    public List<User> getPassagers() {
-        return passagers;
+    public UUID getItemID() {
+        return itemID;
     }
 
-    public void setPassagers(List<User> passagers) {
-        this.passagers = passagers;
+    public void setItemID(UUID itemID) {
+        this.itemID = itemID;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public void setPlaceLeft(int _placeLeft) {
@@ -115,13 +132,11 @@ public class CarPooling {
 
 
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+
 
     public UUID getID() {
 
