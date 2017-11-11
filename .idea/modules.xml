@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Nova.iml" filepath="$PROJECT_DIR$/Nova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Borea.iml" filepath="$PROJECT_DIR$/Borea.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mpchartlib/mpchartlib.iml" filepath="$PROJECT_DIR$/mpchartlib/mpchartlib.iml" />
       <module fileurl="file://C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Nova\mpchartlib\mpchartlib.iml" filepath="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Nova\mpchartlib\mpchartlib.iml" />
+      <module fileurl="file://C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\mpchartlib\mpchartlib.iml" filepath="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\mpchartlib\mpchartlib.iml" />
     </modules>
   </component>
 </project>

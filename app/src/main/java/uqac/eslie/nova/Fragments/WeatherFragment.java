@@ -13,8 +13,6 @@ import uqac.eslie.nova.R;
 
 public class WeatherFragment extends Fragment {
 
-
-
     private OnFragmentInteractionListener mListener;
 
     public WeatherFragment() {
