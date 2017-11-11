@@ -18,8 +18,10 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
+import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import uqac.eslie.nova.Fragments.AccountFragment;
 import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
@@ -30,9 +32,8 @@ import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 
 public class MainActivity extends AppCompatActivity
-    implements    HomeFragment.clickAddCarpooling
+    implements  HomeFragment.clickAddCarpooling
 {
-
     Fragment fragment = null;
     Fragment home;
     Fragment weather;
@@ -101,7 +102,11 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         home = new HomeFragment();
-        weather= new WeatherFragment();
+        try {
+            weather = new WeatherFragment();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         car= new CarFragment();
         map = new MapFragment();
         account = new AccountFragment();
@@ -124,8 +129,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCarPoolingClick() {
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
-      //  AddCarpoolingFragment fragment = new AddCarpoolingFragment();
-       // switchFragment(fragment);
 
     }
 
@@ -147,9 +150,6 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
-
-
-
 
 
 

@@ -81,8 +81,9 @@ public class LoginActivity extends FragmentActivity {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
                     // App code
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                 }
 
                 @Override
@@ -105,6 +106,7 @@ public class LoginActivity extends FragmentActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                if(firebaseAuth.getCurrentUser() != null){
+                   Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                }
             }
@@ -162,8 +164,7 @@ public class LoginActivity extends FragmentActivity {
                 firebaseAuthWithGoogle(account);
 
             } else {
-                // Google Sign In failed, update UI appropriately
-                // ...
+                Toast.makeText(LoginActivity.this,"ops", Toast.LENGTH_LONG );
             }
         }
 
