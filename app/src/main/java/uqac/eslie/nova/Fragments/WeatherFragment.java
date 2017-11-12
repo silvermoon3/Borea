@@ -75,6 +75,14 @@ public class WeatherFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        myTxtTask = new MyAsyncTaskTxt(this);
+        myTxtTask.delegate = this;
+        myTxtTask.execute(kp27Url);
+
+        myTxtTask = new MyAsyncTaskTxt(this);
+        myTxtTask.delegate = this;
+        myTxtTask.execute(kp3Url);
+
         myJsonTask = new MyAsyncTaskJsonKP(this);
         myJsonTask.delegate = this;
         myJsonTask.execute(kp1Url);

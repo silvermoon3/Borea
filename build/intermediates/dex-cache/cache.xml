@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.2_4ff2679010c69b382de627104f6eaedcb3c8ba14\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="93ade91f0528e1f2c7b17878c7b6dacbdbaba10e">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d950c7e99851e9ed4810fe640d068c54ba0241c7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_1b7c17f1f3f8e07d5a8cddcd90684413d5190e43\classes.dex" />
+    </item>
+
+</items>
