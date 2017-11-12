@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +44,18 @@ public class WeatherFragment extends Fragment {
         weather = new URL("https://api.apixu.com/v1/forecast.json?key=848095d955c54bfab29213656172810&q=48.421291,-71.068205&days=10");
         // TO DO : inject real GPS coordinates in the link
     }
-
+    public void processFinish(ArrayList<String[]> result) {
+        if(result.get(0)[0] == "27") {
+            kp27Array = result;
+            TextView vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
+            vt.setText(kp27Array.get(1)[3]);
+        }
+        else if(result.get(0)[0] == "3"){
+            kp3Array = result;
+            TextView vt = this.getView().findViewById(R.id.thisWeek_kp_valeur);
+            vt.setText(kp3Array.get(1)[1]);
+        }
+    }
     public void processFinish(String result, String diff) {
     try {
             if (diff == "kp") {
