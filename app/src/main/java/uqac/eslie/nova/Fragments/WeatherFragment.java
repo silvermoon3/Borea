@@ -85,6 +85,21 @@ public class WeatherFragment extends Fragment {
         myTxtTask.delegate = this;
         myTxtTask.execute(kp3Url);
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        myTxtTask = new MyAsyncTaskTxt(this);
+        myTxtTask.delegate = this;
+        myTxtTask.execute(kp27Url);
+
+        myTxtTask = new MyAsyncTaskTxt(this);
+        myTxtTask.delegate = this;
+        myTxtTask.execute(kp3Url);
+
         myJsonTask = new MyAsyncTaskJsonKP(this);
         myJsonTask.delegate = this;
         myJsonTask.execute(kp1Url);
@@ -92,7 +107,10 @@ public class WeatherFragment extends Fragment {
         myJsonTask2 = new MyAsyncTaskJsonWeather(this);
         myJsonTask2.delegate = this;
         myJsonTask2.execute(weather);
+<<<<<<< HEAD
 
+=======
+>>>>>>> b042b6e77204cb6086a185f7cbd081352d786175
         return inflater.inflate(R.layout.fragment_weather, container, false);
     }
 

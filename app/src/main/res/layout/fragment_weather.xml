@@ -6,6 +6,7 @@
     tools:context="uqac.eslie.nova.Fragments.WeatherFragment">
 
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -629,6 +630,256 @@ android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/thisWeek"
         android:layout_width="match_parent"
+=======
+
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
+    <LinearLayout
+        android:id="@+id/actuellement"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="12dp"
+        android:layout_weight="1"
+        android:background="@color/cardview_dark_background"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/actuellement_titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Actuellement"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_weight="100"
+            android:columnCount="2">
+
+            <TextView
+                android:id="@+id/actuellement_couverture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="10"
+                android:layout_marginBottom="3dp"
+                android:text="Couverture nuageuse"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/actuellement_couverture_valeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/actuellement_kp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="10"
+                android:layout_marginBottom="3dp"
+                android:text="KP-index"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/actuellement_kp_valeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/actuellement_chance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="10"
+                android:layout_marginBottom="3dp"
+                android:text="Chance de voir"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/actuellement_chance_valeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nextHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_weight="1"
+        android:background="@color/cardview_dark_background"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/nextHours_titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Prochaines heures"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_weight="100"
+            android:columnCount="2">
+
+            <TextView
+                android:id="@+id/nextHours_couverture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="10"
+                android:layout_marginBottom="3dp"
+                android:text="Couverture nuageuse"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/nextHours_couverture_valeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/nextHours_kp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="10"
+                android:layout_marginBottom="3dp"
+                android:text="KP-index"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/nextHours_kp_valeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/nextHours_chance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="10"
+                android:layout_marginBottom="3dp"
+                android:text="Chance de voir"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/nextHours_chance_valeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/thisWeek"
+        android:layout_width="match_parent"
+>>>>>>> b042b6e77204cb6086a185f7cbd081352d786175
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:layout_weight="1"
@@ -746,4 +997,7 @@ android:layout_height="match_parent">
 </ScrollView>
 
     </FrameLayout>
+<<<<<<< HEAD
+>>>>>>> b042b6e77204cb6086a185f7cbd081352d786175
+=======
 >>>>>>> b042b6e77204cb6086a185f7cbd081352d786175
