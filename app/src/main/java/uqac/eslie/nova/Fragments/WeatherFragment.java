@@ -47,16 +47,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-<<<<<<< HEAD
+
 import java.util.Date;
-=======
+
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
+
 
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.BDD.KP;
->>>>>>> 105a599ef1d7ad1c88287323c484448e72c9c45e
+
 
 import uqac.eslie.nova.Helper.Chart.MyCustomAxis;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonKP;
@@ -110,6 +109,57 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
             ArrayList<String[]> kp3Array = new ArrayList<String[]>();
             kp3Array = result;
 
+            // -------- KP TODAY --------
+            TextView vt = this.getView().findViewById(R.id.today_KP_1922);
+            vt.setText(kp3Array.get(1)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_221);
+            vt.setText(kp3Array.get(2)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_14);
+            vt.setText(kp3Array.get(3)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_47);
+            vt.setText(kp3Array.get(4)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_710);
+            vt.setText(kp3Array.get(5)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_1013);
+            vt.setText(kp3Array.get(6)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_1316);
+            vt.setText(kp3Array.get(7)[1]);
+
+            vt = this.getView().findViewById(R.id.today_KP_1619);
+            vt.setText(kp3Array.get(8)[1]);
+
+            // -------- KP TOMORROW --------
+            vt = this.getView().findViewById(R.id.tomorrow_KP_1922);
+            vt.setText(kp3Array.get(1)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_221);
+            vt.setText(kp3Array.get(2)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_14);
+            vt.setText(kp3Array.get(3)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_47);
+            vt.setText(kp3Array.get(4)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_710);
+            vt.setText(kp3Array.get(5)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_1013);
+            vt.setText(kp3Array.get(6)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_1316);
+            vt.setText(kp3Array.get(7)[2]);
+
+            vt = this.getView().findViewById(R.id.tomorrow_KP_1619);
+            vt.setText(kp3Array.get(8)[2]);
+
+            /*
             //aujourd'hui
             kpArrayTodayAndTomorrow.add(new String[]{"19 - 22", kp3Array.get(1)[1]});
             kpArrayTodayAndTomorrow.add(new String[]{"22 - 01", kp3Array.get(2)[1]});
@@ -129,6 +179,8 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
             kpArrayTodayAndTomorrow.add(new String[]{"10 - 13", kp3Array.get(6)[2]});
             kpArrayTodayAndTomorrow.add(new String[]{"13 - 16", kp3Array.get(7)[2]});
             kpArrayTodayAndTomorrow.add(new String[]{"16 - 19", kp3Array.get(8)[2]});
+
+            */
         }
 
     }
@@ -157,7 +209,7 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
 
     }
 
-
+/*
     private void getKPValue(ArrayList<String[]> array){
         Date currentTime = Calendar.getInstance().getTime();
         KP kp = new KP(currentTime, Integer.parseInt(kp27Array.get(1)[3]));
@@ -174,7 +226,7 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
 
 
     }
-
+*/
     public String UTC(String currentTime){
         String UTCTime = "";
         int minutes = Integer.parseInt(currentTime.substring(3,5));
@@ -255,7 +307,7 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
                 while (y < hour.length()){
                     JSONObject thatHour = hour.getJSONObject(y);
                     String time = thatHour.getString("time");
-                    if (time.contains("00:00") || time.contains("03:00") || time.contains("06:00") || time.contains("09:00") || time.contains("12:00") || time.contains("15:00") || time.contains("18:00") || time.contains("21:00")){
+                    if (time.contains("01:00") || time.contains("04:00") || time.contains("07:00") || time.contains("10:00") || time.contains("13:00") || time.contains("16:00") || time.contains("19:00") || time.contains("22:00")){
                         String cloud = thatHour.getString("cloud");
                         cloudArrayTodayAndTomorrow.add(new String[]{time.substring(time.length()-5,time.length()), cloud});
                     }
@@ -264,18 +316,67 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
 
                 // demain
                 JSONObject secondDay = forecastday.getJSONObject(1); //day 1
-                hour = firstDay.getJSONArray("hour");
+                hour = secondDay.getJSONArray("hour");
                 y = 0;
                 while (y < hour.length()){
                     JSONObject thatHour = hour.getJSONObject(y);
                     String time = thatHour.getString("time");
-                    if (time.contains("00:00") || time.contains("03:00") || time.contains("06:00") || time.contains("09:00") || time.contains("12:00") || time.contains("15:00") || time.contains("18:00") || time.contains("21:00")){
+                    if (time.contains("01:00") || time.contains("04:00") || time.contains("07:00") || time.contains("10:00") || time.contains("13:00") || time.contains("16:00") || time.contains("19:00") || time.contains("22:00")){
                         String cloud = thatHour.getString("cloud");
                         cloudArrayTodayAndTomorrow.add(new String[]{time.substring(time.length()-5,time.length()), cloud});
                     }
                     y++;
                 }
-                //cloudArrayTodayAndTomorrow.add(new String[]{"the end", "LUL"}); // debug
+
+                // -------- weather --------
+                vt = this.getView().findViewById(R.id.today_weather_1922);
+                vt.setText(cloudArrayTodayAndTomorrow.get(6)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_221);
+                vt.setText(cloudArrayTodayAndTomorrow.get(7)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_14);
+                vt.setText(cloudArrayTodayAndTomorrow.get(0)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_47);
+                vt.setText(cloudArrayTodayAndTomorrow.get(1)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_710);
+                vt.setText(cloudArrayTodayAndTomorrow.get(2)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_1013);
+                vt.setText(cloudArrayTodayAndTomorrow.get(3)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_1316);
+                vt.setText(cloudArrayTodayAndTomorrow.get(4)[1]);
+
+                vt = this.getView().findViewById(R.id.today_weather_1619);
+                vt.setText(cloudArrayTodayAndTomorrow.get(5)[1]);
+
+                // -------- weather TOMORROW --------
+                vt = this.getView().findViewById(R.id.tomorrow_weather_1922);
+                vt.setText(cloudArrayTodayAndTomorrow.get(14)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_221);
+                vt.setText(cloudArrayTodayAndTomorrow.get(15)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_14);
+                vt.setText(cloudArrayTodayAndTomorrow.get(8)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_47);
+                vt.setText(cloudArrayTodayAndTomorrow.get(9)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_710);
+                vt.setText(cloudArrayTodayAndTomorrow.get(10)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_1013);
+                vt.setText(cloudArrayTodayAndTomorrow.get(11)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_1316);
+                vt.setText(cloudArrayTodayAndTomorrow.get(12)[1]);
+
+                vt = this.getView().findViewById(R.id.tomorrow_weather_1619);
+                vt.setText(cloudArrayTodayAndTomorrow.get(13)[1]);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -299,12 +400,12 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
     //}
 
         myJsonTask = new MyAsyncTaskJsonKP(this);
-    //    myJsonTask.delegate = this;
-    //    myJsonTask.execute(kp1Url);
+        myJsonTask.delegate = this;
+        myJsonTask.execute(kp1Url);
 
         myJsonTask2 = new MyAsyncTaskJsonWeather(this);
-      //  myJsonTask2.delegate = this;
-     //   myJsonTask2.execute(weather);
+        myJsonTask2.delegate = this;
+        myJsonTask2.execute(weather);
 
         mChart = root.findViewById(R.id.chart);
         mChart.setOnChartValueSelectedListener(this);
