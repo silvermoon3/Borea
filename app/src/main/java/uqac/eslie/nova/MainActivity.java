@@ -20,6 +20,8 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
+import com.orm.SugarContext;
+
 import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity
                    // transaction.replace(R.id.content, new WeatherFragment()).commit();
                     return true;
                 case R.id.navigation_find_a_car:
-                    transaction.replace(R.id.content, car).commit();
+                    transaction.replace(R.id.content, new CarFragment()).commit();
                     transaction.addToBackStack("car");
                     return true;
                 case R.id.navigation_place:
@@ -118,6 +120,10 @@ public class MainActivity extends AppCompatActivity
 
         helper.disableShiftMode(navigation);
         calculateHashKey("uqac.eslie.nova");
+
+        SugarContext.terminate();
+
+        SugarContext.init(getApplicationContext());
 
     }
 

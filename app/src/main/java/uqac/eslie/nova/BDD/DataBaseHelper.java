@@ -3,6 +3,8 @@ package uqac.eslie.nova.BDD;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 /**
  * Created by ESTEL on 02/11/2017.
  */
@@ -11,6 +13,16 @@ public class DataBaseHelper {
 
     private static CarPooling currentCarPooling;
     private static User currentUser;
+    private static KP currentKP;
+
+
+    public static KP getCurrentKP() {
+        return KP.listAll(KP.class).get(0);
+    }
+
+    public static void setCurrentKP(KP currentKP) {
+        DataBaseHelper.currentKP = currentKP;
+    }
 
     public static GoogleSignInAccount getGoogleAccount() {
         return googleAccount;

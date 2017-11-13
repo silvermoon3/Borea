@@ -69,6 +69,8 @@ public class CarFragment extends Fragment {
 
             }
 
+
+
         };
         listCarPooling.setAdapter(mAdapter);
         return root;
