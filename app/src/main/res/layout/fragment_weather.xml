@@ -182,7 +182,7 @@
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
-                    android:text="Prochaines heures"
+                    android:text="Aujourd'hui"
                     android:textColor="@color/cardview_light_background"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -195,22 +195,22 @@
                     android:layout_marginBottom="6dp"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="13dp"
-                    android:columnCount="2">
+                    android:columnCount="3">
 
                     <TextView
-                        android:id="@+id/nextHours_couverture"
+                        android:id="@+id/today_1922"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="10"
                         android:layout_marginBottom="3dp"
-                        android:text="Couverture nuageuse"
+                        android:text="19 - 22h"
                         android:textColor="@color/cardview_light_background"
                         android:textSize="14sp"
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/nextHours_couverture_valeur"
+                        android:id="@+id/today_KP_1922"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -223,19 +223,7 @@
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/nextHours_kp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="10"
-                        android:layout_marginBottom="3dp"
-                        android:text="KP-index"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="14sp"
-                        tools:layout_editor_absoluteX="8dp"
-                        tools:layout_editor_absoluteY="0dp" />
-
-                    <TextView
-                        android:id="@+id/nextHours_kp_valeur"
+                        android:id="@+id/today_weather_1922"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -248,19 +236,260 @@
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/nextHours_chance"
+                        android:id="@+id/today_221"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_columnWeight="10"
                         android:layout_marginBottom="3dp"
-                        android:text="Chance de voir"
+                        android:text="22 - 1h"
                         android:textColor="@color/cardview_light_background"
                         android:textSize="14sp"
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/nextHours_chance_valeur"
+                        android:id="@+id/today_KP_221"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_221"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="1 - 4h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_KP_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="4 - 7h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_KP_47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_710"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="7 -10h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_KP_710"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_710"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_1013"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="10 -13h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_KP_1013"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_1013"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_1316"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="13 -16h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_KP_1316"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_1316"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_1619"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="16 -19h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_KP_1619"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/today_weather_1619"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -296,7 +525,7 @@
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
-                    android:text="Cette semaine"
+                    android:text="Demain"
                     android:textColor="@color/cardview_light_background"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -309,22 +538,22 @@
                     android:layout_marginBottom="6dp"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="13dp"
-                    android:columnCount="2">
+                    android:columnCount="3">
 
                     <TextView
-                        android:id="@+id/thisWeek_couverture"
+                        android:id="@+id/tomorrow_1922"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="10"
                         android:layout_marginBottom="3dp"
-                        android:text="Couverture nuageuse"
+                        android:text="19 - 22h"
                         android:textColor="@color/cardview_light_background"
                         android:textSize="14sp"
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/thisWeek_couverture_valeur"
+                        android:id="@+id/tomorrow_KP_1922"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -337,19 +566,7 @@
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/thisWeek_kp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="10"
-                        android:layout_marginBottom="3dp"
-                        android:text="KP-index"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="14sp"
-                        tools:layout_editor_absoluteX="8dp"
-                        tools:layout_editor_absoluteY="0dp" />
-
-                    <TextView
-                        android:id="@+id/thisWeek_kp_valeur"
+                        android:id="@+id/tomorrow_weather_1922"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -362,19 +579,19 @@
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/thisWeek_chance"
+                        android:id="@+id/tomorrow_221"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_columnWeight="10"
                         android:layout_marginBottom="3dp"
-                        android:text="Chance de voir"
+                        android:text="22 - 1h"
                         android:textColor="@color/cardview_light_background"
                         android:textSize="14sp"
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
-                        android:id="@+id/thisWeek_chance_valeur"
+                        android:id="@+id/tomorrow_KP_221"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -386,6 +603,246 @@
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="0dp" />
 
+                    <TextView
+                        android:id="@+id/tomorrow_weather_221"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="1 - 4h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_KP_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_weather_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="4 - 7h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_KP_47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_weather_47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_710"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="7 -10h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_KP_710"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_weather_710"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_1013"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="10 -13h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_KP_1013"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_weather_1013"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_1316"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="13 -16h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_KP_1316"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_weather_1316"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_1619"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="10"
+                        android:layout_marginBottom="3dp"
+                        android:text="16 -19h"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_KP_1619"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tomorrow_weather_1619"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp" />
                 </GridLayout>
 
             </LinearLayout>
