@@ -14,7 +14,7 @@ public class TXTParser {
         // lines
         int start27 = 11;
         int start3 = 14;
-        int end3 = 22;
+        int end3 = 21;
 
         BufferedReader buff;
 
