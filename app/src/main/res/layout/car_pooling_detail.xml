@@ -194,13 +194,24 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/choisir_carPooling_Detail"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="Choisir ce covoiturage" />
+            android:layout_weight="7"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/choisir_carPooling_Detail"
+                style="@style/FirebaseUI.Button.AccountChooser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/cardview_light_background"
+                android:text="Choisir ce covoiturage"
+                android:textAlignment="center"
+                android:textColor="@color/backColor" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

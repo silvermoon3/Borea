@@ -3,6 +3,7 @@ package uqac.eslie.nova.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Collections;
 import java.util.List;
 
 import uqac.eslie.nova.Adapter.carPoolingAdapter;
@@ -29,8 +31,14 @@ public class CarFragment extends Fragment {
         void onItemClick(CarPooling carPooling);
     }
 
+    public interface CarFragmentListenerFloatingButton {
+        void onButtonClick();
+    }
+
     private CarFragmentListener listener;
+    private CarFragmentListenerFloatingButton listenerFloatingButton;
     private ListView listCarPooling;
+    private FloatingActionButton addCarPooling;
 
     public CarFragment() {
         // Required empty public constructor
@@ -47,11 +55,13 @@ public class CarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_car, container, false);
+        addCarPooling  = root.findViewById(R.id.floatingActionButton_addCarPooling);
 
         listCarPooling = root.findViewById(R.id.list_carPooling);
+
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
 
-        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref) {
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref.orderByChild("date")) {
             @Override
             protected void populateView(final View v, final CarPooling model, final int position) {
                 // Get references to the views of message.xml
@@ -64,14 +74,11 @@ public class CarFragment extends Fragment {
                 arrivee.setText(model.getDestination());
                 prix.setText(Double.toString(model.getPrice()));
                 place.setText(Integer.toString(model.getPlaceTotal()));
-                date.setText(model.getDate().toString());
-
-
+                date.setText(model.getDateText());
             }
 
-
-
         };
+
         listCarPooling.setAdapter(mAdapter);
         return root;
     }
@@ -90,6 +97,13 @@ public class CarFragment extends Fragment {
             }
         });
 
+        addCarPooling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listenerFloatingButton.onButtonClick();
+            }
+        });
+
     }
 
 
@@ -99,6 +113,13 @@ public class CarFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof CarFragmentListener) {
             listener = (CarFragmentListener) context;
+        } else {
+           /* throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");*/
+        }
+
+        if (context instanceof CarFragmentListenerFloatingButton) {
+            listenerFloatingButton = (CarFragmentListenerFloatingButton) context;
         } else {
            /* throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");*/

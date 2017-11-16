@@ -40,7 +40,8 @@ import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 public class MainActivity extends AppCompatActivity
     implements    HomeFragment.clickAddCarpooling,
         CarFragment.CarFragmentListener,
-        HomeFragment.clickFindCarpooling
+        HomeFragment.clickFindCarpooling,
+        CarFragment.CarFragmentListenerFloatingButton
 
 {
 
@@ -136,6 +137,11 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public void onCarPoolingClick() {
+        startActivity(new Intent(MainActivity.this, addCarPooling.class));
+    }
+
+    @Override
+    public void onButtonClick(){
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
     }
 

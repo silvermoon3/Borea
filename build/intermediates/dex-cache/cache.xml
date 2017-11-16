@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="f3ea37ac7d765c63054f85443f2836e345975d50">
-        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d950c7e99851e9ed4810fe640d068c54ba0241c7\classes.dex" />
+        sha1="c323c36ecc68965c4cfb460f7721113d2b61ed03">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_4576d8fb930c22a6711576d2a29d79ffd85d813d\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\eliea\.android\build-cache\9dfec042259bbc03f51068322491f38a7a8b7228\output\jars\classes.jar"
+        jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="19a40a8afe0289f6520b25353096ac233e78f69d">
-        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a555135730f1f15b57d66eeaa23f62243599caae\classes.dex" />
+        sha1="07e787d9f04ecf5b85e9741f2eeb20d6ca7a0210">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f81db6747a8c55d42f9ad0d0b62d56f24e44bf17\classes.dex" />
     </item>
 
 </items>

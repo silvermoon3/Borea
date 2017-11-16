@@ -51,8 +51,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import java.util.Calendar;
+import java.util.List;
 
 
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.Column;
+import lecho.lib.hellocharts.model.ColumnChartData;
+import lecho.lib.hellocharts.model.SubcolumnValue;
+import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.ColumnChartView;
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.BDD.KP;
 
@@ -65,27 +72,37 @@ import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskTxt;
 import uqac.eslie.nova.R;
 
 
-public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChangeListener,
-        OnChartValueSelectedListener {
+public class WeatherFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+
     MyAsyncTaskTxt myTxtTask;
     MyAsyncTaskJsonKP myJsonTask;
     MyAsyncTaskJsonWeather myJsonTask2;
     ArrayList<String[]> kp27Array = new ArrayList<String[]>();
     ArrayList<String[]> cloudArrayTodayAndTomorrow = new ArrayList<String[]>();
     ArrayList<String[]> kpArrayTodayAndTomorrow = new ArrayList<String[]>();
+    ArrayList<String[]> kp3Array = new ArrayList<String[]>();
     URL kp27Url;
     URL kp3Url;
     URL kp1Url;
     URL weather;
 
     //Chart
-    protected BarChart mChart;
-    protected BarChart mChart2;
-    protected Typeface mTfRegular;
-    protected Typeface mTfLight;
-    ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
+    private static final int DEFAULT_DATA = 0;
+    private static final int SUBCOLUMNS_DATA = 1;
+    private static final int STACKED_DATA = 2;
+    private static final int NEGATIVE_SUBCOLUMNS_DATA = 3;
+    private static final int NEGATIVE_STACKED_DATA = 4;
+
+    private ColumnChartView chart;
+    private ColumnChartView chart2;
+    private ColumnChartData data;
+    private ColumnChartData data2;
+    private boolean hasAxes = true;
+    private boolean hasAxesNames = true;
+    private boolean hasLabels = false;
+    private boolean hasLabelForSelected = false;
+    private int dataType = DEFAULT_DATA;
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     DatabaseReference ref = database.child("KP");
@@ -106,7 +123,7 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
 
         }
         else if(result.get(0)[0] == "3"){
-            ArrayList<String[]> kp3Array = new ArrayList<String[]>();
+
             kp3Array = result;
 
             // -------- KP TODAY --------
@@ -158,6 +175,8 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
 
             vt = this.getView().findViewById(R.id.tomorrow_KP_1619);
             vt.setText(kp3Array.get(8)[2]);
+
+
 
             /*
             //aujourd'hui
@@ -377,6 +396,8 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
 
                 vt = this.getView().findViewById(R.id.tomorrow_weather_1619);
                 vt.setText(cloudArrayTodayAndTomorrow.get(13)[1]);
+
+                generateData();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -407,266 +428,181 @@ public class WeatherFragment extends Fragment implements SeekBar.OnSeekBarChange
         myJsonTask2.delegate = this;
         myJsonTask2.execute(weather);
 
-        mChart = root.findViewById(R.id.chart);
-        mChart.setOnChartValueSelectedListener(this);
 
-        mChart2 = root.findViewById(R.id.chart2);
-        mChart2.setOnChartValueSelectedListener(this);
-
-        // mChart.setHighlightEnabled(false);
-
-        mChart.setDrawBarShadow(false);
-        mChart2.setDrawBarShadow(false);
-
-        mChart.setDrawValueAboveBar(true);
-        mChart2.setDrawValueAboveBar(true);
-
-        mChart.getDescription().setEnabled(false);
-        mChart2.getDescription().setEnabled(false);
-        // if more than 60 entries are displayed in the chart, no values will be
-        // drawn
-        mChart.setMaxVisibleValueCount(60);
-        mChart2.setMaxVisibleValueCount(60);
-
-        // scaling can now only be done on x- and y-axis separately
-        mChart.setPinchZoom(false);
-        mChart2.setPinchZoom(false);
-
-        mChart.setDoubleTapToZoomEnabled(false);
-        mChart2.setDoubleTapToZoomEnabled(false);
-
-        // draw shadows for each bar that show the maximum value
-        // mChart.setDrawBarShadow(true);
-
-        mChart.setDrawGridBackground(false);
-        mChart2.setDrawGridBackground(false);
+        chart =  root.findViewById(R.id.chart);
+        chart2 =  root.findViewById(R.id.chart2);
 
 
-
-        mChart.setDrawBarShadow(false);
-        mChart.setDrawGridBackground(false);
-        mChart.setGridBackgroundColor(Color.WHITE);
-        mChart2.setGridBackgroundColor(Color.WHITE);
-
-        IAxisValueFormatter xAxisFormatter = new MyCustomAxis(mChart);
-
-        XAxis xAxis = mChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTypeface(mTfLight);
-        xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f); // only intervals of 1 day
-        xAxis.setLabelCount(7);
-        xAxis.setValueFormatter(xAxisFormatter);
-        mChart.getAxisLeft().setDrawGridLines(false);
-        xAxis.setTextColor(Color.WHITE);
-        mChart.getAxisLeft().setTextColor(Color.WHITE);
-        mChart.getAxisRight().setTextColor(Color.WHITE);
-
-
-        /* chart 2  */
-        mChart2.setDrawBarShadow(false);
-        mChart2.setDrawGridBackground(false);
-
-        IAxisValueFormatter xAxisFormatter2 = new MyCustomAxis(mChart);
-        XAxis xAxis2 = mChart2.getXAxis();
-
-        xAxis2.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis2.setTypeface(mTfLight);
-        xAxis2.setDrawGridLines(false);
-        xAxis2.setGranularity(1f); // only intervals of 1 day
-        xAxis2.setLabelCount(7);
-        xAxis2.setValueFormatter(xAxisFormatter2);
-        mChart2.getAxisLeft().setDrawGridLines(false);
-        xAxis2.setTextColor(Color.WHITE);
-        mChart2.getAxisLeft().setTextColor(Color.WHITE);
-        mChart2.getAxisRight().setTextColor(Color.WHITE);
-
-
-        Legend l = mChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(false);
-        l.setForm(Legend.LegendForm.SQUARE);
-        l.setFormSize(9f);
-        l.setTextSize(11f);
-        l.setXEntrySpace(4f);
-        l.setTextColor(Color.WHITE);
-
-        Legend l2 = mChart2.getLegend();
-        l2.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        l2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        l2.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l2.setDrawInside(false);
-        l2.setForm(Legend.LegendForm.SQUARE);
-        l2.setFormSize(9f);
-        l2.setTextSize(11f);
-        l2.setXEntrySpace(4f);
-        l2.setTextColor(Color.WHITE);
 
        // setDataForKP();
         return root;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
+    private void generateData() {
+         generateKPData();
+        generateCloudData();
+
+
     }
 
 
-    private void setDataForKP(){
-        float spaceForBar = 10f;
-        float barWidth = 7f;
+    private void generateKPData() {
+        int numSubcolumns = 1;
+        int numColumns = 11;
 
-     //   KP kp = DataBaseHelper.getCurrentKP();
-        /*if(kp !=null){
-            yVals1.add(new BarEntry(0 * spaceForBar, kp.getH_03()));
-            yVals1.add(new BarEntry(1 * spaceForBar, kp.getH_36()));
-            yVals1.add(new BarEntry(2 * spaceForBar, kp.getH_69()));
-            yVals1.add(new BarEntry(3 * spaceForBar, kp.getH_912()));
-            yVals1.add(new BarEntry(4 * spaceForBar, kp.getH_1215()));
-            yVals1.add(new BarEntry(5 * spaceForBar, kp.getH_1518()));
-            yVals1.add(new BarEntry(6 * spaceForBar, kp.getH_1821()));
-            yVals1.add(new BarEntry(7 * spaceForBar, kp.getH_2100()));
-        }*/
-       /* if(kp3Array.size() != 0){
-            yVals1.add(new BarEntry(0 * spaceForBar, Integer.parseInt(kp3Array.get(1)[1])));
-            yVals1.add(new BarEntry(1 * spaceForBar, Integer.parseInt(kp3Array.get(2)[1])));
-            yVals1.add(new BarEntry(2 * spaceForBar, Integer.parseInt(kp3Array.get(3)[1])));
-            yVals1.add(new BarEntry(3 * spaceForBar, Integer.parseInt(kp3Array.get(4)[1])));
-            yVals1.add(new BarEntry(4 * spaceForBar, Integer.parseInt(kp3Array.get(5)[1])));
-            yVals1.add(new BarEntry(5 * spaceForBar, Integer.parseInt(kp3Array.get(6)[1])));
-            yVals1.add(new BarEntry(6 * spaceForBar, Integer.parseInt(kp3Array.get(7)[1])));
-            yVals1.add(new BarEntry(7 * spaceForBar, Integer.parseInt(kp3Array.get(8)[1])));
-      }
-      else{*/
-            for (int i = 0; i < 8; i++) {
-                // float val = (float) (Math.random() * spaceForBar);
-                yVals1.add(new BarEntry(i * spaceForBar, 0));
+        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+        for (int i = 3; i < numColumns; ++i) {
+
+            values = new ArrayList<SubcolumnValue>();
+            for (int j = 0; j < numSubcolumns; ++j) {
+                if(i%numColumns == 9)
+                    values.add(new SubcolumnValue(Integer.parseInt(kp3Array.get(1)[1]), chooseColorKP(Integer.parseInt(kp3Array.get(1)[1])) ));
+                else if(i%numColumns == 10)
+                    values.add(new SubcolumnValue(Integer.parseInt(kp3Array.get(2)[1]), chooseColorKP(Integer.parseInt(kp3Array.get(2)[1]))));
+                else
+                    values.add(new SubcolumnValue(Integer.parseInt(kp3Array.get((i)%numColumns)[1]), chooseColorKP(Integer.parseInt(kp3Array.get((i)%numColumns)[1]))));
+
+
+
             }
-        //}
 
-        BarDataSet set1;
-        if (mChart.getData() != null &&
-                mChart.getData().getDataSetCount() > 0) {
-            set1 = (BarDataSet)mChart.getData().getDataSetByIndex(0);
-            set1.setValues(yVals1);
-            mChart.getData().notifyDataChanged();
-            mChart.notifyDataSetChanged();
+
+            Column column = new Column(values);
+            column.setHasLabels(hasLabels);
+            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            columns.add(column);
+        }
+
+        data = new ColumnChartData(columns);
+
+        if (hasAxes) {
+            List<Float> valuesX= new ArrayList<>();
+            List<String> labelsX= new ArrayList<>();
+            for (int i = 0; i< 8; i++){
+                valuesX.add((float)i);
+            }
+            labelsX.add("1-4h");
+            labelsX.add("4-7h");
+            labelsX.add("7-10h");
+            labelsX.add("10-13h");
+            labelsX.add("13-16h");
+            labelsX.add("16-19h");
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");
+
+            Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
+            Axis axisY = new Axis().setHasLines(true);
+            if (hasAxesNames) {
+                axisX.setName("Heures");
+                axisY.setName("Coefficient KP");
+            }
+            data.setAxisXBottom(axisX);
+            data.setAxisYLeft(axisY);
         } else {
-            set1 = new BarDataSet(yVals1, "Coefficient KP");
-            set1.setColors(Color.rgb(209, 196, 233));
-            //set1.setColors(ColorTemplate.);
-            set1.setValueTextColor(Color.WHITE);
-            set1.setDrawIcons(false);
-
-            ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
-            dataSets.add(set1);
-
-            BarData data = new BarData(dataSets);
-            data.setValueTextSize(10f);
-            data.setValueTypeface(mTfLight);
-            data.setBarWidth(barWidth);
-            mChart.setData(data);
-            mChart.refreshDrawableState();
-
-
+            data.setAxisXBottom(null);
+            data.setAxisYLeft(null);
         }
+
+        chart.setColumnChartData(data);
+
     }
 
 
-    private void setData(int count, float range) {
-        float spaceForBar = 10f;
-        float barWidth = 7f;
+    private void generateCloudData() {
+        int numSubcolumns = 1;
+        int numColumns =8;
+        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+        for (int i = 0; i < numColumns; ++i) {
 
-        ArrayList<BarEntry> yVals2 = new ArrayList<BarEntry>();
+            values = new ArrayList<SubcolumnValue>();
+            for (int j = 0; j < numSubcolumns; ++j) {
 
-        int[] cloud = new int[count];
-        for (int i = 0; i < count; i++) {
-            int val = (int) (Math.random() * 100);
-            cloud[i] = val;
+                values.add(new SubcolumnValue(Integer.parseInt(cloudArrayTodayAndTomorrow.get(i)[1]), ChartUtils.pickColor()));
+
+
+            }
+
+
+            Column column = new Column(values);
+            column.setHasLabels(hasLabels);
+            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+
+            columns.add(column);
         }
 
-        for (int i = 0; i < count; i++) {
-           // float val = (float) (Math.random() * range);
-            yVals2.add(new BarEntry(i * spaceForBar, cloud[i]));
-        }
+        data2 = new ColumnChartData(columns);
 
-        BarDataSet set2;
+        if (hasAxes) {
+            List<Float> valuesX= new ArrayList<>();
+            List<String> labelsX= new ArrayList<>();
+            for (int i = 0; i< 8; i++){
+                valuesX.add((float)i);
+            }
+            labelsX.add("1-4h");
+            labelsX.add("4-7h");
+            labelsX.add("7-10h");
+            labelsX.add("10-13h");
+            labelsX.add("13-16h");
+            labelsX.add("16-19h");
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");
 
+            Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
+            Axis axisY = new Axis().setHasLines(true);
 
-
-        if (mChart2.getData() != null &&
-                mChart2.getData().getDataSetCount() > 0) {
-            set2 = (BarDataSet)mChart2.getData().getDataSetByIndex(0);
-            set2.setValues(yVals2);
-            mChart2.getData().notifyDataChanged();
-            mChart2.notifyDataSetChanged();
+            if (hasAxesNames) {
+                axisX.setName("Heures");
+                axisY.setName("Couverture nuageuse");
+            }
+            data2.setAxisXBottom(axisX);
+            data2.setAxisYLeft(axisY);
         } else {
-            set2 = new BarDataSet(yVals2, "Couverture nuageuse");
-            set2.setColors(Color.rgb(209, 196, 233));
-            set2.setValueTextColor(Color.WHITE);
-            set2.setDrawIcons(false);
-            ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
-            dataSets.add(set2);
-
-            BarData data = new BarData(dataSets);
-            data.setValueTextSize(10f);
-            data.setValueTypeface(mTfLight);
-            data.setBarWidth(barWidth);
-            mChart2.setData(data);
+            data2.setAxisXBottom(null);
+            data2.setAxisYLeft(null);
         }
-    }
 
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-
-        mChart.setFitBars(true);
-        mChart.invalidate();
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        // TODO Auto-generated method stub
+        chart2.setColumnChartData(data2);
 
     }
 
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        // TODO Auto-generated method stub
+
+
+    private int chooseColorKP(int val){
+        switch (val)
+        {
+            case 0: return Color.WHITE;
+
+            case 1: return Color.BLACK;
+
+            case 2: return Color.GREEN;
+
+            case 3: return Color.YELLOW;
+
+            case 4: return Color.RED;
+
+            case 5: return Color.BLACK;
+
+            default: return Color.MAGENTA;
+        }
 
     }
-    protected RectF mOnValueSelectedRectF = new RectF();
-    @SuppressLint("NewApi")
-    @Override
-    public void onValueSelected(Entry e, Highlight h) {
 
-        if (e == null)
-            return;
 
-        RectF bounds = mOnValueSelectedRectF;
-        mChart.getBarBounds((BarEntry) e, bounds);
-
-        MPPointF position = mChart.getPosition(e, mChart.getData().getDataSetByIndex(h.getDataSetIndex())
-                .getAxisDependency());
-
-        Log.i("bounds", bounds.toString());
-        Log.i("position", position.toString());
-
-        MPPointF.recycleInstance(position);
+    private int getSign() {
+        int[] sign = new int[]{-1, 1};
+        return sign[Math.round((float) Math.random())];
     }
 
-    @Override
-    public void onNothingSelected() {
-    };
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
+
+
+
+
 }

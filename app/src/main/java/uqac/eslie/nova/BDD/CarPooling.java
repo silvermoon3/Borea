@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseUser;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -12,11 +13,13 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.UUID;
 
+import uqac.eslie.nova.Helper.Timestamp;
+
 /**
  * Created by ESTEL on 26/10/2017.
  */
 
-public class CarPooling {
+public class CarPooling  implements Comparable<CarPooling> {
 
     private UUID itemID;
     private User user;
@@ -27,8 +30,10 @@ public class CarPooling {
     private String returnHour;
     private int placeTotal;
     private int placeLeft;
-    private String date;
+    private Date date;
+    private String dateText;
     private String marque;
+    private Timestamp timestamp;
 
     public List<User> getPassagers() {
         return passagers;
@@ -44,21 +49,56 @@ public class CarPooling {
 
     private List<User> passagers;
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public CarPooling(){
+        price = 0.0;
+        Depart = "";
+        Destination = "";
+        hour = "";
+        returnHour = "";
+        placeLeft = 0;
+        placeTotal = 0;
+        date = null;
+        marque = "";
+        dateText = "";
+        timestamp = null;
+
+
        // itemID = UUID.randomUUID();
        // passagers = new ArrayList<>();
+    }
+
+
+    @Override
+    public int compareTo(@NonNull CarPooling o) {
+        return this.date.compareTo(o.date);
     }
 
 
  /*   public void addPassager(User passager){
         passagers.add(passager);
     }*/
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDateText() {
+        return dateText;
+    }
+
+    public void setDateText(String dateText) {
+        this.dateText = dateText;
     }
 
     public User getUser() {

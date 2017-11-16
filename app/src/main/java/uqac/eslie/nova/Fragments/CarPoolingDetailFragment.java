@@ -10,12 +10,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 
 import org.w3c.dom.Text;
@@ -45,6 +50,8 @@ public class CarPoolingDetailFragment extends Fragment {
 
 
 
+
+
     public CarPoolingDetailFragment() {
         // Required empty public constructor
     }
@@ -60,11 +67,23 @@ public class CarPoolingDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.cancelcardetail, menu);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.car_pooling_detail, container, false);
+
+
+
+
+
+
         date =  root.findViewById(R.id.date_carPooling_detail);
         depart =  root.findViewById(R.id.depart_carPooling_detail);
         arrivee =  root.findViewById(R.id.arrivee_carPooling_detail);
@@ -83,7 +102,7 @@ public class CarPoolingDetailFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         CarPooling carPooling = DataBaseHelper.getCurrentCarPooling();
-        date.setText(carPooling.getDate());
+        date.setText(carPooling.getDateText());
         depart.setText(carPooling.getDepart());
         arrivee.setText(carPooling.getDestination());
         prix.setText(String.valueOf(carPooling.getPrice()));

@@ -1,12 +1,8 @@
 package uqac.eslie.nova;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
@@ -17,11 +13,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -32,32 +25,32 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import java.lang.reflect.InvocationTargetException;
+
 import java.util.Calendar;
+import java.util.Date;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
-import uqac.eslie.nova.BDD.User;
 import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
-import uqac.eslie.nova.Helper.DatePickerFragment;
+import uqac.eslie.nova.Helper.Timestamp;
 
 
 public class addCarPooling extends AppCompatActivity {
 
     private String addressD ="";
     private String addressA ="";
-    private TextView date;
+    private TextView dateText;
     private TextView hourD;
     private TextView hourR;
     private TextView price;
     private TextView place;
     private TextView marque;
     private Menu menu;
+    private Date date;
     PlaceAutocompleteFragment autocompleteFragmentDepart;
     PlaceAutocompleteFragment autocompleteFragmentArrivee;
 
@@ -117,9 +110,9 @@ public class addCarPooling extends AppCompatActivity {
             }
         });
 
-        date = findViewById(R.id.date);
+        dateText = findViewById(R.id.date);
 
-        date.setOnClickListener(new View.OnClickListener() {
+        dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog(view);
@@ -189,12 +182,14 @@ public class addCarPooling extends AppCompatActivity {
                 Toast.makeText(this, "yes", Toast.LENGTH_LONG);
                     //On ajoute le covoiturage
                     CarPooling carPooling = new CarPooling();
-                    carPooling.setDate(date.getText().toString());
+                    carPooling.setDate(date);
+                    carPooling.setDateText(dateText.getText().toString());
                     carPooling.setHour(hourD.getText().toString());
                     carPooling.setReturnHour(hourR.getText().toString());
                     carPooling.setDepart(addressD);
                     carPooling.setDestination(addressA);
                     carPooling.setUser(DataBaseHelper.getCurrentUser());
+                    carPooling.setTimestamp(new Timestamp(date.getTime()));
                     if(!price.getText().toString().equals(""))
                         carPooling.setPrice(Double.parseDouble(price.getText().toString()));
                     if(!place.getText().toString().equals("")) {
@@ -257,7 +252,10 @@ public class addCarPooling extends AppCompatActivity {
         DatePickerDialog newFragment = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                date.setText(day +"/" +month+"/"+year);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+                date =  calendar.getTime();
+                dateText.setText(day +"/" +month+"/"+year);
             }
         }, year, month, day);
         newFragment.show();
@@ -267,7 +265,7 @@ public class addCarPooling extends AppCompatActivity {
 
     private boolean checkAllComplete()
     {
-        if(date.getText() == "" || date.getText().length() == 0)
+        if(dateText.getText() == "" || dateText.getText().length() == 0)
             return false;
         if(marque.getText() == "" || marque.getText().length() == 0)
             return false;
