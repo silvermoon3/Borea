@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import java.util.Collections;
 import java.util.Date;
 
 import java.util.Calendar;
@@ -62,10 +63,14 @@ public class WeatherFragment extends Fragment {
     private static final int NEGATIVE_SUBCOLUMNS_DATA = 3;
     private static final int NEGATIVE_STACKED_DATA = 4;
 
-    private ColumnChartView chart;
-    private ColumnChartView chart2;
-    private ColumnChartData data;
-    private ColumnChartData data2;
+    private ColumnChartView chartKp_today;
+    private ColumnChartView chartCloud_today;
+    private ColumnChartView chartKp_tomorrow;
+    private ColumnChartView chartCloud_tomorrow;
+    private ColumnChartData dataKP_today;
+    private ColumnChartData dataKP_tomorrow;
+    private ColumnChartData dataCloud_today;
+    private ColumnChartData dataCloud_tomorrow;
     private boolean hasAxes = true;
     private boolean hasAxesNames = true;
     private boolean hasLabels = false;
@@ -119,6 +124,8 @@ public class WeatherFragment extends Fragment {
             vt = this.getView().findViewById(R.id.today_KP_1619);
             vt.setText(kpArrayTodayAndTomorrow.get(8)[1]);
 
+*/
+            /*
             // -------- KP TOMORROW --------
             vt = this.getView().findViewById(R.id.tomorrow_KP_1922);
             vt.setText(kpArrayTodayAndTomorrow.get(1)[2]);
@@ -282,25 +289,24 @@ public class WeatherFragment extends Fragment {
         myJsonTask2.execute(weather);
 
 
-        chart =  root.findViewById(R.id.chart);
-        chart2 =  root.findViewById(R.id.chart2);
-
-
-
+        chartKp_today =  root.findViewById(R.id.chartKP_today);
+        chartKp_tomorrow = root.findViewById(R.id.chartKP_tomorrow);
+        chartCloud_today =  root.findViewById(R.id.chartCloud_today);
+        chartCloud_tomorrow =  root.findViewById(R.id.chartCloud_tomorrow);
        // setDataForKP();
         return root;
     }
 
 
     private void generateData() {
-        generateKPData();
-        generateCloudData();
-
-
+        generateKPDataToday();
+        generateCloudDataToday();
+        generateKPDataTomorrow();
+        generateCloudDataTomorrow();
     }
 
 
-    private void generateKPData() {
+    private void generateKPDataToday() {
         int numSubcolumns = 1;
         int numColumns = 11;
 
@@ -329,7 +335,7 @@ public class WeatherFragment extends Fragment {
             columns.add(column);
         }
 
-        data = new ColumnChartData(columns);
+        dataKP_today = new ColumnChartData(columns);
 
         if (hasAxes) {
             List<Float> valuesX= new ArrayList<>();
@@ -352,19 +358,81 @@ public class WeatherFragment extends Fragment {
                 axisX.setName("Heures");
                 axisY.setName("Coefficient KP");
             }
-            data.setAxisXBottom(axisX);
-            data.setAxisYLeft(axisY);
+            dataKP_today.setAxisXBottom(axisX);
+            dataKP_today.setAxisYLeft(axisY);
         } else {
-            data.setAxisXBottom(null);
-            data.setAxisYLeft(null);
+            dataKP_today.setAxisXBottom(null);
+            dataKP_today.setAxisYLeft(null);
         }
 
-        chart.setColumnChartData(data);
+        chartKp_today.setColumnChartData(dataKP_today);
 
     }
 
+    private void generateKPDataTomorrow() {
+        int numSubcolumns = 1;
+        int numColumns = 11;
 
-    private void generateCloudData() {
+        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+        for (int i = 3; i < numColumns; ++i) {
+
+            values = new ArrayList<SubcolumnValue>();
+            for (int j = 0; j < numSubcolumns; ++j) {
+                if(i%numColumns == 9)
+                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2])) ));
+                else if(i%numColumns == 10)
+                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]))));
+                else
+                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[2]))));
+
+
+
+            }
+
+
+            Column column = new Column(values);
+            column.setHasLabels(hasLabels);
+            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            columns.add(column);
+        }
+
+        dataKP_tomorrow = new ColumnChartData(columns);
+
+        if (hasAxes) {
+            List<Float> valuesX= new ArrayList<>();
+            List<String> labelsX= new ArrayList<>();
+            for (int i = 0; i< 8; i++){
+                valuesX.add((float)i);
+            }
+            labelsX.add("1-4h");
+            labelsX.add("4-7h");
+            labelsX.add("7-10h");
+            labelsX.add("10-13h");
+            labelsX.add("13-16h");
+            labelsX.add("16-19h");
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");
+
+            Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
+            Axis axisY = new Axis().setHasLines(true);
+            if (hasAxesNames) {
+                axisX.setName("Heures");
+                axisY.setName("Coefficient KP");
+            }
+            dataKP_tomorrow.setAxisXBottom(axisX);
+            dataKP_tomorrow.setAxisYLeft(axisY);
+        } else {
+            dataKP_tomorrow.setAxisXBottom(null);
+            dataKP_tomorrow.setAxisYLeft(null);
+        }
+
+        chartKp_tomorrow.setColumnChartData(dataKP_tomorrow);
+
+    }
+
+    private void generateCloudDataToday() {
         int numSubcolumns = 1;
         int numColumns =8;
         // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
@@ -374,10 +442,7 @@ public class WeatherFragment extends Fragment {
 
             values = new ArrayList<SubcolumnValue>();
             for (int j = 0; j < numSubcolumns; ++j) {
-
-                values.add(new SubcolumnValue(Integer.parseInt(cloudArrayTodayAndTomorrowAndWeek.get(i)[1]), ChartUtils.pickColor()));
-
-
+                values.add(new SubcolumnValue(Integer.parseInt(cloudArrayTodayAndTomorrowAndWeek.get(i)[1]), chooseColorCloud(Integer.parseInt(cloudArrayTodayAndTomorrowAndWeek.get(i)[1]))));
             }
 
 
@@ -388,7 +453,7 @@ public class WeatherFragment extends Fragment {
             columns.add(column);
         }
 
-        data2 = new ColumnChartData(columns);
+        dataCloud_today = new ColumnChartData(columns);
 
         if (hasAxes) {
             List<Float> valuesX= new ArrayList<>();
@@ -412,36 +477,117 @@ public class WeatherFragment extends Fragment {
                 axisX.setName("Heures");
                 axisY.setName("Couverture nuageuse");
             }
-            data2.setAxisXBottom(axisX);
-            data2.setAxisYLeft(axisY);
+            dataCloud_today.setAxisXBottom(axisX);
+            dataCloud_today.setAxisYLeft(axisY);
         } else {
-            data2.setAxisXBottom(null);
-            data2.setAxisYLeft(null);
+            dataCloud_today.setAxisXBottom(null);
+            dataCloud_today.setAxisYLeft(null);
         }
 
-        chart2.setColumnChartData(data2);
+        chartCloud_today.setColumnChartData(dataCloud_today);
 
     }
 
+    private void generateCloudDataTomorrow() {
+        int numSubcolumns = 1;
+        int numColumns =16;
+        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+        for (int i = 8; i < numColumns; ++i) {
 
+            values = new ArrayList<SubcolumnValue>();
+            for (int j = 0; j < numSubcolumns; ++j) {
+
+                values.add(new SubcolumnValue(Integer.parseInt(cloudArrayTodayAndTomorrowAndWeek.get(i)[1]), chooseColorCloud(Integer.parseInt(cloudArrayTodayAndTomorrowAndWeek.get(i)[1]))));
+            }
+
+            Column column = new Column(values);
+            column.setHasLabels(hasLabels);
+            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+
+            columns.add(column);
+        }
+
+        dataCloud_tomorrow = new ColumnChartData(columns);
+
+        if (hasAxes) {
+            List<Float> valuesX= new ArrayList<>();
+            List<String> labelsX= new ArrayList<>();
+            for (int i = 0; i< 8; i++){
+                valuesX.add((float)i);
+            }
+            labelsX.add("1-4h");
+            labelsX.add("4-7h");
+            labelsX.add("7-10h");
+            labelsX.add("10-13h");
+            labelsX.add("13-16h");
+            labelsX.add("16-19h");
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");
+
+            Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
+            Axis axisY = new Axis().setHasLines(true);
+
+            if (hasAxesNames) {
+                axisX.setName("Heures");
+                axisY.setName("Couverture nuageuse");
+            }
+            dataCloud_tomorrow.setAxisXBottom(axisX);
+            dataCloud_tomorrow.setAxisYLeft(axisY);
+        } else {
+            dataCloud_tomorrow.setAxisXBottom(null);
+            dataCloud_tomorrow.setAxisYLeft(null);
+        }
+
+        chartCloud_tomorrow.setColumnChartData(dataCloud_tomorrow);
+
+    }
 
     private int chooseColorKP(int val){
         switch (val)
         {
             case 0: return Color.WHITE;
 
-            case 1: return Color.BLACK;
+            case 1: return Color.rgb(239, 236, 122);
 
-            case 2: return Color.GREEN;
+            case 2: return Color.rgb(238, 137, 68);
 
-            case 3: return Color.YELLOW;
+            case 3: return Color.rgb(233, 108, 23);
 
-            case 4: return Color.RED;
+            case 4: return Color.rgb(138, 66, 66);
 
-            case 5: return Color.BLACK;
+            case 5: return Color.rgb(87, 41, 41);
 
-            default: return Color.MAGENTA;
+            default: return Color.rgb(48, 28, 28);
         }
+
+    }
+
+    private int chooseColorCloud(int val){
+       if(val <=10)
+           return Color.rgb(221, 227, 239);
+       if(val > 10 && val <=20)
+           return Color.rgb(196, 209, 238);
+       if(val > 20 && val <= 30)
+           return Color.rgb(175, 194, 233);
+        if(val > 30 && val <= 40)
+            return Color.rgb(155, 177, 227);
+        if(val > 40 && val <= 50)
+            return Color.rgb(135, 162, 223);
+        if(val > 50 && val <= 60)
+            return Color.rgb(115, 147, 217);
+        if(val > 60 && val <= 70)
+            return Color.rgb(90, 121, 190);
+         if(val > 70 && val <= 80)
+             return Color.rgb(53, 91, 177);
+         if(val > 80 && val <= 90)
+             return Color.rgb(63, 87, 141);
+        if(val > 90 && val <= 100)
+            return Color.rgb(30, 66, 106);
+
+         return Color.WHITE;
+
 
     }
 
