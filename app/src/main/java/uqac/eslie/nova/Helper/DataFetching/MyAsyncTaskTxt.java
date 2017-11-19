@@ -11,7 +11,7 @@ import uqac.eslie.nova.Fragments.WeatherFragment;
  * Created by eliea on 02/11/2017.
  */
 
-public class MyAsyncTaskTxt extends AsyncTask<URL, Integer, ArrayList<String[]> > {
+public class MyAsyncTaskTxt extends AsyncTask<URL, Integer, ArrayList<String[]>> {
     public WeatherFragment delegate = null;
 
     public MyAsyncTaskTxt(WeatherFragment delegate) {
