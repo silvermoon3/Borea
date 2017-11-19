@@ -549,17 +549,15 @@ public class WeatherFragment extends Fragment {
         {
             case 0: return Color.WHITE;
 
-            case 1: return Color.rgb(239, 236, 122);
+            case 1: case 2: return Color.rgb(0, 255, 0);
 
-            case 2: return Color.rgb(238, 137, 68);
+            case 3: return Color.rgb(255, 255, 0);
 
-            case 3: return Color.rgb(233, 108, 23);
+            case 4: case 5: return Color.rgb(255, 128, 0);
 
-            case 4: return Color.rgb(138, 66, 66);
+            case 6: case 7:case 8:case 9:case 10: return Color.rgb(255, 0, 0);
 
-            case 5: return Color.rgb(87, 41, 41);
-
-            default: return Color.rgb(48, 28, 28);
+            default: return Color.rgb(255, 255, 255);
         }
 
     }
