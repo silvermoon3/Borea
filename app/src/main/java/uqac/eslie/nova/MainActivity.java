@@ -8,12 +8,15 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentContainer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.Manifest;
 
 import android.util.Base64;
 import android.util.Log;
@@ -35,6 +38,7 @@ import uqac.eslie.nova.Fragments.ChartFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
 import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
+import uqac.eslie.nova.Helper.GPSTracker;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
 
 public class MainActivity extends AppCompatActivity
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -119,9 +124,16 @@ public class MainActivity extends AppCompatActivity
         transaction.disallowAddToBackStack();
         Helper_NavigationBottomBar helper = new Helper_NavigationBottomBar();
 
+
         helper.disableShiftMode(navigation);
         calculateHashKey("uqac.eslie.nova");
 
+
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, 1);
         SugarContext.terminate();
 
         SugarContext.init(getApplicationContext());

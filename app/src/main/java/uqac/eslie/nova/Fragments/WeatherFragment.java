@@ -1,13 +1,24 @@
 package uqac.eslie.nova.Fragments;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +34,7 @@ import java.util.Date;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 import lecho.lib.hellocharts.model.Axis;
@@ -39,10 +51,14 @@ import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonKP;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskJsonWeather;
 import uqac.eslie.nova.Helper.DataFetching.MyAsyncTaskTxt;
 
+import uqac.eslie.nova.Helper.GPSTracker;
+import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
 
+import static android.content.Context.LOCATION_SERVICE;
 
-public class WeatherFragment extends Fragment {
+
+public class WeatherFragment extends Fragment implements LocationListener {
 
 
     MyAsyncTaskTxt myTxtTask;
@@ -54,7 +70,7 @@ public class WeatherFragment extends Fragment {
     URL kp27Url;
     URL kp3Url;
     URL kp1Url;
-    URL weather;
+    //URL weather;
 
     //Chart
     private static final int DEFAULT_DATA = 0;
@@ -67,15 +83,22 @@ public class WeatherFragment extends Fragment {
     private ColumnChartView chartCloud_today;
     private ColumnChartView chartKp_tomorrow;
     private ColumnChartView chartCloud_tomorrow;
+    private ColumnChartView chartKp_week;
+    private ColumnChartView chartCloud_week;
     private ColumnChartData dataKP_today;
     private ColumnChartData dataKP_tomorrow;
+    private ColumnChartData dataKP_week;
     private ColumnChartData dataCloud_today;
     private ColumnChartData dataCloud_tomorrow;
+    private ColumnChartData dataCloud_week;
     private boolean hasAxes = true;
     private boolean hasAxesNames = true;
     private boolean hasLabels = false;
     private boolean hasLabelForSelected = false;
     private int dataType = DEFAULT_DATA;
+
+    LocationManager locationManager;
+    Location location;
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     DatabaseReference ref = database.child("KP");
@@ -84,9 +107,37 @@ public class WeatherFragment extends Fragment {
         kp27Url = new URL("http://services.swpc.noaa.gov/text/27-day-outlook.txt");
         kp3Url = new URL("http://services.swpc.noaa.gov/text/3-day-forecast.txt");
         kp1Url = new URL("http://services.swpc.noaa.gov/products/noaa-estimated-planetary-k-index-1-minute.json");
-        weather = new URL("https://api.apixu.com/v1/forecast.json?key=848095d955c54bfab29213656172810&q=48.421291,-71.068205&days=7");
+
         // TO DO : inject real GPS coordinates in the link
     }
+
+    private URL getWeatherURL(){
+        GPSTracker gps = new GPSTracker(getActivity().getApplicationContext());
+
+        if(gps.canGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            Toast.makeText(
+                    getActivity().getApplicationContext(),
+                    "Your Location is -\nLat: " + latitude + "\nLong: "
+                            + longitude, Toast.LENGTH_LONG).show();
+
+            try {
+                return new URL("https://api.apixu.com/v1/forecast.json?key=848095d955c54bfab29213656172810&q=" + latitude + "," + longitude + "&days=7");
+            }
+            catch (Exception e){
+
+            }
+
+        } else {
+            gps.showSettingsAlert();
+        }
+
+        return null;
+    }
+
+
 
     public void processFinish(ArrayList<String[]> result) {
         if(result.get(0)[0] == "27") {
@@ -286,13 +337,16 @@ public class WeatherFragment extends Fragment {
 
         myJsonTask2 = new MyAsyncTaskJsonWeather(this);
         myJsonTask2.delegate = this;
-        myJsonTask2.execute(weather);
+        myJsonTask2.execute(getWeatherURL());
 
 
         chartKp_today =  root.findViewById(R.id.chartKP_today);
         chartKp_tomorrow = root.findViewById(R.id.chartKP_tomorrow);
+        chartKp_week = root.findViewById(R.id.chartKP_week);
         chartCloud_today =  root.findViewById(R.id.chartCloud_today);
         chartCloud_tomorrow =  root.findViewById(R.id.chartCloud_tomorrow);
+        chartCloud_week = root.findViewById(R.id.chartCloud_week);
+
        // setDataForKP();
         return root;
     }
@@ -303,6 +357,8 @@ public class WeatherFragment extends Fragment {
         generateCloudDataToday();
         generateKPDataTomorrow();
         generateCloudDataTomorrow();
+        generateKPDataWeek();
+        generateCloudDataWeek();
     }
 
 
@@ -431,6 +487,72 @@ public class WeatherFragment extends Fragment {
         chartKp_tomorrow.setColumnChartData(dataKP_tomorrow);
 
     }
+    private void generateKPDataWeek() {
+        int numSubcolumns = 1;
+        int numColumns = 8;
+
+        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+        for (int i = 1; i < numColumns; ++i) {
+
+            values = new ArrayList<SubcolumnValue>();
+            for (int j = 0; j < numSubcolumns; ++j) {
+
+                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayWeek.get(i)[3]), chooseColorKP(Integer.parseInt(kpArrayWeek.get(i)[3]))));
+
+
+
+            }
+
+
+            Column column = new Column(values);
+            column.setHasLabels(hasLabels);
+            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            columns.add(column);
+        }
+
+        dataKP_week = new ColumnChartData(columns);
+
+        if (hasAxes) {
+            List<Float> valuesX= new ArrayList<>();
+            List<String> labelsX= new ArrayList<>();
+            for (int i = 0; i< 7; i++){
+                valuesX.add((float)i);
+            }
+            for(int i=1; i<8; i++){
+                labelsX.add(kpArrayWeek.get(i)[0].substring(5));
+            }
+
+          /*  labelsX.add("1-4h");
+            labelsX.add("4-7h");
+            labelsX.add("7-10h");
+            labelsX.add("10-13h");
+            labelsX.add("13-16h");
+            labelsX.add("16-19h");
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");*/
+
+            Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
+
+            Axis axisY = new Axis().setHasLines(true);
+            if (hasAxesNames) {
+                axisX.setName("Jour");
+                axisY.setName("Coefficient KP");
+            }
+            dataKP_week.setAxisXBottom(axisX);
+            dataKP_week.setAxisYLeft(axisY);
+        } else {
+            dataKP_week.setAxisXBottom(null);
+            dataKP_week.setAxisYLeft(null);
+        }
+
+        chartKp_week.setColumnChartData(dataKP_week);
+
+    }
+
+
+
 
     private void generateCloudDataToday() {
         int numSubcolumns = 1;
@@ -544,6 +666,59 @@ public class WeatherFragment extends Fragment {
 
     }
 
+
+    private void generateCloudDataWeek() {
+        int numSubcolumns = 1;
+        int numColumns =24;
+        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+        for (int i = 17; i < numColumns; ++i) {
+
+            values = new ArrayList<SubcolumnValue>();
+            for (int j = 0; j < numSubcolumns; ++j) {
+
+                values.add(new SubcolumnValue((float)Double.parseDouble(cloudArrayTodayAndTomorrowAndWeek.get(i)[0]), chooseColorCloud((int)Double.parseDouble(cloudArrayTodayAndTomorrowAndWeek.get(i)[0]))));
+            }
+
+            Column column = new Column(values);
+            column.setHasLabels(hasLabels);
+            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+
+            columns.add(column);
+        }
+
+        dataCloud_week = new ColumnChartData(columns);
+
+        if (hasAxes) {
+            List<Float> valuesX= new ArrayList<>();
+            List<String> labelsX= new ArrayList<>();
+            for (int i = 0; i< 7; i++){
+                valuesX.add((float)i);
+            }
+            for(int i=1; i<8; i++){
+                labelsX.add(kpArrayWeek.get(i)[0].substring(5));
+            }
+
+
+            Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
+            Axis axisY = new Axis().setHasLines(true);
+
+            if (hasAxesNames) {
+                axisX.setName("Jour");
+                axisY.setName("Couverture nuageuse");
+            }
+            dataCloud_week.setAxisXBottom(axisX);
+            dataCloud_week.setAxisYLeft(axisY);
+        } else {
+            dataCloud_week.setAxisXBottom(null);
+            dataCloud_week.setAxisYLeft(null);
+        }
+
+        chartCloud_week.setColumnChartData(dataCloud_week);
+
+    }
+
     private int chooseColorKP(int val){
         switch (val)
         {
@@ -590,9 +765,24 @@ public class WeatherFragment extends Fragment {
     }
 
 
-    private int getSign() {
-        int[] sign = new int[]{-1, 1};
-        return sign[Math.round((float) Math.random())];
+    @Override
+    public void onLocationChanged(Location _location) {
+        this.location = _location;
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Log.d("Latitude","disable");
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Log.d("Latitude","enable");
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        Log.d("Latitude","status");
     }
 
 
