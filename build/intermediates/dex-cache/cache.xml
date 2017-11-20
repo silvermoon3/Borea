@@ -3,21 +3,332 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\eliea\.android\build-cache\f0266e866c9f301ea7b1567bbcf39f7f4e26cb37\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="c323c36ecc68965c4cfb460f7721113d2b61ed03">
-        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_4576d8fb930c22a6711576d2a29d79ffd85d813d\classes.dex" />
+        sha1="f15e20dd7bcde7c688cfda44d0c8320a5c1c24b8">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7bf78a13005c661840787e7fd167a4ed51a746ea\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\eliea\.android\build-cache\c4b811148d9211f07adf27c1634e43607eeac1c9\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
+<<<<<<< HEAD
         sha1="8a18fea5abd44ca45c4b8ca8067e38d214702aab">
         <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f81db6747a8c55d42f9ad0d0b62d56f24e44bf17\classes.dex" />
+=======
+        sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_38c3e2ccee9a4d399ca1755f3db7123e4a4848e3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\276142e0fe27fb1d8fb73f5abdf9663f9cce551d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="63b03eaa1aa9b9431c7638841175f9842dcbf274">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_79099fa9e57ef3e4a6e6a3f509620b4f14577f13\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\b502591045afd7291da7064010ad5f5c473b7295\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fc3036436defd3070337b7191c50a136ebca7f8f">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_525a3d296d9a32a733303ab4631fcc963685dc63\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\ff3f677b92d22805fdf35c45bd456d72fcb7bdc1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="416fb9ee2fd6e7af0bba04b01d90cb475b1e2074">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9aa9cc2f69f01fdffed00561323dea96b0638098\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\c9eeaceef50a0fe85e4af242558aac0228609e8e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c6aa915c08cfd82780c10d4b957018bf819a48e2">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_008a8c250500a36b1ade8d4c15a03a1eef3ddbc4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\ad06e9ea804bc1fae307d57dd371a82eb88c0593\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c175c3009577fad8b433703f5d7ac2dc21d3871f">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b2e89aaeae5bf7824076d2d5e05cab9468d896ce\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\0c9db9446332ec7badd80869f8d7f930beddea00\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8544f739799dd15db63927073a21312864ab0bfd">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_42e74291fcf675b2426eceee3a16dc8d936657ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\c2535787677a3ae7e00f06a05ceab524e34eb188\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dae0d68af4c87df40eca67069861e53b7cefaaa0">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8cea5bc0dd1ec2683c825293a6a6c4866d1f1ecd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\f7d4f5407a6df5b5906d913c4cbc028ce2c96eb4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c1b91bc7e480ab100d0397b16c93732e26fd10eb">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4d5335f5b6e30b2a85328ff9643826c0e46ef0ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\503cbdfbaa121dbe3b90c2274e3eea07b6f2b979\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2c379c235d7983201bb83edfc3c60bb0dafb5805">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d6859ad3c68759d09149b1699e37fac54a653b28\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\a9ebaeb09906d1516c32875e16e94891cf734e74\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2c2f1b3f82c027e98f56bb0154de0acbcce42e6d">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_191eb1b289c9b5226af379c5918591d93547d298\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\6b3235ac15bc539edab5bc24ee27a98e98228e3f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="af13a350b71b437ebf4be335d02a8f785c39b111">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b30b8cb2feb45b019426dfbb1914e7620673b89b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\85cbc4e56b24b262d7032d03da701014511a1bb7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="41f47bbcd281fdb1e42e220220ab3bfa1da591e0">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_02296e1d14428a3eb31e8ae5e4bf666a75af8766\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1806489e9c275c85d048792d1e3b1ed8db71c09d">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d950c7e99851e9ed4810fe640d068c54ba0241c7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\6140f8b3d7a1efecc8eb78c72ae3e228acd418ba\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bfba7cf662f7e3e2cfeb92226c6b84c08e590225">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c47ef0a409c50219e76bb56530ecd1a5410c55c5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\d08b0c0884711c28b1902cf2608f8d76d1cad1cd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c8bf878c09bf0df6ae76eb6c2df38c6a186b38b7">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3d05e4fc1dc7c2bd3c9d3e79787452e73da5e448\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\ada2029508be9c1483ec73ca5caa0cee2ef40063\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="057fb316bed8467398333f30926c2d5506e275b2">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4f3c978b78205bdbbc173490034a4b1754eec4a0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\bd4be86f882388696a603166fef0afb64eb091b5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="377c5f26ebf67f3fa6ef2f663a58cac7ce647dde">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5ac316ce018aef9b19aaa85737135a68ad2330db\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\f694c6dbac1be6edcae8067cd755824c665aaef2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2c73e2a93e00abd240e495c1e62217e53904a3f3">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cbb940b88e66f30a8184c719715dbe5e6cb4426e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\9a78512f86df28446f33f3f7811dc2964d5cf4c2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="576570f46ff6ccc69a984af9e55ddd58d9549270">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_345dc04ee07bbd03bb0a9f3eab8514901026617c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\d0ccbaf0f26c919e28c46a184d19d505025254f7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d8942ee348aaa9341f08f7e2437063893fe27542">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8d88080178bd7e645d3ec821077d85136e3c2bd8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\504e0bc113a60e60dc287ad564b1b572e59348f0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2b12b18c5518021cc71577c83d1290f8ddaa3c98">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3875747394b811f02c1a82764cecb6c3caaa93c2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\959e4f4453c15acc94bb94fe0259b1df587a9329\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dd282bdeaa904c59d77e57dedd7e0a241c9b679d">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0b0f38e67d35c81d527ef0d7bb2fc8239c1b50d5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\84013874a296aa87463b17f5ef63e9188e46c50e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="56d68d1174b9c1e368017a850b62b12429f39757">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2d077dd8b502c3ed2d181e41a4a5e99fc2a0b9c6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\4a3011bd86e4e89dbdc1d4c34f295f371b963e4f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="76ea35b41786082af23db898ca9e0fc07cc71fb9">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d0f1a00ece48af5b26be398de37bc8523c5e59c0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\994fd8a5295a90a188869bbc51ee66d117601f3c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6b3430725095bd46b785e97bd34240826c27b4db">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_81c1be18a44f1a3848930923f5b2629fd0ef1a9a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\0fbb48f0f2e509c28f72406cf37e2c815609531b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a25b0b5aec89681b95d32780ad7904c1e1e4c679">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b3fbb43fa12369f9b9ae3e2b08ae50d3e50f01a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\8542611bf7c804011deea45aeb3e190259209184\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="eea424e61a0c85b93a0e477565314a58136abaea">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c31b88b1cf3fc158016fd4092f936e712b9d679f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\0e790c93b0f5044d2e6f2e530f33367fcf16a32a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="34c23b5894b4f24d566bfc33e0e25462c6436b78">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0d827f56171b178264ad394d86a1cadd5c3c190f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\8fca7b55956f41ae62325f398484cb847605966c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e7f890dd2539b7f2582f450f0721e2dea6ae510c">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_01e15cad048c9e7144c96e0b90aaa7c298d076b2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\612b57b0c4f1d33c6616269aafcffa8c438bf169\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ffd0ddf5e57b4d60c4a3fbcd38fa20349a0cebd1">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7e5c95ee13e45e897ab944b1e05908bd12017709\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\d7888357a6cb709284afa6d0d3b7742376425245\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f2cb88e7e28736d44e7e643deb80c9af1c3662c8">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_596e7bbb2145726083e039171ff3d735df7915d9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\37a31a335d51e737757a3b26d61cc38ae068e8f5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c6706cc7c8c3093560edd55d322218afe7798aa9">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_90533f00f2a0959d76bd4522e503eae3001dcd8c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\d4e2bcf2e54e7c5789195ee9dbe1da100e2fa5a9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a5d52089bf4d31537232bb6bcb70cee817d8a374">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_179e27ec15a5f095eceb3208ae879f2a4f8686b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\eliea\.android\build-cache\d826ab3471d13fe7b06679e3fdf74aad88a084fb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c72b1515efbd8ad652e2d63582c8234a979b1e53">
+        <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8ca775c85c48a440d457da86bb0aec5bd44731ca\classes.dex" />
+>>>>>>> 760a8a28a8a8b61e785e0166302d26c4c9fcd262
     </item>
 
 </items>
