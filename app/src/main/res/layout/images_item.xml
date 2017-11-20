@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backColor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:background="@color/cardview_dark_background"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="10dp">
+
+        <ImageView
+            android:id="@+id/ImageAurore_image"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/authentication" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/publish_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Publié par : "
+                android:textColor="@color/primaryTexte"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/publishby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Personne"
+                android:textColor="@color/colorPrimaryLight" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Le : "
+                android:textColor="@color/primaryTexte"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/date_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/colorPrimaryLight" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vu à : "
+                android:textColor="@color/primaryTexte"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/place_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/colorPrimaryLight" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

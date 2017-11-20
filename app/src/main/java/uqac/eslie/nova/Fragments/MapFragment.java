@@ -1,109 +1,173 @@
 package uqac.eslie.nova.Fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayOutputStream;
+
+import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.ImageAurore;
 import uqac.eslie.nova.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MapFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MapFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MapFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    public interface MapFragmentListenerFloatingButton {
+        void onButtonImageClick();
+    }
+
+    private MapFragmentListenerFloatingButton listener;
+
+
+    private ListView listImage;
+    FloatingActionButton addImage;
 
     public MapFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MapFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MapFragment newInstance(String param1, String param2) {
-        MapFragment fragment = new MapFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View root = inflater.inflate(R.layout.fragment_map, container, false);
+        listImage = root.findViewById(R.id.list_images);
+        addImage = root.findViewById(R.id.floatingActionButton_addImages);
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/ImageAurore");
+
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<ImageAurore>(getActivity(), ImageAurore.class, R.layout.images_item, ref) {
+            @Override
+            protected void populateView(final View v, final ImageAurore model, final int position) {
+                // Get references to the views of message.xml
+                TextView publishBy = v.findViewById(R.id.publishby);
+                publishBy.setText(model.getUser().getDisplayName());
+
+                TextView date = v.findViewById(R.id.date_image);
+                TextView place = v.findViewById(R.id.place_image);
+                date.setText(model.getDate());
+                place.setText(model.getPlace());
+                ImageView imageView =  v.findViewById(R.id.ImageAurore_image);
+                imageView.setMaxWidth(400);
+                imageView.setMaxHeight(200);
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageReference = storage.getReferenceFromUrl("gs://nova-cac19.appspot.com/images").child(model.getUrl());
+
+
+                Glide.with(this.mContext)
+                        .using(new FirebaseImageLoader())
+                        .load(storageReference)
+                        .into(imageView);
+
+
+            }
+
+        };
+
+        listImage.setAdapter(mAdapter);
+        return root;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        addImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onButtonImageClick();
+            }
+        });
+
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof MapFragmentListenerFloatingButton) {
+            listener = (MapFragmentListenerFloatingButton) context;
         } else {
            /* throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");*/
         }
+
+
     }
+
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

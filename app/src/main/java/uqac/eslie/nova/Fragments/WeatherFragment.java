@@ -130,7 +130,9 @@ public class WeatherFragment extends Fragment implements LocationListener {
 
             }
 
-        } else {
+        }
+
+        else {
             gps.showSettingsAlert();
         }
 

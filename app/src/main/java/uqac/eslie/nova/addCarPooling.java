@@ -74,7 +74,7 @@ public class addCarPooling extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.carpoollingmenu, menu);
+        inflater.inflate(R.menu.validationmenu, menu);
         this.menu = menu;
         autocompleteFragmentDepart = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_depart);
         autocompleteFragmentArrivee = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_arrivee);
