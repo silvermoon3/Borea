@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -722,7 +723,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
     private int chooseColorKP(int val){
         switch (val)
         {
-            case 0: return Color.WHITE;
+            case 0: return Color.BLACK;
 
             case 1: case 2: return Color.rgb(0, 255, 0);
 
