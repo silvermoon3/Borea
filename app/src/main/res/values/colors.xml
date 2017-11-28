@@ -8,6 +8,7 @@
     <color name="bottomtab_0">#6ccc3d</color>
     <color name="bottomtab_1">#ea5c46</color>
     <color name="bottomtab_2">#33b3cc</color>
-    <color name="backColor">#36393e</color>
+    <color name="backColor">#202225</color>
+    <color name="grayColor">#36393e</color>
 
 </resources>
