@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
+import com.google.android.gms.maps.GoogleMap;
 import com.orm.SugarContext;
 
 import java.net.MalformedURLException;
@@ -36,6 +37,7 @@ import uqac.eslie.nova.Fragments.CarFragment;
 import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
 import uqac.eslie.nova.Fragments.ChartFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
+
 import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.GPSTracker;
@@ -45,7 +47,8 @@ public class MainActivity extends AppCompatActivity
     implements    HomeFragment.clickAddCarpooling,
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling,
-        CarFragment.CarFragmentListenerFloatingButton
+        CarFragment.CarFragmentListenerFloatingButton,
+        MapFragment.MapFragmentListenerFloatingButton
 
 {
 
@@ -134,6 +137,13 @@ public class MainActivity extends AppCompatActivity
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, 1);
+
+        GPSTracker gps = new GPSTracker(this);
+        if(!gps.isGPSEnabled)
+        {
+            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+
+        }
         SugarContext.terminate();
 
         SugarContext.init(getApplicationContext());
@@ -155,6 +165,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onButtonClick(){
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
+    }
+
+    @Override
+    public void onButtonImageClick(){
+        startActivity(new Intent(MainActivity.this, addImage.class));
     }
 
     @Override

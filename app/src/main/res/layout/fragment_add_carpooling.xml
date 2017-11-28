@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backColor"
-        app:menu="@menu/carpoollingmenu" />
+        app:menu="@menu/validationmenu" />
 
     <ScrollView
         android:layout_width="match_parent"

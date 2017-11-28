@@ -30,8 +30,8 @@ public class GPSTracker extends Service implements LocationListener {
 
     private final Context context;
 
-    boolean isGPSEnabled = false;
-    boolean isNetworkEnabled = false;
+    public boolean isGPSEnabled = false;
+    public boolean isNetworkEnabled = false;
     boolean canGetLocation = false;
 
     Location location;

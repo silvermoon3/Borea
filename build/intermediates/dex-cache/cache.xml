@@ -16,6 +16,10 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
+<<<<<<< HEAD
+        sha1="8a18fea5abd44ca45c4b8ca8067e38d214702aab">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f81db6747a8c55d42f9ad0d0b62d56f24e44bf17\classes.dex" />
+=======
         sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
         <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_38c3e2ccee9a4d399ca1755f3db7123e4a4848e3\classes.dex" />
     </item>
@@ -324,6 +328,7 @@
         revision="26.0.2"
         sha1="c72b1515efbd8ad652e2d63582c8234a979b1e53">
         <dex dex="C:\Users\eliea\OneDrive\Documents\GitHub\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8ca775c85c48a440d457da86bb0aec5bd44731ca\classes.dex" />
+>>>>>>> 760a8a28a8a8b61e785e0166302d26c4c9fcd262
     </item>
 
 </items>
