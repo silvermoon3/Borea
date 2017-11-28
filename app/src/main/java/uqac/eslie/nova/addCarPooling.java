@@ -2,6 +2,7 @@ package uqac.eslie.nova;
 
 import android.app.DatePickerDialog;
 
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -199,16 +200,19 @@ public class addCarPooling extends AppCompatActivity {
 
                     carPooling.setMarque(marque.getText().toString());
                     // insert the new item into the database
+                  try {
+                      FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+                      DatabaseReference mReference = mDatabase.getReference("CarPooling");
+                      String ID = mReference.push().getKey();
+                      mReference.child(ID).setValue(carPooling);
+                      DataBaseHelper.getCurrentUser().addCarPooling(carPooling);
+                      // add item
+                      Toast.makeText(this,"Covoiture ajouté", Toast.LENGTH_SHORT );
+                      finish();
+                  }
+                  catch (Exception e){
 
-
-                    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-                    DatabaseReference mReference = mDatabase.getReference("CarPooling");
-                    String ID = mReference.push().getKey();
-                    mReference.child(ID).setValue(carPooling);
-                    DataBaseHelper.getCurrentUser().addCarPooling(carPooling);
-
-                    // add item
-                finish();
+                  }
                     break;
         }
         return true;

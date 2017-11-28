@@ -10,8 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentContainer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -23,7 +21,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.google.android.gms.maps.GoogleMap;
 import com.orm.SugarContext;
 
 import java.net.MalformedURLException;
@@ -38,7 +35,7 @@ import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
 import uqac.eslie.nova.Fragments.ChartFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
 
-import uqac.eslie.nova.Fragments.MapFragment;
+import uqac.eslie.nova.Fragments.ImageFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.GPSTracker;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
@@ -48,7 +45,8 @@ public class MainActivity extends AppCompatActivity
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling,
         CarFragment.CarFragmentListenerFloatingButton,
-        MapFragment.MapFragmentListenerFloatingButton
+        ImageFragment.MapFragmentListenerFloatingButton,
+        AccountFragment.clickParameters
 
 {
 
@@ -120,7 +118,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         car= new CarFragment();
-        map = new MapFragment();
+        map = new ImageFragment();
         account = new AccountFragment();
         chart = new ChartFragment();
         transaction.replace(R.id.content, new HomeFragment()).commit();
@@ -167,14 +165,21 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
     }
 
+
+    @Override
+    public void onParameterClick(){
+        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+    }
+
+
     @Override
     public void onButtonImageClick(){
         startActivity(new Intent(MainActivity.this, addImage.class));
     }
 
     @Override
-    public void onFindCarPoolingClick() {
-        switchFragment(car);
+    public void onAddPhoto() {
+        startActivity(new Intent(MainActivity.this, addImage.class));
     }
 
     private void calculateHashKey(String yourPackageName) {

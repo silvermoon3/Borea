@@ -79,37 +79,7 @@ public class LoginActivity extends FragmentActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
-
-        LoginButton loginButton = findViewById(R.id.login_button_facebook);
-
         callbackManager = CallbackManager.Factory.create();
-        loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
-
-
-        // Callback registration
-            loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                @Override
-                public void onSuccess(LoginResult loginResult) {
-                    // App code
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
-                }
-
-                @Override
-                public void onCancel() {
-                    // App code
-                    Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
-                }
-
-                @Override
-                public void onError(FacebookException exception) {
-                    // App code
-                    Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
-                }
-            });
-
-
-
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override

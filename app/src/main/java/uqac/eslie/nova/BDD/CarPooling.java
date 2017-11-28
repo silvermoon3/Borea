@@ -72,7 +72,7 @@ public class CarPooling  implements Comparable<CarPooling> {
 
 
        // itemID = UUID.randomUUID();
-       // passagers = new ArrayList<>();
+        passagers = new ArrayList<>();
     }
 
 

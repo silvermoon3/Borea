@@ -36,7 +36,6 @@ public class TabFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -59,11 +58,10 @@ public class TabFragment extends Fragment {
     }
 
     private  void setupViewPager(ViewPager viewPager) throws MalformedURLException {
-
         adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new MyCarPooling(), "Mes covoiturages");
-        adapter.addFragment(new HomeFragment(), "Mes photos");
-        adapter.addFragment(new ChartFragment(), "Autre");
+        adapter.addFragment(new MyImages(), "Mes photos");
+        adapter.addFragment(new ChartFragment(), "Notifications");
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
     }
@@ -74,8 +72,6 @@ public class TabFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
     }
-
-
 
 
 }

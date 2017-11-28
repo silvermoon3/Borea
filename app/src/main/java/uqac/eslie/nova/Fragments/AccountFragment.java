@@ -3,25 +3,18 @@ package uqac.eslie.nova.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -29,34 +22,22 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.concurrent.ExecutionException;
 
-import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.Helper.BitmapHelper;
-import uqac.eslie.nova.Helper.FirebaseHelper;
 import uqac.eslie.nova.Helper.RoundedImageView;
 import uqac.eslie.nova.LoginActivity;
-import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
 
 
 public class AccountFragment extends Fragment {
 
-    public interface clickAccountActivity {
-        void onAccountClick();
+    public interface clickParameters {
+        void onParameterClick();
     }
-    private clickAccountActivity listener;
+    private clickParameters listener;
     RoundedImageView image;
 
     private TextView userName;
@@ -90,6 +71,8 @@ public class AccountFragment extends Fragment {
 
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -121,6 +104,9 @@ public class AccountFragment extends Fragment {
         switch (id) {
             case R.id.sign_out_button_account:
                 signOut();
+                break;
+            case R.id.parameters:
+                listener.onParameterClick();
 
                 break;
         }
@@ -132,19 +118,19 @@ public class AccountFragment extends Fragment {
       photo.setImageBitmap(result);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof CarFragment.CarFragmentListener) {
+            listener = (clickParameters) context;
+        } else {
+           /* throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");*/
+        }
+
 
     }
-
     @Override
     public void onDetach() {
         super.onDetach();

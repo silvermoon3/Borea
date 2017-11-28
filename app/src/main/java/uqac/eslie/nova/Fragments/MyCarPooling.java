@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.R;
 
 
@@ -48,7 +49,7 @@ public class MyCarPooling extends Fragment {
         listCarPooling = root.findViewById(R.id.myCarPooling_listView);
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
 
-        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref) {
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref.child("user").orderByChild("email").startAt(DataBaseHelper.getCurrentUser().getEmail().toString()).endAt(DataBaseHelper.getCurrentUser().getEmail().toString())) {
             @Override
             protected void populateView(final View v, final CarPooling model, final int position) {
                 // Get references to the views of message.xml

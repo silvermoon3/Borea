@@ -14,7 +14,15 @@ public class DataBaseHelper {
     private static CarPooling currentCarPooling;
     private static User currentUser;
     private static KP currentKP;
+    private static int currentWeatherGraph = 2;
 
+    public static int getCurrentWeatherGraph() {
+        return currentWeatherGraph;
+    }
+
+    public static void setCurrentWeatherGraph(int _currentWeatherGraph) {
+        currentWeatherGraph = _currentWeatherGraph;
+    }
 
     public static KP getCurrentKP() {
         return KP.listAll(KP.class).get(0);

@@ -74,10 +74,6 @@ public class WeatherFragment extends Fragment implements LocationListener {
 
     //Chart
     private static final int DEFAULT_DATA = 0;
-    private static final int SUBCOLUMNS_DATA = 1;
-    private static final int STACKED_DATA = 2;
-    private static final int NEGATIVE_SUBCOLUMNS_DATA = 3;
-    private static final int NEGATIVE_STACKED_DATA = 4;
 
     private ColumnChartView chartKp_today;
     private ColumnChartView chartCloud_today;
@@ -96,6 +92,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
     private boolean hasLabels = false;
     private boolean hasLabelForSelected = false;
     private int dataType = DEFAULT_DATA;
+    private TextView vt;
 
     LocationManager locationManager;
     Location location;
@@ -151,59 +148,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
         else if(result.get(0)[0] == "3"){
 
             kpArrayTodayAndTomorrow = result;
-            /*
-            // -------- KP TODAY --------
-            TextView vt = this.getView().findViewById(R.id.today_KP_1922);
-            vt.setText(kpArrayTodayAndTomorrow.get(1)[1]);
 
-            vt = this.getView().findViewById(R.id.today_KP_221);
-            vt.setText(kpArrayTodayAndTomorrow.get(2)[1]);
-
-            vt = this.getView().findViewById(R.id.today_KP_14);
-            vt.setText(kpArrayTodayAndTomorrow.get(3)[1]);
-
-            vt = this.getView().findViewById(R.id.today_KP_47);
-            vt.setText(kpArrayTodayAndTomorrow.get(4)[1]);
-
-            vt = this.getView().findViewById(R.id.today_KP_710);
-            vt.setText(kpArrayTodayAndTomorrow.get(5)[1]);
-
-            vt = this.getView().findViewById(R.id.today_KP_1013);
-            vt.setText(kpArrayTodayAndTomorrow.get(6)[1]);
-
-            vt = this.getView().findViewById(R.id.today_KP_1316);
-            vt.setText(kpArrayTodayAndTomorrow.get(7)[1]);
-
-            vt = this.getView().findViewById(R.id.today_KP_1619);
-            vt.setText(kpArrayTodayAndTomorrow.get(8)[1]);
-
-*/
-            /*
-            // -------- KP TOMORROW --------
-            vt = this.getView().findViewById(R.id.tomorrow_KP_1922);
-            vt.setText(kpArrayTodayAndTomorrow.get(1)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_221);
-            vt.setText(kpArrayTodayAndTomorrow.get(2)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_14);
-            vt.setText(kpArrayTodayAndTomorrow.get(3)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_47);
-            vt.setText(kpArrayTodayAndTomorrow.get(4)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_710);
-            vt.setText(kpArrayTodayAndTomorrow.get(5)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_1013);
-            vt.setText(kpArrayTodayAndTomorrow.get(6)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_1316);
-            vt.setText(kpArrayTodayAndTomorrow.get(7)[2]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_KP_1619);
-            vt.setText(kpArrayTodayAndTomorrow.get(8)[2]);
-            */
         }
 
     }
@@ -253,66 +198,18 @@ public class WeatherFragment extends Fragment implements LocationListener {
     public void processFinish(ArrayList<String[]> result, String diff) {
         if (diff == "kp") {
             //actuellement
-            TextView vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
+            vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
             vt.setText(result.get(0)[0]);
+
+
         }
 
         else if (diff == "weather") {
 
             cloudArrayTodayAndTomorrowAndWeek = result;
-            TextView vt = this.getView().findViewById(R.id.actuellement_couverture_valeur);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(0)[1]);
-            /*
-            // -------- weather --------
-            TextView vt = this.getView().findViewById(R.id.today_weather_1922);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(6)[1]);
-
-            vt = this.getView().findViewById(R.id.today_weather_221);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(7)[1]);
-
-            vt = this.getView().findViewById(R.id.today_weather_14);
+            vt = this.getView().findViewById(R.id.actuellement_couverture_valeur);
             vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(0)[1]);
 
-            vt = this.getView().findViewById(R.id.today_weather_47);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(1)[1]);
-
-            vt = this.getView().findViewById(R.id.today_weather_710);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(2)[1]);
-
-            vt = this.getView().findViewById(R.id.today_weather_1013);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(3)[1]);
-
-            vt = this.getView().findViewById(R.id.today_weather_1316);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(4)[1]);
-
-            vt = this.getView().findViewById(R.id.today_weather_1619);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(5)[1]);
-
-            // -------- weather TOMORROW --------
-            vt = this.getView().findViewById(R.id.tomorrow_weather_1922);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(14)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_221);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(15)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_14);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(8)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_47);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(9)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_710);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(10)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_1013);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(11)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_1316);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(12)[1]);
-
-            vt = this.getView().findViewById(R.id.tomorrow_weather_1619);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(13)[1]);
-            */
             generateData();
         }
     }
@@ -345,14 +242,22 @@ public class WeatherFragment extends Fragment implements LocationListener {
         chartKp_today =  root.findViewById(R.id.chartKP_today);
         chartKp_tomorrow = root.findViewById(R.id.chartKP_tomorrow);
         chartKp_week = root.findViewById(R.id.chartKP_week);
+
         chartCloud_today =  root.findViewById(R.id.chartCloud_today);
         chartCloud_tomorrow =  root.findViewById(R.id.chartCloud_tomorrow);
         chartCloud_week = root.findViewById(R.id.chartCloud_week);
+        if(DataBaseHelper.getCurrentWeatherGraph() == 0 || DataBaseHelper.getCurrentWeatherGraph() ==-1){
 
+            chartKp_week.setVisibility(View.INVISIBLE);
+            chartCloud_week.setVisibility(View.INVISIBLE);
+            if( DataBaseHelper.getCurrentWeatherGraph() ==-1){
+                chartKp_tomorrow.setVisibility(View.INVISIBLE);
+                chartCloud_tomorrow.setVisibility(View.INVISIBLE);
+            }
+        }
        // setDataForKP();
         return root;
     }
-
 
     private void generateData() {
         generateKPDataToday();
@@ -376,11 +281,22 @@ public class WeatherFragment extends Fragment implements LocationListener {
             values = new ArrayList<SubcolumnValue>();
             for (int j = 0; j < numSubcolumns; ++j) {
                 if(i%numColumns == 9)
-                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[1])) ));
+                {
+
+                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[1]))));
+
+                }
                 else if(i%numColumns == 10)
-                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[1]))));
+                {
+
+                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[1]))));
+
+                }
                 else
-                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]))));
+                {
+                   
+                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]))));
+                }
 
 
 
@@ -439,13 +355,22 @@ public class WeatherFragment extends Fragment implements LocationListener {
             values = new ArrayList<SubcolumnValue>();
             for (int j = 0; j < numSubcolumns; ++j) {
                 if(i%numColumns == 9)
-                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2])) ));
+                {
+
+                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2]))));
+
+                }
                 else if(i%numColumns == 10)
-                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]))));
+                {
+
+                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]))));
+                }
                 else
-                    values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[2]))));
+                {
 
 
+                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i) % numColumns)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i) % numColumns)[2]))));
+                }
 
             }
 

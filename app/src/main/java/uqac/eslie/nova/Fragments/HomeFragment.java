@@ -3,6 +3,7 @@ package uqac.eslie.nova.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ public class HomeFragment extends Fragment {
         void onCarPoolingClick();
     }
     public interface clickFindCarpooling {
-        void onFindCarPoolingClick();
+        void onAddPhoto();
     }
 
     private clickAddCarpooling listener;
@@ -29,8 +30,9 @@ public class HomeFragment extends Fragment {
     private TextView welcome;
 
 
-    private Button addCarPooling;
-    private Button fingCarPooling;
+
+    private FloatingActionButton addCarPooling;
+    private FloatingActionButton fingCarPooling;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,7 +53,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         addCarPooling =  root.findViewById(R.id.button_addCarPooling);
-        fingCarPooling = root.findViewById(R.id.button_findCarPooling);
+        fingCarPooling = root.findViewById(R.id.button_addPhoto);
         welcome = root.findViewById(R.id.welcome_name_home);
         return root;
     }
@@ -68,7 +70,7 @@ public class HomeFragment extends Fragment {
         fingCarPooling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listenerFindCarPooling.onFindCarPoolingClick();
+                listenerFindCarPooling.onAddPhoto();
             }
         });
         welcome.setText(DataBaseHelper.getCurrentUser().getDisplayName());

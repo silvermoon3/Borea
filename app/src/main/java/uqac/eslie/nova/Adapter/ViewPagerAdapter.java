@@ -7,18 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import uqac.eslie.nova.Fragments.CarFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
-import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.MyCarPooling;
-import uqac.eslie.nova.Fragments.WeatherFragment;
+import uqac.eslie.nova.Fragments.MyImages;
 
 
 /**
@@ -40,7 +31,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         if (position == 0)
             return new MyCarPooling();
         if (position == 1)
-            return new CarFragment();
+            return new MyImages();
         if (position == 2)
             return new HomeFragment();
 

@@ -1,4 +1,5 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,69 +11,70 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backColor"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/welcome_home"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Bienvenue,"
-            android:textAlignment="center"
-            android:textColor="@color/primaryTexte"
-            android:textSize="30sp" />
+            android:background="@color/backColor"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/welcome_name_home"
+            <TextView
+                android:id="@+id/welcome_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bienvenue,"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTexte"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/welcome_name_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="30sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryLight"
-            android:textSize="30sp"
-            android:textStyle="italic" />
+            android:layout_weight="1">
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/backColor">
+            <fragment
+                android:id="@+id/fragment2"
+                android:name="uqac.eslie.nova.Fragments.ImageFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/button_findCarPooling"
-                android:layout_width="173dp"
-                android:layout_height="165dp"
-                android:layout_gravity="bottom|left"
-                android:text="Trouver covoiturage" />
-
-            <Button
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/button_addCarPooling"
-                android:layout_width="173dp"
-                android:layout_height="165dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="bottom|right"
-                android:text="Proposer covoiturage" />
+                android:layout_weight="1"
+                android:clickable="true"
+                android:src="@drawable/ic_directions_car_black_24px" />
 
-            <Button
-                android:id="@+id/button16"
-                android:layout_width="173dp"
-                android:layout_height="165dp"
-                android:layout_column="0"
-                android:layout_gravity="bottom|left"
-                android:layout_row="1"
-                android:text="J'ai vu une aurore" />
-
-            <Button
-                android:id="@+id/button15"
-                android:layout_width="173dp"
-                android:layout_height="165dp"
-                android:layout_column="1"
-                android:layout_gravity="right"
-                android:layout_row="1"
-                android:text="Quelle chance de voir une aurore ? " />
-
-        </GridLayout>
-
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/button_addPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="bottom|right"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:src="@drawable/ic_add_a_photo_black_24dp" />
+        </RelativeLayout>
     </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>

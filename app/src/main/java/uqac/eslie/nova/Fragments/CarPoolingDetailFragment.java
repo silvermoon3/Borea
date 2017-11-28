@@ -34,8 +34,6 @@ import uqac.eslie.nova.R;
 
 public class CarPoolingDetailFragment extends Fragment {
 
-
-
     private TextView date;
     private TextView depart;
     private TextView arrivee;
@@ -47,10 +45,6 @@ public class CarPoolingDetailFragment extends Fragment {
     private TextView chauffeur;
     private ImageView photo_chauffeur;
     private Button choisir;
-
-
-
-
 
     public CarPoolingDetailFragment() {
         // Required empty public constructor
@@ -78,12 +72,6 @@ public class CarPoolingDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.car_pooling_detail, container, false);
-
-
-
-
-
-
         date =  root.findViewById(R.id.date_carPooling_detail);
         depart =  root.findViewById(R.id.depart_carPooling_detail);
         arrivee =  root.findViewById(R.id.arrivee_carPooling_detail);
@@ -138,9 +126,6 @@ public class CarPoolingDetailFragment extends Fragment {
 
 
     private void reservation(){
-
-
-
             //Enlever une place
             DataBaseHelper.getCurrentCarPooling().addPassager(DataBaseHelper.getCurrentUser());
 
@@ -157,11 +142,8 @@ public class CarPoolingDetailFragment extends Fragment {
                     (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
             // Builds the notification and issues it.
             mNotifyMgr.notify(mNotificationId, mBuilder.build());
-
-
             //Ajouter aux covoiturages de l'utilisateur
             DataBaseHelper.getCurrentUser().addCarPooling(DataBaseHelper.getCurrentCarPooling());
-
             DataBaseHelper.getCurrentCarPooling().setPlaceLeft(1);
 
     }

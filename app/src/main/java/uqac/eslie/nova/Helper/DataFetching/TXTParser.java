@@ -77,7 +77,14 @@ public class TXTParser {
                     //{
                     //  prochaine ligne
                     //else
-                    result.add(inputLine.split("\\s{2,}")); // = plus de 2 espaces
+                    String[] myLine = inputLine.split("\\s{2,}");
+                    for (int i = 1; i < myLine.length; i++){
+                        if(myLine[i].length() > 1){
+                            myLine[i] = myLine[i].substring(0,1);
+                        }
+                    }
+
+                    result.add(myLine); // = plus de 2 espaces
                     //System.out.println(inputLine);
                     //}
                 }
