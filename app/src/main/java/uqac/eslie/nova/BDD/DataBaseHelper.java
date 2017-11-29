@@ -3,6 +3,7 @@ package uqac.eslie.nova.BDD;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,15 @@ public class DataBaseHelper {
     private static User currentUser;
     private static KP currentKP;
     private static int currentWeatherGraph = 2;
+    private static List<Marker> markers = new ArrayList<Marker>();
+
+    public static  List<Marker> getMarkers() {
+        return markers;
+    }
+
+    public static void setMarkers(List<Marker> markers) {
+        markers = markers;
+    }
 
     public static int getCurrentWeatherGraph() {
         return currentWeatherGraph;

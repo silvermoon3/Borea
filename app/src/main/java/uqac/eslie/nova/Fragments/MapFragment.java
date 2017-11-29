@@ -1,20 +1,48 @@
 package uqac.eslie.nova.Fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import uqac.eslie.nova.BDD.CarPooling;
+import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.Marker;
+import uqac.eslie.nova.Dialog.MarkerDialog;
+import uqac.eslie.nova.Helper.GPSTracker;
+import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
 
 
@@ -23,7 +51,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
     private MapView mMapView;
     private GoogleMap mGoogleMap;
-    private OnFragmentInteractionListener mListener;
+    private FloatingActionButton addMarker;
+
 
     public MapFragment() {
         // Required empty public constructor
@@ -49,28 +78,89 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_map, container, false);
 
+        addMarker = root.findViewById(R.id.addMarker);
+        try {
+            MapsInitializer.initialize(getActivity());
+        } catch (Exception e) {
+            Log.e("Address Map", "Could not initialize google play", e);
+        }
+
+        switch (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity()) )
+        {
+            case ConnectionResult.SUCCESS:
+                mMapView =  root.findViewById(R.id.mapView);
+                mMapView.onCreate(savedInstanceState);
+                // Gets to GoogleMap from the MapView and does initialization stuff
+                if(mMapView!=null)
+                {
+                    mMapView.getMapAsync(this);
+                    if(mGoogleMap != null) {
+                        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
+                        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                            mGoogleMap.setMyLocationEnabled(true);
+                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(43.1, -87.9), 10);
+                        mGoogleMap.animateCamera(cameraUpdate);
+                    }
+                }
+                break;
+            case ConnectionResult.SERVICE_MISSING:
+                Toast.makeText(getActivity(), "SERVICE MISSING", Toast.LENGTH_SHORT).show();
+                break;
+            case ConnectionResult.SERVICE_VERSION_UPDATE_REQUIRED:
+                Toast.makeText(getActivity(), "UPDATE REQUIRED", Toast.LENGTH_SHORT).show();
+                break;
+            default: Toast.makeText(getActivity(), GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity()), Toast.LENGTH_SHORT).show();
+        }
         ///com.google.android.gms.maps.MapFragment mapFragment = (com.google.android.gms.maps.MapFragment) getFragmentManager().findFragmentById(R.id.mapView);
        // mapFragment.getMapAsync(this);
         return root;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //list item click
+
+
+        addMarker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.DialogFragment markerDialog = new MarkerDialog();
+                markerDialog.show(getActivity().getFragmentManager(), "");
+
+            }
+        });
+
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker"));
+    public void onMapReady(final GoogleMap map) {
+        mGoogleMap = map;
+            for(Marker m: DataBaseHelper.getMarkers()){
+                map.addMarker(new MarkerOptions()
+                        .position(new LatLng(m.getLatitude(), m.getLongitude()))
+                        .title(m.getName()));
+            }
+
+
     }
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState); mMapView.onSaveInstanceState(outState);
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import uqac.eslie.nova.Fragments.HomeFragment;
 import uqac.eslie.nova.Fragments.MyCarPooling;
 import uqac.eslie.nova.Fragments.MyImages;
+import uqac.eslie.nova.Fragments.Notification;
 
 
 /**
@@ -21,6 +22,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
+    private Fragment myCarPooling = new MyCarPooling();
+    private Fragment myImages = new MyImages();
+    private Fragment notification = new Notification();
 
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
@@ -29,12 +33,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-            return new MyCarPooling();
+            return myCarPooling;
         if (position == 1)
-            return new MyImages();
+            return myImages;
         if (position == 2)
-            return new HomeFragment();
-
+            return notification;
+           
 
         return null;
         //return mFragmentList.get(position);

@@ -92,10 +92,9 @@ public class WeatherFragment extends Fragment implements LocationListener {
     private boolean hasAxesNames = true;
     private boolean hasLabels = false;
     private boolean hasLabelForSelected = false;
-    private int dataType = DEFAULT_DATA;
     private TextView vt;
 
-    LocationManager locationManager;
+
     Location location;
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -716,12 +715,5 @@ public class WeatherFragment extends Fragment implements LocationListener {
     public void onStatusChanged(String provider, int status, Bundle extras) {
         Log.d("Latitude","status");
     }
-
-
-
-
-
-
-
 
 }

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
@@ -12,4 +12,15 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_place_black_24px"
+        app:backgroundTint="@color/colorPrimaryLight" />
+</RelativeLayout>

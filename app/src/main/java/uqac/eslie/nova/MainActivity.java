@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -21,14 +22,23 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.orm.SugarContext;
 
 import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.Marker;
+import uqac.eslie.nova.Dialog.MarkerDialog;
 import uqac.eslie.nova.Fragments.AccountFragment;
 import uqac.eslie.nova.Fragments.CarFragment;
 import uqac.eslie.nova.Fragments.CarPoolingDetailFragment;
@@ -46,7 +56,8 @@ public class MainActivity extends AppCompatActivity
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling,
         CarFragment.CarFragmentListenerFloatingButton,
-        AccountFragment.clickParameters
+        AccountFragment.clickParameters,
+        MarkerDialog.MarkerListener
 
 {
 
@@ -57,6 +68,7 @@ public class MainActivity extends AppCompatActivity
     Fragment map;
     Fragment account;
     Fragment chart;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -124,7 +136,21 @@ public class MainActivity extends AppCompatActivity
         transaction.replace(R.id.content, new HomeFragment()).commit();
         transaction.disallowAddToBackStack();
         Helper_NavigationBottomBar helper = new Helper_NavigationBottomBar();
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/Marker");
 
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                DataBaseHelper.getMarkers().clear();
+                Marker m = dataSnapshot.getValue(Marker.class);
+                DataBaseHelper.getMarkers().add(m);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         helper.disableShiftMode(navigation);
         calculateHashKey("uqac.eslie.nova");
@@ -158,6 +184,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCarPoolingClick() {
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
+    }
+    @Override
+    public void addMarker(Marker marker){
+        //Add marker to firebase
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+
+        DatabaseReference mReference = mDatabase.getReference("Marker");
+        String ID = mReference.push().getKey();
+        mReference.child(ID).setValue(marker);
     }
 
     @Override

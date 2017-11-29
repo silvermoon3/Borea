@@ -2,6 +2,7 @@ package uqac.eslie.nova.Fragments;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,14 +12,17 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -48,6 +52,7 @@ import java.io.ByteArrayOutputStream;
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.BDD.ImageAurore;
+import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
 
 
@@ -56,6 +61,7 @@ public class MyImages extends Fragment {
 
 
     private ListView listImage;
+
 
 
     public MyImages() {
@@ -74,7 +80,7 @@ public class MyImages extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_my_images, container, false);
+        final View root = inflater.inflate(R.layout.fragment_my_images, container, false);
         listImage = root.findViewById(R.id.list_myimages);
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/ImageAurore_"+ DataBaseHelper.getCurrentUser().getUID());
 
@@ -100,6 +106,46 @@ public class MyImages extends Fragment {
         };
 
         listImage.setAdapter(mAdapter);
+        listImage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(final AdapterView<?> adapterView, View view, final int position, long l) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Voulez-vous supprimer cette photo ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                DatabaseReference itemRef = mAdapter.getRef(position);
+                                itemRef.removeValue();
+                                /*final DatabaseReference ref2 = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/ImageAurore");
+
+                                final FirebaseListAdapter mAdapter2 = new FirebaseListAdapter<ImageAurore>(getActivity(), ImageAurore.class, R.layout.my_images_item, ref2) {
+                                    @Override
+                                    protected void populateView(final View v, final ImageAurore model, final int position) {
+
+                                    }
+
+                                };
+                                DatabaseReference itemRef2 = mAdapter2.getRef(position);
+                                itemRef2.removeValue();*/
+
+                            }
+                        })
+                        .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+
+                    }
+                });
+
+
+
+
         return root;
     }
 
