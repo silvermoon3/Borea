@@ -6,7 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
-import android.preference.ListPreference;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -22,11 +22,10 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 import com.orm.SugarContext;
 
 import java.net.MalformedURLException;
@@ -114,6 +113,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,21 +136,7 @@ public class MainActivity extends AppCompatActivity
         transaction.replace(R.id.content, new HomeFragment()).commit();
         transaction.disallowAddToBackStack();
         Helper_NavigationBottomBar helper = new Helper_NavigationBottomBar();
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/Marker");
 
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                DataBaseHelper.getMarkers().clear();
-                Marker m = dataSnapshot.getValue(Marker.class);
-                DataBaseHelper.getMarkers().add(m);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         helper.disableShiftMode(navigation);
         calculateHashKey("uqac.eslie.nova");
@@ -189,7 +175,6 @@ public class MainActivity extends AppCompatActivity
     public void addMarker(Marker marker){
         //Add marker to firebase
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-
         DatabaseReference mReference = mDatabase.getReference("Marker");
         String ID = mReference.push().getKey();
         mReference.child(ID).setValue(marker);

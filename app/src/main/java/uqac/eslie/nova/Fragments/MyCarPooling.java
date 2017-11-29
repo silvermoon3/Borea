@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.Marker;
 import uqac.eslie.nova.R;
 
 
@@ -67,11 +68,10 @@ public class MyCarPooling extends Fragment {
                 place.setText(Integer.toString(model.getPlaceTotal()));
                 TextView date = v.findViewById(R.id.itemCarPooling_date);
                 date.setText(model.getDateText());
-
-
             }
 
         };
+
         listCarPooling.setAdapter(mAdapter);
         listCarPooling.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,8 +82,10 @@ public class MyCarPooling extends Fragment {
                         .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 DatabaseReference itemRef = mAdapter.getRef(position);
+
                                 itemRef.removeValue();
-                                Toast.makeText(getActivity(),"Photo supprimée ! ", Toast.LENGTH_LONG );
+                                final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling_"+ DataBaseHelper.getCurrentUser().getUID());
+                                Toast.makeText(getActivity(),"Cocoiturage supprimé ! ", Toast.LENGTH_LONG );
 
                             }
                         })

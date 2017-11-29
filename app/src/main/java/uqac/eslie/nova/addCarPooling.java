@@ -39,7 +39,7 @@ import java.util.Date;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
-import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
+
 import uqac.eslie.nova.Helper.Timestamp;
 
 
@@ -65,11 +65,6 @@ public class addCarPooling extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_carpooling);
-        //FragmentManager fragmentManager = getSupportFragmentManager();
-       //FragmentTransaction transaction = fragmentManager.beginTransaction();
-        //transaction.replace(R.id.content, new AddCarpoolingFragment()).commit();
-
-
 
 
     }
@@ -189,6 +184,10 @@ public class addCarPooling extends AppCompatActivity {
             case R.id.menu_item_valid:
                 Toast.makeText(this, "yes", Toast.LENGTH_LONG);
                     //On ajoute le covoiturage
+                     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+
+                    DatabaseReference mReference = mDatabase.getReference("CarPooling");
+                    String ID = mReference.push().getKey();
                     CarPooling carPooling = new CarPooling();
                     carPooling.setDate(date);
                     carPooling.setDateText(dateText.getText().toString());
@@ -207,12 +206,10 @@ public class addCarPooling extends AppCompatActivity {
                     }
 
                     carPooling.setMarque(marque.getText().toString());
+                    carPooling.setIDFirebase(ID);
                     // insert the new item into the database
                   try {
-                      FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
 
-                      DatabaseReference mReference = mDatabase.getReference("CarPooling");
-                      String ID = mReference.push().getKey();
                       mReference.child(ID).setValue(carPooling);
                       String ref = "CarPooling_"+ DataBaseHelper.getCurrentUser().getUID();
                       DatabaseReference mReference2 = mDatabase.getReference(ref);

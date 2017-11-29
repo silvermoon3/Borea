@@ -2,6 +2,9 @@ package uqac.eslie.nova.Dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.model.LatLng;
 
 import uqac.eslie.nova.BDD.Marker;
+import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
 
 /**
@@ -34,7 +38,15 @@ public class MarkerDialog extends android.app.DialogFragment {
     public interface MarkerListener {
         void addMarker(Marker marker);
     }
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        FragmentManager fm = ((MainActivity)(getActivity())).getSupportFragmentManager();
+        Fragment fragment = (fm.findFragmentById(R.id.place_autocomplete));
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.remove(fragment);
+        ft.commit();
+    }
     private DialogInterface.OnDismissListener onDismissListener;
 
     public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {

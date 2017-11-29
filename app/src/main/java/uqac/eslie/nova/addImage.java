@@ -1,6 +1,8 @@
 package uqac.eslie.nova;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,8 +19,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
@@ -41,6 +46,7 @@ import java.util.Date;
 
 import uqac.eslie.nova.BDD.DataBaseHelper;
 import uqac.eslie.nova.BDD.ImageAurore;
+import uqac.eslie.nova.BDD.Marker;
 
 public class addImage extends AppCompatActivity {
     private Button add_image;
@@ -49,7 +55,11 @@ public class addImage extends AppCompatActivity {
     private Uri filePath;
     PlaceAutocompleteFragment place;
     String place_image;
-    String date;
+    double latitude;
+    double longitude;
+    private TextView date;
+    private String stringDate;
+    private TextView hourSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +80,8 @@ public class addImage extends AppCompatActivity {
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 place_image = place.getName().toString();
-
+                latitude = place.getLatLng().latitude;
+                longitude = place.getLatLng().longitude;
             }
 
             @Override
@@ -83,14 +94,31 @@ public class addImage extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.validationmenu, menu);
         this.menu = menu;
+        date = findViewById(R.id.date_image_select);
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog(view);
 
 
+            }
+        });
+        hourSelected =  findViewById(R.id.hour_image_select);
+        hourSelected.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showTimePickerDialogHour(view);
+
+            }
+        });
 
         return true;
     }
@@ -136,13 +164,51 @@ public class addImage extends AppCompatActivity {
                 ImageView imageView =  findViewById(R.id.imageView2);
                 imageView.setImageBitmap(toretBitmap);
 
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
 
     }
+    public void showDatePickerDialog(View v) {
+        final Calendar currentDate = Calendar.getInstance();
+        int year = currentDate.get(Calendar.YEAR);
+        int month = currentDate.get(Calendar.MONTH);
+        int day = currentDate.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog newFragment = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+                date.setText(day +"/" +month+"/"+year);
+                stringDate = day +"/" +month+"/"+year;
+            }
+        }, year, month, day);
+        newFragment.show();
 
+    }
+    public void showTimePickerDialogHour(View v) {
+        Calendar currentTime = Calendar.getInstance();
+        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = currentTime.get(Calendar.MINUTE);
+        TimePickerDialog newFragment = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute ) {
+                hourSelected.setText(hour +":" +minute);
+            }
+        }, hour, minute, true);
+
+        newFragment.show();
+
+    }
+    public void addMarker(Marker marker){
+        //Add marker to firebase
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mReference = mDatabase.getReference("Marker");
+        String ID = mReference.push().getKey();
+        mReference.child(ID).setValue(marker);
+    }
     public Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
         int width = bm.getWidth();
         int height = bm.getHeight();
@@ -170,6 +236,12 @@ public class addImage extends AppCompatActivity {
 
             FirebaseStorage mDatabase = FirebaseStorage.getInstance();
             String fileName = "pic" + filePath.toString().split("%")[1] +".jpg";
+            Marker marker = new Marker();
+            marker.setLongitude(longitude);
+            marker.setLatitude(latitude);
+            marker.setName(place_image + ", le "+ stringDate + ", à " + hourSelected.getText().toString());
+
+            addMarker(marker);
             SaveDataFile(fileName);
             StorageReference riversRef = mDatabase.getReference("images/"+fileName);
             riversRef.putFile(filePath)
@@ -225,8 +297,10 @@ public class addImage extends AppCompatActivity {
         ImageAurore imageAurore = new ImageAurore();
         imageAurore.setUrl(fileName);
         imageAurore.setUser(DataBaseHelper.getCurrentUser());
-        imageAurore.setDate(day +"/"+ month+"/"+year);
+        imageAurore.setDate(stringDate);
         imageAurore.setPlace(place_image);
+        imageAurore.setHour(hourSelected.getText().toString());
+
 
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();

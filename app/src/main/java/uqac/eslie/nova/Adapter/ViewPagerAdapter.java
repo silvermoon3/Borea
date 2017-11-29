@@ -38,7 +38,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             return myImages;
         if (position == 2)
             return notification;
-           
+
 
         return null;
         //return mFragmentList.get(position);

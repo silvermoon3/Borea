@@ -160,7 +160,7 @@
                     android:layout_width="12dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:drawableLeft="@drawable/ic_directions_car_black_24px"
+                    android:drawableLeft="@drawable/ic_directions_car_white_24dp"
                     android:textColor="@color/primaryTexte"
                     android:textSize="18sp" />
 
@@ -197,7 +197,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
             android:orientation="horizontal">
 
             <Button

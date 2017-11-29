@@ -1,24 +1,29 @@
 package uqac.eslie.nova.Fragments;
 
 import android.Manifest;
-import android.content.Context;
+
+
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.InflateException;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,6 +57,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     private MapView mMapView;
     private GoogleMap mGoogleMap;
     private FloatingActionButton addMarker;
+    private List<Marker> markers = new ArrayList<>();
+    private PlaceAutocompleteFragment place;
 
 
     public MapFragment() {
@@ -70,6 +77,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+
     }
 
     @Override
@@ -78,7 +88,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_map, container, false);
 
-        addMarker = root.findViewById(R.id.addMarker);
+
         try {
             MapsInitializer.initialize(getActivity());
         } catch (Exception e) {
@@ -121,27 +131,45 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
         super.onViewCreated(view, savedInstanceState);
 
         //list item click
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/Marker");
 
-
-        addMarker.setOnClickListener(new View.OnClickListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                android.app.DialogFragment markerDialog = new MarkerDialog();
-                markerDialog.show(getActivity().getFragmentManager(), "");
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Marker m =  postSnapshot.getValue(Marker.class);
+                    markers.add(m);
+                    mGoogleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(m.getLatitude(), m.getLongitude()))
+                            .title(m.getName()));
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+
 
     }
 
     @Override
     public void onMapReady(final GoogleMap map) {
         mGoogleMap = map;
-            for(Marker m: DataBaseHelper.getMarkers()){
-                map.addMarker(new MarkerOptions()
+            for(Marker m: markers){
+                mGoogleMap.addMarker(new MarkerOptions()
                         .position(new LatLng(m.getLatitude(), m.getLongitude()))
                         .title(m.getName()));
             }
+
+
+    }
+    private void OpeningDialog(){
 
 
     }

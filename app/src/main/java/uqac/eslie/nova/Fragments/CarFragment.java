@@ -73,8 +73,10 @@ public class CarFragment extends Fragment {
                 depart.setText(model.getDepart());
                 arrivee.setText(model.getDestination());
                 prix.setText(Double.toString(model.getPrice()));
-                place.setText(Integer.toString(model.getPlaceTotal()));
+                place.setText(Integer.toString(model.getPlaceLeft()));
+
                 date.setText(model.getDateText());
+
             }
 
         };
