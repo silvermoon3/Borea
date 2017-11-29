@@ -76,15 +76,12 @@ public class MyImages extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_my_images, container, false);
         listImage = root.findViewById(R.id.list_myimages);
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/ImageAurore");
-        Query query = ref.child("user").orderByChild("email");
-        String s = ref.child("user").child("email").toString();
-        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<ImageAurore>(getActivity(), ImageAurore.class, R.layout.images_item, query) {
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/ImageAurore_"+ DataBaseHelper.getCurrentUser().getUID());
+
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<ImageAurore>(getActivity(), ImageAurore.class, R.layout.my_images_item, ref) {
             @Override
             protected void populateView(final View v, final ImageAurore model, final int position) {
                 // Get references to the views of message.xml
-                TextView publishBy = v.findViewById(R.id.publishby);
-                publishBy.setText(model.getUser().getDisplayName());
                 TextView date = v.findViewById(R.id.date_image);
                 TextView place = v.findViewById(R.id.place_image);
                 date.setText(model.getDate());

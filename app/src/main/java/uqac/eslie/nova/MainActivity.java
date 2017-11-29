@@ -36,6 +36,7 @@ import uqac.eslie.nova.Fragments.ChartFragment;
 import uqac.eslie.nova.Fragments.HomeFragment;
 
 import uqac.eslie.nova.Fragments.ImageFragment;
+import uqac.eslie.nova.Fragments.MapFragment;
 import uqac.eslie.nova.Fragments.WeatherFragment;
 import uqac.eslie.nova.Helper.GPSTracker;
 import uqac.eslie.nova.Helper.Helper_NavigationBottomBar;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling,
         CarFragment.CarFragmentListenerFloatingButton,
-        ImageFragment.MapFragmentListenerFloatingButton,
         AccountFragment.clickParameters
 
 {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         car= new CarFragment();
-        map = new ImageFragment();
+        map = new MapFragment();
         account = new AccountFragment();
         chart = new ChartFragment();
         transaction.replace(R.id.content, new HomeFragment()).commit();
@@ -172,10 +172,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public void onButtonImageClick(){
-        startActivity(new Intent(MainActivity.this, addImage.class));
-    }
+
 
     @Override
     public void onAddPhoto() {

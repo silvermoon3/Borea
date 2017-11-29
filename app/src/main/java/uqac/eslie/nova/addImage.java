@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -61,6 +63,8 @@ public class addImage extends AppCompatActivity {
             }
         });
         place = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);
+        ((EditText)place.getView().findViewById(R.id.place_autocomplete_search_input)).setTextColor(Color.WHITE);
+
         place.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -202,6 +206,7 @@ public class addImage extends AppCompatActivity {
                             progressDialog.setMessage("Effectué " + ((int) progress) + "%...");
                         }
                     });
+
         }
         //if there is not any file
         else {
@@ -228,6 +233,11 @@ public class addImage extends AppCompatActivity {
         DatabaseReference mReference = mDatabase.getReference("ImageAurore");
         String ID = mReference.push().getKey();
         mReference.child(ID).setValue(imageAurore);
+
+        DatabaseReference mReference2 = mDatabase.getReference("ImageAurore_"+ DataBaseHelper.getCurrentUser().getUID());
+        String ID2 = mReference2.push().getKey();
+        mReference2.child(ID2).setValue(imageAurore);
+
 
     }
 }

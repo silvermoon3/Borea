@@ -43,7 +43,6 @@ public class CarPoolingDetailFragment extends Fragment {
     private TextView heureRetour;
     private TextView marque;
     private TextView chauffeur;
-    private ImageView photo_chauffeur;
     private Button choisir;
 
     public CarPoolingDetailFragment() {
@@ -116,6 +115,7 @@ public class CarPoolingDetailFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int id) {
                                 Toast.makeText(getActivity(),"Covoiturage réservé ! ", Toast.LENGTH_LONG );
                                 dialog.cancel();
+
                             }
                         });
                 AlertDialog alert = builder.create();

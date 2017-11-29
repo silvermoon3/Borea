@@ -47,9 +47,9 @@ public class MyCarPooling extends Fragment {
         View root = inflater.inflate(R.layout.fragment_my_car_pooling, container, false);
 
         listCarPooling = root.findViewById(R.id.myCarPooling_listView);
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling_"+ DataBaseHelper.getCurrentUser().getUID());
 
-        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref.child("user").orderByChild("email").startAt(DataBaseHelper.getCurrentUser().getEmail().toString()).endAt(DataBaseHelper.getCurrentUser().getEmail().toString())) {
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref) {
             @Override
             protected void populateView(final View v, final CarPooling model, final int position) {
                 // Get references to the views of message.xml
@@ -57,12 +57,12 @@ public class MyCarPooling extends Fragment {
                 TextView arrivee = v.findViewById(R.id.itemCarPooling_arrivee);
                 TextView prix = v.findViewById(R.id.itemCarPooling_prix);
                 TextView place = v.findViewById(R.id.itemCarPooling_places);
-                TextView date = v.findViewById(R.id.itemCarPooling_date);
                 depart.setText(model.getDepart());
                 arrivee.setText(model.getDestination());
                 prix.setText(Double.toString(model.getPrice()));
                 place.setText(Integer.toString(model.getPlaceTotal()));
-                date.setText(model.getDate().toString());
+                TextView date = v.findViewById(R.id.itemCarPooling_date);
+                date.setText(model.getDateText());
 
 
             }

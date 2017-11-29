@@ -199,8 +199,10 @@ public class WeatherFragment extends Fragment implements LocationListener {
     public void processFinish(ArrayList<String[]> result, String diff) {
         if (diff == "kp") {
             //actuellement
-            vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
-            vt.setText(result.get(0)[0]);
+            if(this.getView() != null) {
+                vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
+                vt.setText(result.get(0)[0]);
+            }
 
 
         }
@@ -208,8 +210,10 @@ public class WeatherFragment extends Fragment implements LocationListener {
         else if (diff == "weather") {
 
             cloudArrayTodayAndTomorrowAndWeek = result;
-            vt = this.getView().findViewById(R.id.actuellement_couverture_valeur);
-            vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(0)[1]);
+            if(this.getView() != null) {
+                vt = this.getView().findViewById(R.id.actuellement_couverture_valeur);
+                vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(0)[1]);
+            }
 
             generateData();
         }

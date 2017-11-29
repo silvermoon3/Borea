@@ -21,6 +21,7 @@ public  class User {
     private List<CarPooling> carPoolings;
     private String givenName;
 
+
     public String getGivenName() {
         return givenName;
     }
@@ -65,6 +66,14 @@ public  class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 
     public User(FirebaseUser user){

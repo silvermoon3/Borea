@@ -3,6 +3,339 @@
 
     <item
         is-multidex="true"
+        jar="C:\Android\.android\build-cache\e3df4b0a0ab35fef4b3220056eeff8fea4fb7f9c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="56e96fa067ba358a6c60184e40947810dcd78f30">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_13deedcb67c916d6117b84f25f97efd881f09c12\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\b77f725853d6d27017a35e01efe87c7bd3226b69\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="43e9789bd3240271265ab30ce1be9f224843f5a8">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ed1776790f6436a8210fc103f75130e4c55c6d17\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\6b47cdce885b820592545e2db6a91a91d506f078\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e3293e2613710ccdde635ec53975a3679406b4c8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\7b23d83056a455cf27b9d75b7ad7b73ec2c76a72\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c390af22079a61fdc42712c19f15a700f1fc2cbf">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4d0cf5bb825c8806ede4eb5297b977c648629fb7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\61e698a860a1b5548ecb660c486cef8eb38248ff\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="56d68d1174b9c1e368017a850b62b12429f39757">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_564ae4aa28706b16205f377fd99c600a74679440\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\719befc29ea9fc0d7bcd2a30f11c121e19408d4f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a25b0b5aec89681b95d32780ad7904c1e1e4c679">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ee856f53f849c502b394995bc9ff1d6eb1360502\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\0efc9b88494a03d5dd67fbb7fb4101abfaedead3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="377c5f26ebf67f3fa6ef2f663a58cac7ce647dde">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_98f91e6f422f3fffa80cb4258854b4dcc16894ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c07c93cb2c48f3226bc7bc79efcb79b5ae9ff360">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f81db6747a8c55d42f9ad0d0b62d56f24e44bf17\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\1265a24485d7bbb774735f5940e7bbaf3afe9579\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="906fdd57c143ec9adc27a76a697fed1c0cfd6348">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_11126bf3972d500ab6825c4355927a928b0ce68e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\61d7475d5034d8bcf6fb44888d965257c95c7926\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="af13a350b71b437ebf4be335d02a8f785c39b111">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ad75d262a35478ffcfd50e14bdfc8f7cf6c96864\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\9946b4d635abb70a789c8f89cc3df30f63744689\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6b3430725095bd46b785e97bd34240826c27b4db">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f513f30d03936c8b295cc05430bc961b0f57eaa5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\d1377c76de359bd614153167a59241d1a0c9ddf4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="38cbea06a82d3b0db4214dc3cc0fdd7940c8abe7">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e8ddd9b4d3372c73dc20f249a4f5ffd867ac02ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\00b7be495f27b282bccd2bd2cbc8f38827fdb4b3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dff4d8f88fe2c0e57306e6981fd9b90caeead7e3">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3cf33519a3b85a7abc5db3ad5394818aa17cda8e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\170e2d95ed236a787dcbbc1fbc0f6c7631ed9eac\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f47f4d5bdfd7d7bf330945b8a7ccce4ab437a710">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b5415260d190520ebf32dea11df8f075ffbcc14b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\268d636624547bc1b99d83af2b2311029885f10e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c8bf878c09bf0df6ae76eb6c2df38c6a186b38b7">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2bb53d2177165db521fbe304e4f188a647ba5a43\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\66d5dcf2cb500607234f78ea482541c171457631\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f5ff5e3811e8c9485fd27f9052ae4d4d23a22d9d">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0bf1ec60b23e0cfaabd6cc808797c90ac87172f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\9a56bf26165295a5fe422229965f068108591e8b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dde3d710f2cd43e8c0d117844ad8e6f1f17c042f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\58295e3d20d38c94bb998c9428457c3d65ecdff8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c6aa915c08cfd82780c10d4b957018bf819a48e2">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8dfda30ab03aff0165c9130f8e7596fc39d05da9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\bolts-tasks-1.4.0_b627fa6438aa3b4cdd19e6e74578f92c82c363c9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\1019773a3f98e420756eb791be69ff60089e8475\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c1b91bc7e480ab100d0397b16c93732e26fd10eb">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_325f2c82818c91dca8ba4cacb4d6d477adeed949\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\48f6ab4164ff441c74a3bc72b1c296a6307f7b40\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e72a518413b68aa111650f252ed49028d2f3c75f">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_809f50ae1549fe89d6ee07d312b540ae3a19c5dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\ae6774e087c21cec00616e19cc66ec34a66b3337\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e1625e48a836779b5fa141d22e5d05563aaccc9a">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_248e3b3b9c04f8ffa854d1a04121f31362de22ac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\f1428d1af8f0d43d771b4fe5c447c6bc1d886837\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3ac08c35419ab7cf9146969de471768dbe502f0f">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_65d18f2d57a7f31c482739d31147867f722047ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\50b28279bf8eafc28d2c98fcdf0ed0354e18943e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d8942ee348aaa9341f08f7e2437063893fe27542">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d3ee61ef0c6cef36b1230f538cea40dddc3f721e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\449fab3a6e45cb62f2d6aa6a9b8e88be7f6c8f26\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fcae52a60bc07924d370b4d376116cd8f8581f54">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_db766cc311e189c7fc54a76f96f7678e505aab3e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\995e76daf9ac9ae19c6b37ff25f5fa9c2e148216\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="681eeeaec5300e5257ad9bf889c3859ba3833d5a">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9de31d058ce41ea1cdab40abe2f9ef66c5c86bb6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\27293ea548dfd166bae22b8051c5e35a44602392\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0bffdc0bd4f7ca0e27c5bfeef39569f8da00aa26">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d8b9b05bfbebd70584882cbd825c555abaa2324e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\711d8cde00a5b6bbef488c113e3ffb634c7c3d7e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7c24e2e9773fb498e390ce973db382c3ddcf748e">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1448cf0fb3624a92fae583ab35faad436ddecfed\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\709a867a1962b6ea64d3372ad7794ab5fa9a0bcd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ffd0ddf5e57b4d60c4a3fbcd38fa20349a0cebd1">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d4f0d3be7a1b3fb983ed7d5353be3c20a1eedd18\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0-alpha8\a90cf14b188c4223c980c83784335e30d3bb89f4\common-1.0.0-alpha8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a90cf14b188c4223c980c83784335e30d3bb89f4">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\common-1.0.0-alpha8_874baaac5085121bbd7c5d4d9daacd393df79a52\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\9d935922c15c70486b6b9be5922ee05b1ef3c4cd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1b12397bc9f342b29d9e9108978828f99a6da579">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ba61a51f3fd364b75015137b93067bffaf91a08e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\7529e60129221b19313cdafbde7c18412352bcf5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d5cbc9214ee567ea6ef56fb2707d48e58d240fc2">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b476158165a0b8cbf63875f10dbac80eb2abc089\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_d0e2b98b4361566a471195b480d7cdb9731513b5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\425824360ee1a651918dec1f1e2414f1caa148a5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c72b1515efbd8ad652e2d63582c8234a979b1e53">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7283631eb2392f50caf5e578d531f440a6fdcf74\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\5b4fa60eabfadc04018bf5bbeb9d8272d4a824fd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="eea424e61a0c85b93a0e477565314a58136abaea">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e918668080a2b0e2e59a12ef037f97d434c6b0ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\3ac46aab57ac2c9acbc97a96b6dbc3091d544be9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8544f739799dd15db63927073a21312864ab0bfd">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e70bc93c122752ca5985a5d7dd49ac82768bf137\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\5dda1d5f053fb7b97e75e409e9ad0f005e19b22a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dd282bdeaa904c59d77e57dedd7e0a241c9b679d">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f5ed3efd40b3c18cd6ced8f5c21e01e4aca57e97\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -12,12 +345,444 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        jar="C:\Android\.android\build-cache\efbd011408beacc4730c1034554716deb966863d\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="26.0.2"
-        sha1="c85c4c1d72ddd3380767b2a2edcf1908b5837852">
-        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f81db6747a8c55d42f9ad0d0b62d56f24e44bf17\classes.dex" />
+        sha1="a4590fa7eadce322ca893129fdc999074e1aa5bf">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e4fe89dd24c70f4957dfad1ea0d8b5948707dff9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\d2e79ff71ae552868d271ca2044deca50ace6036\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d095503f29a8dedc55b9326ed97a5902a1527ab9">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_50992ff492e2978f110dca86e32f68cbffaa941f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.2_8206cab64e53dcc90fafae473d1e8dd64844b761\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\1fa0ab2e0bd9128e6c11b1717c673976c6e598cf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c175c3009577fad8b433703f5d7ac2dc21d3871f">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a9503d0d528b16a089d2bd111ddb399db04e4ef7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\22897076e70519800087f9e2f1da69fe91ef4de6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2c379c235d7983201bb83edfc3c60bb0dafb5805">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c457bdca039d089722ba576a3f422868e9ad7bef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\ea8a0bf086290a01088e995e682df48e90263fba\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a5d52089bf4d31537232bb6bcb70cee817d8a374">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_028ebeab63b622cf3b6d3313ffca3ae52035ef46\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\7277a843bc2d0a865e6d66e6cec55c87920a4a64\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="41f47bbcd281fdb1e42e220220ab3bfa1da591e0">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9f0bacbbe80fefe5878f22d82f3cf6de2f590afd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\4146571a0eef7065aade6b22ef2c692598da950b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ce672872bb6f9a775bb52a91dc825d41e393e57b">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0536157dce5f32b270bdef719ceb719ab7e291c0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\dae7f6965cff134a4805bc17ae22dabcc8d73ff6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5b65ec1ebc84af3baecfd28954c9e7ff01b937a8">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_322d79af2ce1963521b8a78cc9425dcbe2e2e4c3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\293d29e3206ff194e8770ecfe4c908d64349c978\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ccb8d50260a0fe1dc844e84603f6fc9dbecf6d8f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\b957185a7b6f6c1649d7e49e85217b66a5fd41a4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5594a368622908d89c47d9a391aa2724fe046c35">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e1d14031ed4f80613da8be8090690ddbdfcc3fea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\4d737220ff70680e1651335cd6d1a0acba565614\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e7f890dd2539b7f2582f450f0721e2dea6ae510c">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1e8d1ce3daf350ea5160bde2b6984faa3bcf9bae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\02067ee6f4280b820505497a5a828b4495b7c387\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="22c673e65215e0764add61e3102946de895439e4">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c90d0ee42def3bdf8146c2416ddd3281a95d1048\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\c018c39b1a36a82cffe07b3eb5160498390351a9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b18c853774c25eeaeb3ecf6f171e26f06c4ba66b">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_129cc49f660de7883af7eece330c9f59eb35d984\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\11260a717295aa1960cc43f03e6e2799aceb62f1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2b12b18c5518021cc71577c83d1290f8ddaa3c98">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_35f2f4c1828ad84fdb14ca60f82dd562e30b67fb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\f7c3d9bdd691dda380b2ee7984b8d2553d0cdd78\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fc3036436defd3070337b7191c50a136ebca7f8f">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ea1b7425863b2d3391412df8c0028f0df404a5e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\a393d735880d688e1c4b4c48dca01e995c14ea7d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="71af915b7f4f7ec0b5f768b365145bb6a5cb9a66">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_84ed34b1286884efbcb7d772c90058ba154cae2a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0-alpha8\eca55e2b62e608e3656425ef08e814b4afd8fc9d\common-1.0.0-alpha8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="eca55e2b62e608e3656425ef08e814b4afd8fc9d">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\common-1.0.0-alpha8_7fd7cf375b137cf501fe936e6b037b082b9dbe9f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\91c82c4cb83439bcc4211367d849e0c6817a3cd6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="56c6a22c42588628903e9dda5d8f3aa1c1b4372f">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e372b3eb4fa073a984f5549114a066177b3e1199\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\f4e72b2dcd5ca87c667a68b49c1cbc4ac9fa648f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4b685077cdb08cf7ae8b61afd1fe910e47d91b9a">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0801d9ab32bb119dbc60859f2f282ed148a709ad\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\8a2307cf912d33ac80aa6c7fae4e0b880e3310e8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e5b429c146094a612134910688d169ec08deeefb">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1588ab60cffde17dec39a7f3832416dc72b6f995\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\df9894da16a9bc8c8ea70743ec780a803874f114\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bfba7cf662f7e3e2cfeb92226c6b84c08e590225">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a421f886c00bd62e2219c38c52d769f3af5e2e6e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.1.0-beta1\4205dd8c33ada1468ab377afff0be95304ef72a\constraint-layout-solver-1.1.0-beta1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="04205dd8c33ada1468ab377afff0be95304ef72a">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.1.0-beta1_18a8d18877ba3466115b077686d0d24b94c70009\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\ba728479624d4d731d7241c61f9fad99bb6df1b6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="057fb316bed8467398333f30926c2d5506e275b2">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d3e4a52b9014e7699bf8b86c4be55d56f127041f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\f990c6a81cf2f9b1e7c3592b2bff50a86d447ac9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e7424f816f538c2acfba6169b25e297ea22afbd8">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ad323a2ce1532cd7b389e6664d38ae5e77105883\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\dcb3bdcf15289aeeaa87221300ef7c34650d849e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b5b6af36bacf1d812cd3dc45f9dcab9ea471ed91">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4ffe3c7bbe324bc84012d5974a886f7d2053565b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\d76acc6da942ccf0834d84be65e0babd415e2ff3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2c2f1b3f82c027e98f56bb0154de0acbcce42e6d">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_01e6f158951c3369b33c1b6bf19951a5a2846bb1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\65fe0bc800f1729bd6f6376be34851aa3e6ba6f5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3c433e48557e476290f45fb6cb568d1a103c9978">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b150cfc2d76c244e37bced3485056bbfde2e12b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\267af9b992a5aa550bf836b2ea47bb2f3d3d91b5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="10c32fcf3d0acc4b208fc39f8d2e16b69ef8bd3b">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4e1884a54e2acf00265b9f0ab99afa4987865218\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\0aed2d79ee8e4394aee5311cb7cc370b2dea03ba\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f2cb88e7e28736d44e7e643deb80c9af1c3662c8">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e6c2f674e44e77ea53ebecd4f7b448331d99d535\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\ae8eac8d8f78adffcbfbfc86c2b0341bec556dd8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0da0d2ee6bee61f44bbdf98bde7a01e70988aea3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\1013a5a0e3d3a0d4854ffd68027d016369c7b5f0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5753660caa486676aacf05857930d76589a09af9">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_11fa816f73fe36f32405827ccfbf1995bdd1dfe5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\a6735cd50d7064b230b3caa4168782a20f27c916\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cfb0e06b74b6d9f1a0743d38a97808cf214bdcb1">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_869c7e3bcacf0de1f6e0237342dcfa1e576e62ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\940e7f8c6bf81fd3faba45bb7bceef6df37940b9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c6706cc7c8c3093560edd55d322218afe7798aa9">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c5b02d1830125eea243b84b18e56aed75fe08557\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\9234fb340a0f4a47827056d7e08b8a846ce8e9c9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1f257478030cb1f0f04809b8cf8d63c48b651cbc">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a29177d2220f7fa472533be6d7735d605daa31dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\73a8e58d539a91db06ff040ce17e270ddea93110\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="576570f46ff6ccc69a984af9e55ddd58d9549270">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_402547f295ae55f4ce0e93367a12815c95808517\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\307f1e932c1dcfc2c65be75f54c98d6ae41baff0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2c73e2a93e00abd240e495c1e62217e53904a3f3">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_91b887174c95e3405266982c3521b7693dede909\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\a83307d8104a152810344018c4d39d9813a37ae1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f15e20dd7bcde7c688cfda44d0c8320a5c1c24b8">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_56603d625b14f27e44e3f775aeef36c7bc3a7a08\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\bb0d09cbbf2fa22784e2f00e821c53cc16ac3a84\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="083e7bc5a9d9404b49b8f34e5091532361fa28e6">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55c9b087a9b1f6bea9df190210ea7e4b5219f267\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\bolts-applinks-1.4.0_e8c1d95afddb05586ab57e389bdebdbcc86f2e98\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\ca94150984d3ab060793e2fe87278a8950b56de4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_aa9298a899b1efbc7a49185c38796c966e52b25e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\37d4d9dd113b46db8a4317285bd29e6949cda793\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed87ccdcb70c17d71ba4e6e4ac16afa62d3c49fb">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7b745bf56872c3915aac6d72856b7c661d072d15\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\a9f3e40584eca87e64f8ef246365dce72eec9279\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dae0d68af4c87df40eca67069861e53b7cefaaa0">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2aefbb67e1fdc60c87ffd42f7b6588f0008c123d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.0.1\e1bb32b12b25e2f78e6786059ca7ea878f8345e0\support-annotations-26.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e1bb32b12b25e2f78e6786059ca7ea878f8345e0">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-26.0.1_5b06ef07cf2b7d015b1fc68afc9dc9abae1b543c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\e08c5d4781aa704292504b46c0ec429a2f482563\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="34c23b5894b4f24d566bfc33e0e25462c6436b78">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_973640bf499f16f534f2ce581ebea4bb8cd099e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\7df7d68c9925215aca7f0ded025f35bf293db106\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="416fb9ee2fd6e7af0bba04b01d90cb475b1e2074">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a612e4a0fad7773b5f81e03a017580261731dcb3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\629ac5a79ae3add1e9f1a40e9111fdfe3097de4f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="63b03eaa1aa9b9431c7638841175f9842dcbf274">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_538659b59e1ea8aa343ce56796cd44f02e992b03\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\497a14bbbdfd542768796d14505d3f744c25326e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="76ea35b41786082af23db898ca9e0fc07cc71fb9">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4c55cfcbe3420cc8ee3498153e42ec31590a497d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\9a3912c7ed00cad30c13079afc48c975461510a2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="19a40a8afe0289f6520b25353096ac233e78f69d">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b3f216855453500a60f88620d1dd91cb93d8838e\classes.dex" />
     </item>
 
 </items>
