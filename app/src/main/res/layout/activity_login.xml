@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomRelativeLayout"
-    android:background="@color/backColor"
+    android:background="@color/grayColor"
     android:orientation="vertical">
 
     <TextView
@@ -12,14 +12,14 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginBottom="140dp"
         android:text="Bienvenue sur Boréa"
         android:textColor="@color/primaryTexte"
-        android:layout_marginBottom="140dp"
         android:textSize="36sp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
+        android:layout_width="143dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/login_button_facebook"
         android:layout_centerHorizontal="true"

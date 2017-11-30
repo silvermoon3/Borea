@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/backColor">
+        android:background="@color/grayColor">
 
     </FrameLayout>
 
 
     <android.support.design.widget.BottomNavigationView
-        style="@style/AppTheme.AppBarOverlay"
         android:id="@+id/navigation"
+        style="@style/AppTheme.AppBarOverlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

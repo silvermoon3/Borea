@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backColor"
+    android:background="@color/grayColor"
     tools:context="uqac.eslie.nova.Fragments.ImageFragment">
 
 
@@ -11,8 +11,7 @@
         android:id="@+id/list_images"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:divider="@color/backColor"
-        />
+        android:divider="@color/grayColor"
+        android:scrollbars="vertical" />
 
 </RelativeLayout>

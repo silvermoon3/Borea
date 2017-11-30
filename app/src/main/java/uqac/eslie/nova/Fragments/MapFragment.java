@@ -77,9 +77,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
     }
 
     @Override
@@ -144,8 +141,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                             .title(m.getName()));
 
                 }
-
-
             }
 
             @Override

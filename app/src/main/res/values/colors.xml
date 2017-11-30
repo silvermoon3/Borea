@@ -9,6 +9,11 @@
     <color name="bottomtab_1">#ea5c46</color>
     <color name="bottomtab_2">#33b3cc</color>
     <color name="backColor">#202225</color>
-    <color name="grayColor">#36393e</color>
+    <color name="backToBackColor">#32353a</color>
+    <color name="grayColor">#2c2e32</color>
+    <color name="hintColor">#808080</color>
+    <color name="lightGray">#898f9a</color>
+    <color name="lightestGray">#d5d8db</color>
+
 
 </resources>

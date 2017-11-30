@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backColor"
+    android:background="@color/grayColor"
     tools:context="uqac.eslie.nova.Fragments.WeatherFragment">
 
 
@@ -104,31 +104,6 @@
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="0dp" />
 
-                    <TextView
-                        android:id="@+id/actuellement_chance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_columnWeight="10"
-                        android:layout_marginBottom="3dp"
-                        android:text="Chance de voir"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="14sp"
-                        tools:layout_editor_absoluteX="8dp"
-                        tools:layout_editor_absoluteY="0dp" />
-
-                    <TextView
-                        android:id="@+id/actuellement_chance_valeur"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginBottom="5dp"
-                        android:text=""
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="14sp"
-                        tools:layout_editor_absoluteX="8dp"
-                        tools:layout_editor_absoluteY="0dp" />
-
                 </GridLayout>
 
                 <LinearLayout
@@ -141,6 +116,7 @@
                         android:id="@+id/chartKP_today"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="6dp"
                         android:layout_weight="1"
                         android:visibility="invisible" />
 
@@ -148,6 +124,7 @@
                         android:id="@+id/chartCloud_today"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="6dp"
                         android:layout_weight="1"
                         android:visibility="invisible" />
 
@@ -157,115 +134,115 @@
 
             </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/demain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_weight="1"
-            android:background="@color/cardview_dark_background"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
-
-            <TextView
-                android:id="@+id/demain_titre"
+            <LinearLayout
+                android:id="@+id/demain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginTop="6dp"
-                android:gravity="center_vertical"
-                android:text="Demain"
-                android:textAlignment="center"
-                android:textColor="@color/cardview_light_background"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="0dp" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="370dp"
+                android:layout_marginBottom="12dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <lecho.lib.hellocharts.view.ColumnChartView
-                    android:id="@+id/chartKP_tomorrow"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:visibility="invisible" />
-
-                <lecho.lib.hellocharts.view.ColumnChartView
-                    android:id="@+id/chartCloud_tomorrow"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/semaine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_weight="1"
-            android:background="@color/cardview_dark_background"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
-
-            <TextView
-                android:id="@+id/semaine_titre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginTop="6dp"
-                android:gravity="center_vertical"
-                android:text="Cette semaine"
-                android:textAlignment="center"
-                android:textColor="@color/cardview_light_background"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:background="@color/cardview_dark_background"
+                android:orientation="vertical"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="8dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="370dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <lecho.lib.hellocharts.view.ColumnChartView
-                    android:id="@+id/chartKP_week"
+                <TextView
+                    android:id="@+id/demain_titre"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:visibility="invisible" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:text="Demain"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="0dp" />
 
-                <lecho.lib.hellocharts.view.ColumnChartView
-                    android:id="@+id/chartCloud_week"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="370dp"
                     android:layout_weight="1"
-                    android:visibility="invisible" />
+                    android:orientation="vertical">
 
+                    <lecho.lib.hellocharts.view.ColumnChartView
+                        android:id="@+id/chartKP_tomorrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
+
+                    <lecho.lib.hellocharts.view.ColumnChartView
+                        android:id="@+id/chartCloud_tomorrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
+                </LinearLayout>
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/semaine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_weight="1"
+                android:background="@color/cardview_dark_background"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
+
+                <TextView
+                    android:id="@+id/semaine_titre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:text="Cette semaine"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="370dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <lecho.lib.hellocharts.view.ColumnChartView
+                        android:id="@+id/chartKP_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
+
+                    <lecho.lib.hellocharts.view.ColumnChartView
+                        android:id="@+id/chartCloud_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
 
 
+                </LinearLayout>
 
 
-
-
+            </LinearLayout>
         </LinearLayout>
-       </LinearLayout>
     </ScrollView>
 </FrameLayout>
