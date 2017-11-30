@@ -200,10 +200,9 @@ public class WeatherFragment extends Fragment implements LocationListener {
             //actuellement
             if(this.getView() != null) {
                 vt = this.getView().findViewById(R.id.actuellement_kp_valeur);
-                vt.setText(result.get(0)[0]);
+                if(result.size() != 0)
+                    vt.setText(result.get(0)[0]);
             }
-
-
         }
 
         else if (diff == "weather") {
