@@ -130,9 +130,10 @@
                         tools:layout_editor_absoluteY="0dp" />
 
                 </GridLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="501dp"
+                    android:layout_height="370dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -140,13 +141,15 @@
                         android:id="@+id/chartKP_today"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
 
                     <lecho.lib.hellocharts.view.ColumnChartView
                         android:id="@+id/chartCloud_today"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
 
 
                 </LinearLayout>
@@ -183,10 +186,9 @@
                 tools:layout_editor_absoluteY="0dp" />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="501dp"
+                android:layout_height="370dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -194,13 +196,15 @@
                     android:id="@+id/chartKP_tomorrow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
 
                 <lecho.lib.hellocharts.view.ColumnChartView
                     android:id="@+id/chartCloud_tomorrow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
             </LinearLayout>
 
         </LinearLayout>
@@ -231,9 +235,10 @@
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="0dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="483dp"
+                android:layout_height="370dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -241,13 +246,15 @@
                     android:id="@+id/chartKP_week"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
 
                 <lecho.lib.hellocharts.view.ColumnChartView
                     android:id="@+id/chartCloud_week"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
 
 
             </LinearLayout>

@@ -341,6 +341,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
         }
 
         chartKp_today.setColumnChartData(dataKP_today);
+        chartKp_today.setVisibility(View.VISIBLE);
 
     }
 
@@ -413,6 +414,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
         }
 
         chartKp_tomorrow.setColumnChartData(dataKP_tomorrow);
+        chartKp_tomorrow.setVisibility(View.VISIBLE);
 
     }
     private void generateKPDataWeek() {
@@ -476,6 +478,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
         }
 
         chartKp_week.setColumnChartData(dataKP_week);
+        chartKp_week.setVisibility(View.VISIBLE);
 
     }
 
@@ -535,7 +538,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
         }
 
         chartCloud_today.setColumnChartData(dataCloud_today);
-
+        chartCloud_today.setVisibility(View.VISIBLE);
     }
 
     private void generateCloudDataTomorrow() {
@@ -591,6 +594,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
         }
 
         chartCloud_tomorrow.setColumnChartData(dataCloud_tomorrow);
+        chartCloud_tomorrow.setVisibility(View.VISIBLE);
 
     }
 
@@ -644,6 +648,8 @@ public class WeatherFragment extends Fragment implements LocationListener {
         }
 
         chartCloud_week.setColumnChartData(dataCloud_week);
+        chartCloud_week.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -666,30 +672,16 @@ public class WeatherFragment extends Fragment implements LocationListener {
     }
 
     private int chooseColorCloud(int val){
-       if(val <=10)
-           return Color.rgb(221, 227, 239);
-       if(val > 10 && val <=20)
-           return Color.rgb(196, 209, 238);
-       if(val > 20 && val <= 30)
-           return Color.rgb(175, 194, 233);
-        if(val > 30 && val <= 40)
-            return Color.rgb(155, 177, 227);
-        if(val > 40 && val <= 50)
-            return Color.rgb(135, 162, 223);
-        if(val > 50 && val <= 60)
-            return Color.rgb(115, 147, 217);
-        if(val > 60 && val <= 70)
-            return Color.rgb(90, 121, 190);
-         if(val > 70 && val <= 80)
-             return Color.rgb(53, 91, 177);
-         if(val > 80 && val <= 90)
-             return Color.rgb(63, 87, 141);
-        if(val > 90 && val <= 100)
-            return Color.rgb(30, 66, 106);
-
-         return Color.WHITE;
-
-
+       if(val <= 10)
+           return Color.rgb(255, 255, 255);
+       else if(val > 10 && val <= 50)
+           return Color.rgb(225, 225, 225);
+       else if(val > 50 && val <= 90)
+           return Color.rgb(175, 175, 175);
+       else if(val > 90)
+           return Color.rgb(125, 125, 125);
+       else
+           return Color.WHITE;
     }
 
 
