@@ -11,6 +11,15 @@ public class ImageAurore {
     User user;
     String date;
     String place;
+    String hour;
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
 
     public String getUrl() {
         return url;

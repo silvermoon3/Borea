@@ -62,7 +62,8 @@
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:src="@drawable/ic_directions_car_black_24px" />
+                android:src="@drawable/ic_directions_car_black_24px"
+                app:backgroundTint="@color/colorPrimaryLight" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/button_addPhoto"
@@ -73,7 +74,8 @@
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:src="@drawable/ic_add_a_photo_black_24dp" />
+                android:src="@drawable/ic_add_a_photo_black_24dp"
+                app:backgroundTint="@color/colorPrimaryLight" />
         </RelativeLayout>
     </LinearLayout>
 

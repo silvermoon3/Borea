@@ -52,6 +52,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/primaryTexte" />
+
+        <TextView
+            android:id="@+id/date_Image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Quand ?"
+            android:textAlignment="center"
+            android:textColor="@color/primaryTexte"
+            android:textSize="24sp" />
+
+
+        <EditText
+            android:id="@+id/date_image_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textColor="@color/primaryTexte" />
+
+        <TextView
+            android:id="@+id/hour_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Vers quelle heure ?"
+            android:textAlignment="center"
+            android:textColor="@color/primaryTexte"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/hour_image_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName"
+            android:textColor="@color/primaryTexte" />
     </LinearLayout>
 
 </FrameLayout>

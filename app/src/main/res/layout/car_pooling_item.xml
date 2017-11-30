@@ -99,7 +99,7 @@
                 android:layout_width="62dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_directions_car_black_24px"
+                android:drawableLeft="@drawable/ic_directions_car_white_24dp"
                 android:textColor="@color/primaryTexte"
                 android:textSize="18sp" />
 

@@ -89,7 +89,7 @@ public class LoginActivity extends FragmentActivity {
                    //Toast.makeText(LoginActivity.this,"it works", Toast.LENGTH_LONG );
                    DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
 
-                   DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
+
 
                    Uri url = firebaseAuth.getCurrentUser().getPhotoUrl();
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));

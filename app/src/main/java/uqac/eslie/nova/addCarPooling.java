@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.graphics.Color;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -36,7 +39,7 @@ import java.util.Date;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
-import uqac.eslie.nova.Fragments.AddCarpoolingFragment;
+
 import uqac.eslie.nova.Helper.Timestamp;
 
 
@@ -61,12 +64,7 @@ public class addCarPooling extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_car_pooling);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.content, new AddCarpoolingFragment()).commit();
-
-
+        setContentView(R.layout.activity_add_carpooling);
 
 
     }
@@ -78,13 +76,16 @@ public class addCarPooling extends AppCompatActivity {
         inflater.inflate(R.menu.validationmenu, menu);
         this.menu = menu;
         autocompleteFragmentDepart = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_depart);
+
         autocompleteFragmentArrivee = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_arrivee);
+       ((EditText)autocompleteFragmentDepart.getView().findViewById(R.id.place_autocomplete_search_input)).setTextColor(Color.WHITE);
+       ((EditText)autocompleteFragmentArrivee.getView().findViewById(R.id.place_autocomplete_search_input)).setTextColor(Color.WHITE);
         autocompleteFragmentDepart.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 addressD = place.getName().toString();
-                setDoneButton();
+
 
             }
 
@@ -99,8 +100,9 @@ public class addCarPooling extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
+
                 addressA = place.getName().toString();
-                setDoneButton();
+
 
             }
 
@@ -117,7 +119,7 @@ public class addCarPooling extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog(view);
-                setDoneButton();
+
 
             }
         });
@@ -130,7 +132,7 @@ public class addCarPooling extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showTimePickerDialogHourD(view);
-                setDoneButton();
+
             }
         });
 
@@ -140,7 +142,7 @@ public class addCarPooling extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showTimePickerDialogHourR(view);
-                setDoneButton();
+
             }
         });
 
@@ -148,7 +150,7 @@ public class addCarPooling extends AppCompatActivity {
         price.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                setDoneButton();
+
                 return true;
             }
         });
@@ -156,7 +158,7 @@ public class addCarPooling extends AppCompatActivity {
         place.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                setDoneButton();
+
                 return true;
             }
         });
@@ -164,7 +166,7 @@ public class addCarPooling extends AppCompatActivity {
         marque.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                setDoneButton();
+
                 return true;
             }
         });
@@ -182,6 +184,10 @@ public class addCarPooling extends AppCompatActivity {
             case R.id.menu_item_valid:
                 Toast.makeText(this, "yes", Toast.LENGTH_LONG);
                     //On ajoute le covoiturage
+                     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+
+                    DatabaseReference mReference = mDatabase.getReference("CarPooling");
+                    String ID = mReference.push().getKey();
                     CarPooling carPooling = new CarPooling();
                     carPooling.setDate(date);
                     carPooling.setDateText(dateText.getText().toString());
@@ -190,7 +196,8 @@ public class addCarPooling extends AppCompatActivity {
                     carPooling.setDepart(addressD);
                     carPooling.setDestination(addressA);
                     carPooling.setUser(DataBaseHelper.getCurrentUser());
-                    carPooling.setTimestamp(new Timestamp(date.getTime()));
+                    if(date!=null)
+                        carPooling.setTimestamp(new Timestamp(date.getTime()));
                     if(!price.getText().toString().equals(""))
                         carPooling.setPrice(Double.parseDouble(price.getText().toString()));
                     if(!place.getText().toString().equals("")) {
@@ -199,20 +206,25 @@ public class addCarPooling extends AppCompatActivity {
                     }
 
                     carPooling.setMarque(marque.getText().toString());
+                    carPooling.setIDFirebase(ID);
                     // insert the new item into the database
                   try {
-                      FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-                      DatabaseReference mReference = mDatabase.getReference("CarPooling");
-                      String ID = mReference.push().getKey();
+
                       mReference.child(ID).setValue(carPooling);
-                      DataBaseHelper.getCurrentUser().addCarPooling(carPooling);
+                      String ref = "CarPooling_"+ DataBaseHelper.getCurrentUser().getUID();
+                      DatabaseReference mReference2 = mDatabase.getReference(ref);
+                      String ID2 = mReference2.push().getKey();
+                      mReference2.child(ID2).setValue(carPooling);
                       // add item
                       Toast.makeText(this,"Covoiture ajouté", Toast.LENGTH_SHORT );
-                      finish();
+
                   }
                   catch (Exception e){
 
                   }
+
+                    finish();
+                  //Add carPooling to User CarPooling List
                     break;
         }
         return true;
@@ -289,15 +301,6 @@ public class addCarPooling extends AppCompatActivity {
     }
 
 
-    public void setDoneButton()
-    {
-        if(checkAllComplete())
-        {
-            MenuItem  done =  menu.findItem(R.id.menu_item_valid);
-            done.setEnabled(true);
 
-
-        }
-    }
 
 }

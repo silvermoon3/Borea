@@ -23,10 +23,18 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.NotificationCarPooling;
+import uqac.eslie.nova.Helper.Timestamp;
 import uqac.eslie.nova.LoginActivity;
 import uqac.eslie.nova.MainActivity;
 import uqac.eslie.nova.R;
@@ -43,7 +51,6 @@ public class CarPoolingDetailFragment extends Fragment {
     private TextView heureRetour;
     private TextView marque;
     private TextView chauffeur;
-    private ImageView photo_chauffeur;
     private Button choisir;
 
     public CarPoolingDetailFragment() {
@@ -89,7 +96,7 @@ public class CarPoolingDetailFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        CarPooling carPooling = DataBaseHelper.getCurrentCarPooling();
+        final CarPooling carPooling = DataBaseHelper.getCurrentCarPooling();
         date.setText(carPooling.getDateText());
         depart.setText(carPooling.getDepart());
         arrivee.setText(carPooling.getDestination());
@@ -97,7 +104,7 @@ public class CarPoolingDetailFragment extends Fragment {
         places.setText(String.valueOf(carPooling.getPlaceLeft()));
         heureDepart.setText(carPooling.getHour());
         heureRetour.setText(carPooling.getReturnHour());
-        chauffeur.setText(carPooling.getUser().getDisplayName());
+//        chauffeur.setText(carPooling.getUser().getDisplayName());
         marque.setText(carPooling.getMarque());
         choisir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +114,7 @@ public class CarPoolingDetailFragment extends Fragment {
                         .setCancelable(false)
                         .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                reservation();
+                                reservation(carPooling.getUser().getUID(), carPooling);
                                 Toast.makeText(getActivity(),"Covoiturage réservé ! ", Toast.LENGTH_LONG );
 
                             }
@@ -116,6 +123,7 @@ public class CarPoolingDetailFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int id) {
                                 Toast.makeText(getActivity(),"Covoiturage réservé ! ", Toast.LENGTH_LONG );
                                 dialog.cancel();
+
                             }
                         });
                 AlertDialog alert = builder.create();
@@ -125,12 +133,12 @@ public class CarPoolingDetailFragment extends Fragment {
     }
 
 
-    private void reservation(){
+    private void reservation(String userID, CarPooling currentCarPooling){
             //Enlever une place
-            DataBaseHelper.getCurrentCarPooling().addPassager(DataBaseHelper.getCurrentUser());
+
 
             //Notification à envoyer au chauffeur
-             NotificationCompat.Builder mBuilder =
+           /*  NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(getActivity())
                             .setSmallIcon(R.drawable.ic_account_circle_black_24px)
                             .setContentTitle("Nouveau passager")
@@ -141,10 +149,37 @@ public class CarPoolingDetailFragment extends Fragment {
             NotificationManager mNotifyMgr =
                     (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
             // Builds the notification and issues it.
-            mNotifyMgr.notify(mNotificationId, mBuilder.build());
+            mNotifyMgr.notify(mNotificationId, mBuilder.build());*/
+
             //Ajouter aux covoiturages de l'utilisateur
-            DataBaseHelper.getCurrentUser().addCarPooling(DataBaseHelper.getCurrentCarPooling());
-            DataBaseHelper.getCurrentCarPooling().setPlaceLeft(1);
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mReference = mDatabase.getReference("CarPooling/"+currentCarPooling.getIDFirebase());
+        mReference.child("placeLeft").setValue(currentCarPooling.getPlaceLeft() - 1);
+
+        NotificationCarPooling NotificationCarPooling = new NotificationCarPooling();
+        long date = System.currentTimeMillis();
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        NotificationCarPooling.setDate(day+"/"+month);
+        NotificationCarPooling.setNewUser(DataBaseHelper.getCurrentUser());
+        NotificationCarPooling.setMessage(DataBaseHelper.getCurrentUser().getDisplayName() + " fait parti de ton covoiturage");
+
+      // insert the new item into the database
+        try {
+            FirebaseDatabase mDatabase2 = FirebaseDatabase.getInstance();
+            DatabaseReference mReference2 = mDatabase2.getReference("NotificationCarPooling_"+userID);
+            String ID = mReference2.push().getKey();
+            mReference2.child(ID).setValue(NotificationCarPooling);
+
+        }
+        catch (Exception e){
+
+        }
+
 
     }
 

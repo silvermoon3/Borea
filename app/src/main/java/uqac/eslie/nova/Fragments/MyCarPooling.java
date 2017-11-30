@@ -1,14 +1,18 @@
 package uqac.eslie.nova.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import uqac.eslie.nova.BDD.CarPooling;
 import uqac.eslie.nova.BDD.DataBaseHelper;
+import uqac.eslie.nova.BDD.Marker;
 import uqac.eslie.nova.R;
 
 
@@ -47,9 +52,9 @@ public class MyCarPooling extends Fragment {
         View root = inflater.inflate(R.layout.fragment_my_car_pooling, container, false);
 
         listCarPooling = root.findViewById(R.id.myCarPooling_listView);
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling");
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling_"+ DataBaseHelper.getCurrentUser().getUID());
 
-        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref.child("user").orderByChild("email").startAt(DataBaseHelper.getCurrentUser().getEmail().toString()).endAt(DataBaseHelper.getCurrentUser().getEmail().toString())) {
+        final FirebaseListAdapter mAdapter = new FirebaseListAdapter<CarPooling>(getActivity(), CarPooling.class, R.layout.car_pooling_item, ref) {
             @Override
             protected void populateView(final View v, final CarPooling model, final int position) {
                 // Get references to the views of message.xml
@@ -57,18 +62,46 @@ public class MyCarPooling extends Fragment {
                 TextView arrivee = v.findViewById(R.id.itemCarPooling_arrivee);
                 TextView prix = v.findViewById(R.id.itemCarPooling_prix);
                 TextView place = v.findViewById(R.id.itemCarPooling_places);
-                TextView date = v.findViewById(R.id.itemCarPooling_date);
                 depart.setText(model.getDepart());
                 arrivee.setText(model.getDestination());
                 prix.setText(Double.toString(model.getPrice()));
                 place.setText(Integer.toString(model.getPlaceTotal()));
-                date.setText(model.getDate().toString());
-
-
+                TextView date = v.findViewById(R.id.itemCarPooling_date);
+                date.setText(model.getDateText());
             }
 
         };
+
         listCarPooling.setAdapter(mAdapter);
+        listCarPooling.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(final AdapterView<?> adapterView, View view, final int position, long l) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Voulez-vous supprimer ce covoiturage ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                DatabaseReference itemRef = mAdapter.getRef(position);
+
+                                itemRef.removeValue();
+                                final DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://nova-cac19.firebaseio.com/CarPooling_"+ DataBaseHelper.getCurrentUser().getUID());
+                                Toast.makeText(getActivity(),"Cocoiturage supprimé ! ", Toast.LENGTH_LONG );
+
+                            }
+                        })
+                        .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+
+            }
+        });
+
         return root;
     }
 

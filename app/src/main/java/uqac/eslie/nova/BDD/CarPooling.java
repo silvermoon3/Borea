@@ -34,6 +34,15 @@ public class CarPooling  implements Comparable<CarPooling> {
     private String dateText;
     private String marque;
     private Timestamp timestamp;
+    private String IDFirebase;
+
+    public String getIDFirebase() {
+        return IDFirebase;
+    }
+
+    public void setIDFirebase(String IDFirebase) {
+        this.IDFirebase = IDFirebase;
+    }
 
     public List<User> getPassagers() {
         return passagers;
@@ -143,7 +152,7 @@ public class CarPooling  implements Comparable<CarPooling> {
 
     public void setPlaceLeft(int _placeLeft) {
 
-        this.placeLeft = this.placeLeft - _placeLeft;
+        this.placeLeft = _placeLeft ;
     }
 
     public String getDepart() {
