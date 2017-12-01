@@ -115,10 +115,6 @@ public class WeatherFragment extends Fragment implements LocationListener {
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
 
-            Toast.makeText(
-                    getActivity().getApplicationContext(),
-                    "Your Location is -\nLat: " + latitude + "\nLong: "
-                            + longitude, Toast.LENGTH_LONG).show();
 
             try {
                 return new URL("https://api.apixu.com/v1/forecast.json?key=848095d955c54bfab29213656172810&q=" + latitude + "," + longitude + "&days=7");
@@ -210,7 +206,7 @@ public class WeatherFragment extends Fragment implements LocationListener {
             cloudArrayTodayAndTomorrowAndWeek = result;
             if(this.getView() != null) {
                 vt = this.getView().findViewById(R.id.actuellement_couverture_valeur);
-                vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(0)[1]);
+                vt.setText(cloudArrayTodayAndTomorrowAndWeek.get(0)[1] + "%");
             }
 
             generateData();
@@ -241,6 +237,11 @@ public class WeatherFragment extends Fragment implements LocationListener {
         myJsonTask2.delegate = this;
         myJsonTask2.execute(getWeatherURL());
 
+        // toasting loading
+        Toast.makeText(
+                this.getContext(),
+                "Chargement des données...",
+                Toast.LENGTH_LONG).show();
 
         chartKp_today =  root.findViewById(R.id.chartKP_today);
         chartKp_tomorrow = root.findViewById(R.id.chartKP_tomorrow);

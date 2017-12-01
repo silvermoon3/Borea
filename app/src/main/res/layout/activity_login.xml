@@ -15,25 +15,27 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:background="@drawable/portrait" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="140dp"
-        android:text="Bienvenue sur Boréa"
-        android:textColor="@color/primaryTexte"
-        android:textSize="36sp"
-        android:textStyle="bold" />
-
     <com.google.android.gms.common.SignInButton
     android:id="@+id/sign_in_button"
-    android:layout_width="143dp"
+    android:layout_width="189dp"
     android:layout_height="wrap_content"
     android:layout_above="@+id/login_button_facebook"
     android:layout_centerHorizontal="true"
     android:layout_gravity="center"
     android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="338dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="140dp"
+        android:background="@color/transWhite"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Bienvenue sur Boréa"
+        android:textColor="@color/primaryTexte"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 </FrameLayout>
