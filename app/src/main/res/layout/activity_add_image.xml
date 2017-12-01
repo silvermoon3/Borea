@@ -7,23 +7,26 @@
     android:background="@color/backColor"
     android:orientation="vertical"
     tools:context="uqac.eslie.nova.addImage">
+
     <android.support.design.widget.TabItem
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backColor"
+        android:background="@color/grayColor"
         app:menu="@menu/validationmenu" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:srcCompat="@mipmap/aurore_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="154dp"
+            android:layout_weight="0.77"
+            android:background="@drawable/full"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -36,66 +39,105 @@
             android:background="@color/colorAccent"
             android:text="Parcourir..." />
 
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Où avez-vous vu l'aurore ?"
-            android:textAlignment="center"
-            android:textColor="@color/primaryTexte"
-            android:textSize="24sp" />
+            android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/place_autocomplete"
-            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Où avez-vous vu l'aurore ?"
+                android:textAlignment="center"
+                android:textColor="@color/lightestGray"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <fragment
+                android:id="@+id/place_autocomplete"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_weight="1"
+                android:textColor="@color/primaryTexte" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primaryTexte" />
+            android:layout_height="45dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/date_Image"
+            <TextView
+                android:id="@+id/date_Image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Quand ?"
+                android:textAlignment="textStart"
+                android:textColor="@color/lightestGray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/date_image_select"
+                style="@style/EditTextHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="jj/mm/aaaa"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTexte"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Quand ?"
-            android:textAlignment="center"
-            android:textColor="@color/primaryTexte"
-            android:textSize="24sp" />
+            android:layout_height="45dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/hour_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Vers quelle heure ?"
+                android:textAlignment="textStart"
+                android:textColor="@color/lightestGray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/date_image_select"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryLight"
-            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
-            android:ems="10"
-            android:focusable="false"
-            android:inputType="textPersonName"
-            android:singleLine="true"
-            android:textColor="@color/primaryTexte" />
+            <EditText
+                android:id="@+id/hour_image_select"
+                style="@style/EditTextHint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.8"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTexte"
+                android:textSize="18sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/hour_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Vers quelle heure ?"
-            android:textAlignment="center"
-            android:textColor="@color/primaryTexte"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/hour_image_select"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryLight"
-            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
-            android:ems="10"
-            android:focusable="false"
-            android:inputType="textPersonName"
-            android:textColor="@color/primaryTexte" />
     </LinearLayout>
 
 </FrameLayout>

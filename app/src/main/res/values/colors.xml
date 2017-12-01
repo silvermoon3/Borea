@@ -14,6 +14,7 @@
     <color name="hintColor">#808080</color>
     <color name="lightGray">#898f9a</color>
     <color name="lightestGray">#d5d8db</color>
+    <color name="transWhite">#70ffffff</color>
 
 
 </resources>

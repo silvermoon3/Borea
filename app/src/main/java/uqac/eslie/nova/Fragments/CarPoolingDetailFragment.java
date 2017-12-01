@@ -104,7 +104,7 @@ public class CarPoolingDetailFragment extends Fragment {
         places.setText(String.valueOf(carPooling.getPlaceLeft()));
         heureDepart.setText(carPooling.getHour());
         heureRetour.setText(carPooling.getReturnHour());
-//        chauffeur.setText(carPooling.getUser().getDisplayName());
+        chauffeur.setText(carPooling.getUser().getDisplayName());
         marque.setText(carPooling.getMarque());
         choisir.setOnClickListener(new View.OnClickListener() {
             @Override
