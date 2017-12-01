@@ -238,7 +238,14 @@ public class addImage extends AppCompatActivity {
                 progressDialog.show();
 
                 FirebaseStorage mDatabase = FirebaseStorage.getInstance();
-                String fileName = "pic" + filePath.toString().split("%")[1] + ".jpg";
+                String fileName;
+                if(filePath.toString().contains("%"))
+                     fileName = "pic" + filePath.toString().split("%")[1] + ".jpg";
+                else {
+                    int lenght =  filePath.toString().split("/").length;
+                    fileName = "pic" + filePath.toString().split(("/"))[lenght-1]+".jpg";
+                }
+
                 Marker marker = new Marker();
                 marker.setLongitude(longitude);
                 marker.setLatitude(latitude);

@@ -279,18 +279,19 @@ public class addCarPooling extends AppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         Calendar currentDate = Calendar.getInstance();
-        int year = currentDate.get(Calendar.YEAR);
-        int month = currentDate.get(Calendar.MONTH);
-        int day = currentDate.get(Calendar.DAY_OF_MONTH);
+        int currentY = currentDate.get(Calendar.YEAR);
+        int currentM = currentDate.get(Calendar.MONTH);
+        int currentD = currentDate.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog newFragment = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
                 date =  calendar.getTime();
+                month = month +1;
                 dateText.setText(day +"/" +month+"/"+year);
             }
-        }, year, month, day);
+        }, currentY, currentM, currentD);
         newFragment.show();
 
     }

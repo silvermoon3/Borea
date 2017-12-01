@@ -105,10 +105,8 @@ public class AccountFragment extends Fragment {
             case R.id.sign_out_button_account:
                 signOut();
                 break;
-            case R.id.parameters:
-                listener.onParameterClick();
 
-                break;
+
         }
         return true;
     }
@@ -119,18 +117,9 @@ public class AccountFragment extends Fragment {
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof CarFragment.CarFragmentListener) {
-            listener = (clickParameters) context;
-        } else {
-           /* throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");*/
-        }
 
 
-    }
+
     @Override
     public void onDetach() {
         super.onDetach();

@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity
         CarFragment.CarFragmentListener,
         HomeFragment.clickFindCarpooling,
         CarFragment.CarFragmentListenerFloatingButton,
-        AccountFragment.clickParameters,
         MarkerDialog.MarkerListener
 
 {
@@ -184,14 +183,6 @@ public class MainActivity extends AppCompatActivity
     public void onButtonClick(){
         startActivity(new Intent(MainActivity.this, addCarPooling.class));
     }
-
-
-    @Override
-    public void onParameterClick(){
-        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-    }
-
-
 
 
     @Override
