@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.graphics.Color;
+import android.hardware.camera2.TotalCaptureResult;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -183,51 +184,67 @@ public class addCarPooling extends AppCompatActivity {
         switch (id) {
             case R.id.menu_item_valid:
                 Toast.makeText(this, "yes", Toast.LENGTH_LONG);
-                    //On ajoute le covoiturage
-                     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-
-                    DatabaseReference mReference = mDatabase.getReference("CarPooling");
-                    String ID = mReference.push().getKey();
-                    CarPooling carPooling = new CarPooling();
-                    carPooling.setDate(date);
-                    carPooling.setDateText(dateText.getText().toString());
-                    carPooling.setHour(hourD.getText().toString());
-                    carPooling.setReturnHour(hourR.getText().toString());
-                    carPooling.setDepart(addressD);
-                    carPooling.setDestination(addressA);
-                    carPooling.setUser(DataBaseHelper.getCurrentUser());
-                    if(date!=null)
-                        carPooling.setTimestamp(new Timestamp(date.getTime()));
-                    if(!price.getText().toString().equals(""))
-                        carPooling.setPrice(Double.parseDouble(price.getText().toString()));
-                    if(!place.getText().toString().equals("")) {
-                        carPooling.setPlaceTotal(Integer.parseInt(place.getText().toString()));
-                        carPooling.setPlaceLeft(Integer.parseInt(place.getText().toString()));
-                    }
-
-                    carPooling.setMarque(marque.getText().toString());
-                    carPooling.setIDFirebase(ID);
-                    // insert the new item into the database
-                  try {
-
-                      mReference.child(ID).setValue(carPooling);
-                      String ref = "CarPooling_"+ DataBaseHelper.getCurrentUser().getUID();
-                      DatabaseReference mReference2 = mDatabase.getReference(ref);
-                      String ID2 = mReference2.push().getKey();
-                      mReference2.child(ID2).setValue(carPooling);
-                      // add item
-                      Toast.makeText(this,"Covoiture ajouté", Toast.LENGTH_SHORT );
-
-                  }
-                  catch (Exception e){
-
-                  }
-
-                    finish();
-                  //Add carPooling to User CarPooling List
+                addCarPooling();
                     break;
         }
         return true;
+    }
+
+    private void addCarPooling(){
+        if(date != null && !price.getText().toString().equals("")
+                &&  !hourD.getText().toString().equals("")
+                &&  !hourR.getText().toString().equals("")
+                && addressA!= ""
+                && addressD!= ""
+                && !place.getText().toString().equals("")
+                && !marque.getText().toString().equals("")
+                ) {
+            FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference mReference = mDatabase.getReference("CarPooling");
+            String ID = mReference.push().getKey();
+            CarPooling carPooling = new CarPooling();
+            carPooling.setDate(date);
+            carPooling.setDateText(dateText.getText().toString());
+            carPooling.setHour(hourD.getText().toString());
+            carPooling.setReturnHour(hourR.getText().toString());
+            carPooling.setDepart(addressD);
+            carPooling.setDestination(addressA);
+            carPooling.setUser(DataBaseHelper.getCurrentUser());
+            if (date != null)
+                carPooling.setTimestamp(new Timestamp(date.getTime()));
+            if (!price.getText().toString().equals(""))
+                carPooling.setPrice(Double.parseDouble(price.getText().toString()));
+            if (!place.getText().toString().equals("")) {
+                carPooling.setPlaceTotal(Integer.parseInt(place.getText().toString()));
+                carPooling.setPlaceLeft(Integer.parseInt(place.getText().toString()));
+            }
+
+            carPooling.setMarque(marque.getText().toString());
+            carPooling.setIDFirebase(ID);
+            // insert the new item into the database
+            try {
+
+
+                mReference.child(ID).setValue(carPooling);
+                String ref = "CarPooling_" + DataBaseHelper.getCurrentUser().getUID();
+                DatabaseReference mReference2 = mDatabase.getReference(ref);
+                String ID2 = mReference2.push().getKey();
+                mReference2.child(ID2).setValue(carPooling);
+                // add item
+                Toast toast = Toast.makeText(this, "Covoiture ajouté", Toast.LENGTH_SHORT);
+                toast.show();
+            } catch (Exception e) {
+
+            }
+            finish();
+        }
+        else{
+            Toast toast =   Toast.makeText(this.getApplicationContext(),  "Veuillez compléter tous les champs", Toast.LENGTH_LONG);
+           // toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+            toast.show();
+        }
+
+
     }
 
     public void showTimePickerDialogHourD(View v) {

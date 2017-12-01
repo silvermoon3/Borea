@@ -109,6 +109,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                         mGoogleMap.animateCamera(cameraUpdate);
                     }
                 }
+
                 break;
             case ConnectionResult.SERVICE_MISSING:
                 Toast.makeText(getActivity(), "SERVICE MISSING", Toast.LENGTH_SHORT).show();
@@ -161,7 +162,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                         .position(new LatLng(m.getLatitude(), m.getLongitude()))
                         .title(m.getName()));
             }
+        GPSTracker gps = new GPSTracker(getActivity().getApplicationContext());
 
+        if(gps.canGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            Toast.makeText(
+                    getActivity().getApplicationContext(),
+                    "Your Location is -\nLat: " + latitude + "\nLong: "
+                            + longitude, Toast.LENGTH_LONG).show();
+
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 10.0f));
+        }
 
     }
     private void OpeningDialog(){

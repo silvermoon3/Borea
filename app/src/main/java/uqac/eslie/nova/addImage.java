@@ -54,7 +54,7 @@ public class addImage extends AppCompatActivity {
     private Menu menu;
     private Uri filePath;
     PlaceAutocompleteFragment place;
-    String place_image;
+    String place_image = "";
     double latitude;
     double longitude;
     private TextView date;
@@ -228,61 +228,68 @@ public class addImage extends AppCompatActivity {
 
     private void uploadFile() {
         //if there is a file to upload
-        if (filePath != null) {
-            //displaying a progress dialog while upload is going on
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("En cours...");
-            progressDialog.show();
+        if (filePath != null && !hourSelected.getText().toString().equals("")
+                && !date.getText().toString().equals("")
+                && place_image!= "") {
 
-            FirebaseStorage mDatabase = FirebaseStorage.getInstance();
-            String fileName = "pic" + filePath.toString().split("%")[1] +".jpg";
-            Marker marker = new Marker();
-            marker.setLongitude(longitude);
-            marker.setLatitude(latitude);
-            marker.setName(place_image + ", le "+ stringDate + ", à " + hourSelected.getText().toString());
+                //displaying a progress dialog while upload is going on
+                final ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setTitle("En cours...");
+                progressDialog.show();
 
-            addMarker(marker);
-            SaveDataFile(fileName);
-            StorageReference riversRef = mDatabase.getReference("images/"+fileName);
-            riversRef.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //if the upload is successfull
-                            //hiding the progress dialog
-                            progressDialog.dismiss();
-                            finish();
+                FirebaseStorage mDatabase = FirebaseStorage.getInstance();
+                String fileName = "pic" + filePath.toString().split("%")[1] + ".jpg";
+                Marker marker = new Marker();
+                marker.setLongitude(longitude);
+                marker.setLatitude(latitude);
+                marker.setName(place_image + ", le " + stringDate + ", à " + hourSelected.getText().toString());
 
-                            //and displaying a success toast
-                            Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            //if the upload is not successfull
-                            //hiding the progress dialog
-                            progressDialog.dismiss();
+                addMarker(marker);
+                SaveDataFile(fileName);
+                StorageReference riversRef = mDatabase.getReference("images/" + fileName);
+                riversRef.putFile(filePath)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                //if the upload is successfull
+                                //hiding the progress dialog
+                                progressDialog.dismiss();
+                                finish();
 
-                            //and displaying error message
-                            Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            //calculating progress percentage
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                //and displaying a success toast
+                                Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                //if the upload is not successfull
+                                //hiding the progress dialog
+                                progressDialog.dismiss();
 
-                            //displaying percentage in progress dialog
-                            progressDialog.setMessage("Effectué " + ((int) progress) + "%...");
-                        }
-                    });
+                                //and displaying error message
+                                Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                //calculating progress percentage
+                                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+
+                                //displaying percentage in progress dialog
+                                progressDialog.setMessage("Effectué " + ((int) progress) + "%...");
+                            }
+                        });
+
+
 
         }
         //if there is not any file
         else {
-            //you can display an error toast
+            Toast toast =  Toast.makeText(this.getApplicationContext(),  "Veuillez compléter tous les champs", Toast.LENGTH_LONG);
+            // toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+            toast.show();
         }
     }
 

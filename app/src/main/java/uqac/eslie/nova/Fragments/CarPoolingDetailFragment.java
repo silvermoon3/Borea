@@ -151,10 +151,39 @@ public class CarPoolingDetailFragment extends Fragment {
             // Builds the notification and issues it.
             mNotifyMgr.notify(mNotificationId, mBuilder.build());*/
 
-            //Ajouter aux covoiturages de l'utilisateur
+        //Ajouter aux covoiturages de l'utilisateur
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mReference = mDatabase.getReference("CarPooling/"+currentCarPooling.getIDFirebase());
-        mReference.child("placeLeft").setValue(currentCarPooling.getPlaceLeft() - 1);
+        if(currentCarPooling.getPlaceLeft() - 1 <= 0){
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            mReference.removeValue();
+
+            try {
+                NotificationCarPooling NotificationCarPooling = new NotificationCarPooling();
+                NotificationCarPooling.setDate(day+"/"+month);
+                NotificationCarPooling.setNewUser(DataBaseHelper.getCurrentUser());
+                NotificationCarPooling.setMessage("Ton covoiturage pour le " + currentCarPooling.getDateText() + " est complet ! ");
+                DatabaseReference mReferenceNotification = mDatabase.getReference("NotificationCarPooling_"+userID);
+                String ID = mReferenceNotification.push().getKey();
+                mReferenceNotification.child(ID).setValue(NotificationCarPooling);
+
+            }
+            catch (Exception e){
+
+            }
+
+        }
+
+        else
+        {
+            currentCarPooling.setPlaceLeft(currentCarPooling.getPlaceLeft() - 1);
+            mReference.child("placeLeft").setValue(currentCarPooling.getPlaceLeft() - 1);
+        }
+
 
         NotificationCarPooling NotificationCarPooling = new NotificationCarPooling();
         long date = System.currentTimeMillis();
