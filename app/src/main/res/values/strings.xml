@@ -10,11 +10,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
     <string name="facebook_app_id">535258210140448</string>
     <string name="fb_login_protocol_scheme">fb535258210140448</string>
-    <string name="title_activity_login">Borea</string>
+
+
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -32,7 +32,6 @@
 
     <string name="label_google_sign_in">Firebase + Google Sign In</string>
     <string name="label_facebook_login">Firebase + Facebook Login</string>
-    <string name="label_twitter_login">Firebase + Twitter Login</string>
     <string name="label_emailpassword">Email/Password Authentication</string>
     <string name="label_anonymous_auth">Anonymous Authentication</string>
     <string name="label_phone_auth">Phone Authentication</string>

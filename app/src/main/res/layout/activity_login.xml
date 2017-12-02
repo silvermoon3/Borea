@@ -15,14 +15,6 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:background="@drawable/portrait" />
 
-    <com.google.android.gms.common.SignInButton
-    android:id="@+id/sign_in_button"
-    android:layout_width="189dp"
-    android:layout_height="wrap_content"
-    android:layout_above="@+id/login_button_facebook"
-    android:layout_centerHorizontal="true"
-    android:layout_gravity="center"
-    android:layout_marginBottom="32dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -38,4 +30,26 @@ android:orientation="vertical">
         android:textColor="@color/primaryTexte"
         android:textSize="32sp"
         android:textStyle="bold" />
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp" >
+
+    </com.google.android.gms.common.SignInButton>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp" />
+
 </FrameLayout>

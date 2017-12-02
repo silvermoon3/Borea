@@ -1,6 +1,6 @@
 package uqac.eslie.nova.Fragments;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -134,14 +135,15 @@ public class AccountFragment extends Fragment {
 
 
     private void signOut(){
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
-
+     FirebaseAuth.getInstance().signOut();
+     LoginManager.getInstance().logOut();
+        com.facebook.login.LoginManager.getInstance().logOut();
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
                         startActivity(new Intent(getActivity(), LoginActivity.class));
+                      
                     }
                 });
 

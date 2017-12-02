@@ -2,6 +2,7 @@ package uqac.eslie.nova.Fragments;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -219,7 +220,21 @@ public class WeatherFragment extends Fragment implements LocationListener {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_weather, container, false);
 
-        //if(needToUpdate()) {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.INTERNET}, 1);
+
+        GPSTracker gps = new GPSTracker(getContext());
+        if(!gps.isGPSEnabled)
+        {
+            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+
+
+        }
+        else {
+            //if(needToUpdate()) {
             myTxtTask = new MyAsyncTaskTxt(this);
             myTxtTask.delegate = this;
             myTxtTask.execute(kp27Url);
@@ -227,36 +242,38 @@ public class WeatherFragment extends Fragment implements LocationListener {
             myTxtTask = new MyAsyncTaskTxt(this);
             myTxtTask.delegate = this;
             myTxtTask.execute(kp3Url);
-    //}
+            //}
 
-        myJsonTask = new MyAsyncTaskJsonKP(this);
-        myJsonTask.delegate = this;
-        myJsonTask.execute(kp1Url);
+            myJsonTask = new MyAsyncTaskJsonKP(this);
+            myJsonTask.delegate = this;
+            myJsonTask.execute(kp1Url);
 
-        myJsonTask2 = new MyAsyncTaskJsonWeather(this);
-        myJsonTask2.delegate = this;
-        myJsonTask2.execute(getWeatherURL());
+            myJsonTask2 = new MyAsyncTaskJsonWeather(this);
+            myJsonTask2.delegate = this;
+            myJsonTask2.execute(getWeatherURL());
 
-        // toasting loading
-        Toast.makeText(
-                this.getContext(),
-                "Chargement des données...",
-                Toast.LENGTH_LONG).show();
 
-        chartKp_today =  root.findViewById(R.id.chartKP_today);
-        chartKp_tomorrow = root.findViewById(R.id.chartKP_tomorrow);
-        chartKp_week = root.findViewById(R.id.chartKP_week);
+            // toasting loading
+            Toast.makeText(
+                    this.getContext(),
+                    "Chargement des données...",
+                    Toast.LENGTH_LONG).show();
 
-        chartCloud_today =  root.findViewById(R.id.chartCloud_today);
-        chartCloud_tomorrow =  root.findViewById(R.id.chartCloud_tomorrow);
-        chartCloud_week = root.findViewById(R.id.chartCloud_week);
-        if(DataBaseHelper.getCurrentWeatherGraph() == 0 || DataBaseHelper.getCurrentWeatherGraph() ==-1){
+            chartKp_today = root.findViewById(R.id.chartKP_today);
+            chartKp_tomorrow = root.findViewById(R.id.chartKP_tomorrow);
+            chartKp_week = root.findViewById(R.id.chartKP_week);
 
-            chartKp_week.setVisibility(View.INVISIBLE);
-            chartCloud_week.setVisibility(View.INVISIBLE);
-            if( DataBaseHelper.getCurrentWeatherGraph() ==-1){
-                chartKp_tomorrow.setVisibility(View.INVISIBLE);
-                chartCloud_tomorrow.setVisibility(View.INVISIBLE);
+            chartCloud_today = root.findViewById(R.id.chartCloud_today);
+            chartCloud_tomorrow = root.findViewById(R.id.chartCloud_tomorrow);
+            chartCloud_week = root.findViewById(R.id.chartCloud_week);
+            if (DataBaseHelper.getCurrentWeatherGraph() == 0 || DataBaseHelper.getCurrentWeatherGraph() == -1) {
+
+                chartKp_week.setVisibility(View.INVISIBLE);
+                chartCloud_week.setVisibility(View.INVISIBLE);
+                if (DataBaseHelper.getCurrentWeatherGraph() == -1) {
+                    chartKp_tomorrow.setVisibility(View.INVISIBLE);
+                    chartCloud_tomorrow.setVisibility(View.INVISIBLE);
+                }
             }
         }
        // setDataForKP();

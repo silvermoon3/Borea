@@ -37,7 +37,7 @@ dependencies {
     // FirebaseUI Storage only
 
     // Required only if Facebook login support is required
-
+    compile 'com.facebook.android:facebook-login:[4,5)'
     compile 'com.firebaseui:firebase-ui-database:2.3.0'
     compile 'com.firebaseui:firebase-ui-auth:2.3.0'
     compile 'com.firebaseui:firebase-ui-storage:2.3.0'

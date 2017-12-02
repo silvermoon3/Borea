@@ -1,6 +1,7 @@
 package uqac.eslie.nova;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -67,6 +68,21 @@ public class MainActivity extends AppCompatActivity
     Fragment account;
     Fragment chart;
 
+    public  void printHashKey() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i("hash key", "printHashKey() Hash Key: " + hashKey);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("error", "printHashKey()", e);
+        } catch (Exception e) {
+            Log.e("error", "printHashKey()", e);
+        }
+    }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -136,7 +152,7 @@ public class MainActivity extends AppCompatActivity
         transaction.disallowAddToBackStack();
         Helper_NavigationBottomBar helper = new Helper_NavigationBottomBar();
 
-
+        printHashKey();
         helper.disableShiftMode(navigation);
         calculateHashKey("uqac.eslie.nova");
 
@@ -153,9 +169,6 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 
         }
-        SugarContext.terminate();
-
-        SugarContext.init(getApplicationContext());
 
     }
 
