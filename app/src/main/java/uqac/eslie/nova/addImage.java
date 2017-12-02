@@ -162,6 +162,7 @@ public class addImage extends AppCompatActivity {
                 int height=dm.heightPixels;
                 toretBitmap = getResizedBitmap(b,width,height/3);
                 ImageView imageView =  findViewById(R.id.imageView2);
+                imageView.setBackground(null);
                 imageView.setImageBitmap(toretBitmap);
 
 
