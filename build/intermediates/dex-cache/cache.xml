@@ -3,33 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="C:\Android\.android\build-cache\5df1746c5e015c2b32088180e9beee6b04dfa5b8\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="287f4dec8dc2d40a238b12562b437438499cd2fb">
-        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_078a675df76c3896c315ce7e17bb6b3561d6662b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Android\.android\build-cache\9a4f96a992a20c8636ecfe643e2a6ddcbcd6c18d\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="b8b26b28aae0ba8e2db55ad9fe0ebc770530c5ef">
-        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7e2caff2da85c592f166c7b7352ed58c57f4982b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.3.0\73c49077166faa4c3c0059c5f583d1d7bd1475fe\core-3.3.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
-        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\core-3.3.0_136f74124d6c2fb2845f02856a99de70af59c9e3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -39,12 +12,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Android\.android\build-cache\a030a2d49a7f780206a3dc41d1ba42d48583a325\output\jars\classes.jar"
-        jumboMode="true"
+        jar="C:\Android\.android\build-cache\9a4f96a992a20c8636ecfe643e2a6ddcbcd6c18d\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="26.0.2"
-        sha1="ab6e491b5d7bda2f47991a30f6bfe9a8b134ff8b">
-        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c4908dac5634aae9b7991275ed5084bbad4bb672\classes.dex" />
+        sha1="b8b26b28aae0ba8e2db55ad9fe0ebc770530c5ef">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7e2caff2da85c592f166c7b7352ed58c57f4982b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -52,8 +25,35 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="73b305f708482174e728891a360d96a4aaf405cd">
+        sha1="862e5fc43b9027cb724554d2b4490059dce10049">
         <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f81db6747a8c55d42f9ad0d0b62d56f24e44bf17\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\a030a2d49a7f780206a3dc41d1ba42d48583a325\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ab6e491b5d7bda2f47991a30f6bfe9a8b134ff8b">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c4908dac5634aae9b7991275ed5084bbad4bb672\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\.android\build-cache\5df1746c5e015c2b32088180e9beee6b04dfa5b8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="287f4dec8dc2d40a238b12562b437438499cd2fb">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_078a675df76c3896c315ce7e17bb6b3561d6662b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ESTEL\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.3.0\73c49077166faa4c3c0059c5f583d1d7bd1475fe\core-3.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
+        <dex dex="C:\Users\ESTEL\OneDrive\Documents\UQAC\Mobile\Borea\app\build\intermediates\transforms\dex\debug\folders\1000\10\core-3.3.0_136f74124d6c2fb2845f02856a99de70af59c9e3\classes.dex" />
     </item>
 
 </items>

@@ -68,21 +68,7 @@ public class MainActivity extends AppCompatActivity
     Fragment account;
     Fragment chart;
 
-    public  void printHashKey() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                String hashKey = new String(Base64.encode(md.digest(), 0));
-                Log.i("hash key", "printHashKey() Hash Key: " + hashKey);
-            }
-        } catch (NoSuchAlgorithmException e) {
-            Log.e("error", "printHashKey()", e);
-        } catch (Exception e) {
-            Log.e("error", "printHashKey()", e);
-        }
-    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -152,7 +138,7 @@ public class MainActivity extends AppCompatActivity
         transaction.disallowAddToBackStack();
         Helper_NavigationBottomBar helper = new Helper_NavigationBottomBar();
 
-        printHashKey();
+
         helper.disableShiftMode(navigation);
         calculateHashKey("uqac.eslie.nova");
 

@@ -17,6 +17,7 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -53,13 +54,16 @@ public class LoginActivity extends FragmentActivity {
     private SignInButton googleButton;
     private FirebaseAuth mAuth;
     private CallbackManager callbackManager;
-    private GoogleSignInAccount account;
     private LoginButton facebookLogin;
+
+    private static final int REQ_SIGN_IN = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+       // setContentView(R.layout.activity_splash);
+
         mAuth = FirebaseAuth.getInstance();
 
         AppEventsLogger.activateApp(this);
@@ -70,36 +74,12 @@ public class LoginActivity extends FragmentActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                if(firebaseAuth.getCurrentUser() != null){
                    DataBaseHelper.setCurrentUser(new User(firebaseAuth.getCurrentUser()));
-                   Uri url = firebaseAuth.getCurrentUser().getPhotoUrl();
                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                }
+
             }
         };
 
-
-        googleButton = findViewById(R.id.sign_in_button);
-        facebookLogin = findViewById(R.id.login_button);
-        facebookLogin.setReadPermissions("email", "public_profile");
-        facebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAGFacebook, "facebook:onSuccess:" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
-
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d(TAGFacebook, "facebook:onCancel");
-                // ...
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d(TAGFacebook, "facebook:onError", error);
-                // ...
-            }
-        });
 
 
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
@@ -124,12 +104,12 @@ public class LoginActivity extends FragmentActivity {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        googleButton.setOnClickListener(new View.OnClickListener() {
+      /*  googleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
-        });
+        });*/
         mAuth = FirebaseAuth.getInstance();
 
     }
@@ -150,7 +130,7 @@ public class LoginActivity extends FragmentActivity {
                 GoogleSignInAccount _account = result.getSignInAccount();
                 FirebaseHelper.setAuth(mAuth);
                 FirebaseHelper.setmGoogleApiClient(mGoogleApiClient);
-                this.account = _account;
+
                 firebaseAuthWithGoogle(_account);
 
             } else {
@@ -197,10 +177,30 @@ public class LoginActivity extends FragmentActivity {
     @Override
     protected void onStart(){
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+       mAuth.addAuthStateListener(mAuthListener);
+
+            if (mAuth.getCurrentUser() != null) {
+                proceed();
+            } else {
+                signIn();
+            }
+
     }
 
+    private void signIn() {
 
+
+        Intent signInIntent = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setIsSmartLockEnabled(false, true)
+                .setAvailableProviders(Arrays.asList(
+                        new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+                        new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build()
+                ))
+                .setTheme(R.style.LoginTheme)
+                .build();
+        startActivityForResult(signInIntent, REQ_SIGN_IN);
+    }
 
     private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
 
@@ -233,9 +233,15 @@ public class LoginActivity extends FragmentActivity {
     }
 
 
-    private void signIn() {
+    /*private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
+    }*/
+
+    private void proceed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

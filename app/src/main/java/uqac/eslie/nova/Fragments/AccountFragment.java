@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,13 +17,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -44,7 +49,6 @@ public class AccountFragment extends Fragment {
     private TextView userName;
     private RoundedImageView photo;
     private BitmapHelper bitmapHelper;
-
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
 
@@ -135,15 +139,18 @@ public class AccountFragment extends Fragment {
 
 
     private void signOut(){
-     FirebaseAuth.getInstance().signOut();
+     FacebookSdk.sdkInitialize(getContext());
      LoginManager.getInstance().logOut();
-        com.facebook.login.LoginManager.getInstance().logOut();
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
+     //FirebaseAuth.getInstance().signOut();
+
+        AuthUI.getInstance()
+                .signOut(getActivity())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onResult(Status status) {
-                        startActivity(new Intent(getActivity(), LoginActivity.class));
-                      
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
                     }
                 });
 

@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#512da8</color>
     <color name="colorPrimaryLight">#d1c4e9</color>
     <color name="primaryTexte">#ffffff</color>
-    <color name="colorAccent">#673ab7</color>
+    <color name="colorAccent">#4b2989</color>
     <color name="bottomtab_0">#6ccc3d</color>
     <color name="bottomtab_1">#ea5c46</color>
     <color name="bottomtab_2">#33b3cc</color>
@@ -15,6 +15,7 @@
     <color name="lightGray">#898f9a</color>
     <color name="lightestGray">#d5d8db</color>
     <color name="transWhite">#70ffffff</color>
+    <color name="specialPurple">#4f12b8</color>
 
 
 </resources>
