@@ -292,35 +292,16 @@ public class WeatherFragment extends Fragment implements LocationListener {
 
     private void generateKPDataToday() {
         int numSubcolumns = 1;
-        int numColumns = 11;
+        int numColumns = 9;
 
         // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
         List<Column> columns = new ArrayList<Column>();
         List<SubcolumnValue> values;
-        for (int i = 3; i < numColumns; ++i) {
+        for (int i = 1; i < numColumns; ++i) {
 
             values = new ArrayList<SubcolumnValue>();
             for (int j = 0; j < numSubcolumns; ++j) {
-                if(i%numColumns == 9)
-                {
-
-                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[1]))));
-
-                }
-                else if(i%numColumns == 10)
-                {
-
-                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[1]))));
-
-                }
-                else
-                {
-                   
-                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]))));
-                }
-
-
-
+                values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i)%numColumns)[1]))));
             }
 
 
@@ -338,14 +319,15 @@ public class WeatherFragment extends Fragment implements LocationListener {
             for (int i = 0; i< 8; i++){
                 valuesX.add((float)i);
             }
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");
             labelsX.add("1-4h");
             labelsX.add("4-7h");
             labelsX.add("7-10h");
             labelsX.add("10-13h");
             labelsX.add("13-16h");
             labelsX.add("16-19h");
-            labelsX.add("19-22h");
-            labelsX.add("22-1h");
+
 
             Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
             Axis axisY = new Axis().setHasLines(true);
@@ -367,33 +349,16 @@ public class WeatherFragment extends Fragment implements LocationListener {
 
     private void generateKPDataTomorrow() {
         int numSubcolumns = 1;
-        int numColumns = 11;
+        int numColumns = 9;
 
         // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
         List<Column> columns = new ArrayList<Column>();
         List<SubcolumnValue> values;
-        for (int i = 3; i < numColumns; ++i) {
+        for (int i = 1; i < numColumns; ++i) {
 
             values = new ArrayList<SubcolumnValue>();
             for (int j = 0; j < numSubcolumns; ++j) {
-                if(i%numColumns == 9)
-                {
-
-                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(1)[2]))));
-
-                }
-                else if(i%numColumns == 10)
-                {
-
-                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get(2)[2]))));
-                }
-                else
-                {
-
-
-                        values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i) % numColumns)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i) % numColumns)[2]))));
-                }
-
+                values.add(new SubcolumnValue(Integer.parseInt(kpArrayTodayAndTomorrow.get((i) % numColumns)[2]), chooseColorKP(Integer.parseInt(kpArrayTodayAndTomorrow.get((i) % numColumns)[2]))));
             }
 
 
@@ -411,14 +376,15 @@ public class WeatherFragment extends Fragment implements LocationListener {
             for (int i = 0; i< 8; i++){
                 valuesX.add((float)i);
             }
+            labelsX.add("19-22h");
+            labelsX.add("22-1h");
             labelsX.add("1-4h");
             labelsX.add("4-7h");
             labelsX.add("7-10h");
             labelsX.add("10-13h");
             labelsX.add("13-16h");
             labelsX.add("16-19h");
-            labelsX.add("19-22h");
-            labelsX.add("22-1h");
+
 
             Axis axisX = Axis.generateAxisFromCollection(valuesX,labelsX);
             Axis axisY = new Axis().setHasLines(true);
